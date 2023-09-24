@@ -1,0 +1,1410 @@
+
+#TAIJUTSU        (lee)
+
+
+
+#EIGHT GATES
+
+
+gate1:
+  name: Врата Начала (1)
+  description: Врата усиляющие вас.
+  icon: diamond_pickaxe:150
+  icon_disabled: diamond_axe:150
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: taijutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Deactivate
+    - class: Command
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+  parameters:
+    target: self
+    effect_speed: 3
+    effect_jump: 3
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd add gate1
+    - wandp @pd add gate2
+    - wandp @pd remove gate3
+    - wandp @pd remove gate4
+    - wandp @pd remove gate5
+    - wandp @pd remove gate6
+    - wandp @pd remove gate7
+    - wandp @pd remove gate8
+  costs:
+    xp: 20
+  active_costs:
+    mana: 5
+
+gate2:
+  name: Врата Исцеления (2)
+  description: Врата усиляющие вас.
+  icon: diamond_pickaxe:151
+  icon_disabled: diamond_axe:151
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: taijutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+  parameters:
+    target: self
+    effect_speed: 5
+    effect_jump: 4
+    effect_increase_damage: 0
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd add gate1
+    - wandp @pd remove gate2
+    - wandp @pd add gate3
+    - wandp @pd remove gate4
+    - wandp @pd remove gate5
+    - wandp @pd remove gate6
+    - wandp @pd remove gate7
+    - wandp @pd remove gate8
+  costs:
+    xp: 30
+  active_costs:
+    mana: 5
+
+
+
+gate3:
+  name: Врата Жизни (3)
+  description: Врата усиляющие вас.
+  icon: diamond_pickaxe:152
+  icon_disabled: diamond_axe:152
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: taijutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Sphere
+        radius: 0.5
+        iterations: 1
+        particles: 1
+        particle_count: 1
+        duration: 3600000
+        relative_offset: 0,0,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 6
+    effect_jump: 5
+    effect_increase_damage: 1
+    effect_health_boost: 4
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd remove gate1
+    - wandp @pd add gate2
+    - wandp @pd remove gate3
+    - wandp @pd add gate4
+    - wandp @pd remove gate5
+    - wandp @pd remove gate6
+    - wandp @pd remove gate7
+    - wandp @pd remove gate8
+  costs:
+    xp: 40
+  active_costs:
+    mana: 10
+
+gate4:
+  name: Врата Боли (4)
+  description: Врата усиляющие вас, оставляют пар вокруг вас.
+  icon: diamond_pickaxe:153
+  icon_disabled: diamond_axe:153
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: taijutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Sphere
+        radius: 1.5
+        iterations: 1
+        particles: 1
+        particle_count: 1
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: explosion_normal
+        color: 00cc66
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Sphere
+        radius: 0.5
+        iterations: 1
+        particles: 1
+        particle_count: 1
+        duration: 3600000
+        relative_offset: 0,0,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 8
+    effect_jump: 5
+    effect_increase_damage: 2
+    effect_health_boost: 4
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd remove gate1
+    - wandp @pd remove gate2
+    - wandp @pd add gate3
+    - wandp @pd remove gate4
+    - wandp @pd add gate5
+    - wandp @pd remove gate6
+    - wandp @pd remove gate7
+    - wandp @pd remove gate8
+  costs:
+    xp: 50
+  active_costs:
+    mana: 10
+
+
+gate5:
+  name: Врата Предела (5)
+  description: Врата усиляющие вас, оставляют зелёную ауру, постепенно убивая вас.
+  icon: diamond_pickaxe:154
+  icon_disabled: diamond_axe:154
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: taijutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        color: 00cc66
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 9
+    effect_jump: 6
+    effect_increase_damage: 3
+    effect_health_boost: 4
+    effect_wither: 0
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd remove gate1
+    - wandp @pd remove gate2
+    - wandp @pd remove gate3
+    - wandp @pd add gate4
+    - wandp @pd remove gate5
+    - wandp @pd add gate6
+    - wandp @pd remove gate7
+    - wandp @pd remove gate8
+  costs:
+    xp: 60
+  active_costs:
+    mana: 10
+
+
+gate6:
+  name: Врата Прозрения (6)
+  description: Врата усиляющие вас, оставляют зелёную ауру и искры, постепенно убивая вас.
+  icon: diamond_pickaxe:155
+  icon_disabled: diamond_axe:155
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: taijutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        radius: 1.5
+        iterations: 10
+        particles: 50
+        particle_count: 30
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        color: 00cc66
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Sphere
+        radius: 1.5
+        iterations: 1
+        particles: 1
+        particle_count: 2
+        duration: 3600000
+        relative_offset: 0,0,0
+        disappear_with_origin_entity: true
+        particle: end_rod
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 10
+    effect_jump: 7
+    effect_increase_damage: 4
+    effect_health_boost: 4
+    effect_night_vision: 10
+    effect_water_breathing: 5
+    effect_wither: 1
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd remove gate1
+    - wandp @pd remove gate2
+    - wandp @pd remove gate3
+    - wandp @pd remove gate4
+    - wandp @pd add gate5
+    - wandp @pd remove gate6
+    - wandp @pd add gate7
+    - wandp @pd remove gate8
+  costs:
+    xp: 70
+  active_costs:
+    mana: 10
+
+
+
+gate7:
+  name: Врата Чуда (7)
+  description: Врата усиляющие вас, оставляет синюю ауру, постепенно убивая вас.
+  icon: diamond_pickaxe:156
+  icon_disabled: diamond_axe:156
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: taijutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        color: 00AACC
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 15
+    effect_jump: 10
+    effect_increase_damage: 5
+    effect_health_boost: 4
+    effect_night_vision: 10
+    effect_water_breathing: 5
+    effect_fast_digging: 4
+    effect_wither: 2
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd remove gate1
+    - wandp @pd remove gate2
+    - wandp @pd remove gate3
+    - wandp @pd remove gate4
+    - wandp @pd remove gate5
+    - wandp @pd add gate6
+    - wandp @pd remove gate7
+    - wandp @pd add gate8
+  costs:
+    xp: 80
+  active_costs:
+    mana: 10
+
+
+
+
+
+gate8:
+  name: Врата Смерти (8)
+  description: Последние врата, дающие невероятную силу, оставляя красную ауру из вашей крови, после использования вы умрёте.
+  icon: diamond_pickaxe:157
+  icon_disabled: diamond_axe:157
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: taijutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 8000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        color: cc1100
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 30
+    effect_jump: 20
+    effect_increase_damage: 6
+    effect_fast_digging: 100
+    fire_resistance: 100
+    effect_night_vision: 100
+    effect_saturation: 2
+    effect_absorption: 15
+    effect_wither: 100
+    effect_harm: 2
+    effect_water_breathing: 5
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd remove gate1
+    - wandp @pd remove gate2
+    - wandp @pd remove gate3
+    - wandp @pd remove gate4
+    - wandp @pd remove gate5
+    - wandp @pd remove gate6
+    - wandp @pd add gate7
+    - wandp @pd remove gate8
+  costs:
+    xp: 300
+  active_costs:
+    mana: 10
+
+
+
+taijutsubackflip:
+  name: Сальто назад
+  description: Позволяет моментально отпрыгнуть назад
+  icon: diamond_pickaxe:159
+  icon_disabled: diamond_axe:159
+  icon_url: http://textures.minecraft.net/texture/a35cfb663dbde27598eebe76b0fdac2593f1d696b3e6b9e044edeb8d48c2e2
+  alias: tesseract
+  category: taijutsu
+  tags: nojail
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: ChangeContext
+      target_caster: true
+      ignore_result: true
+      actions:
+      - class: FallProtectionAction
+    - class: ChangeContext
+      source_yaw_offset: 180
+      actions:
+      - class: Retarget
+        actions:
+        - class: Teleport
+  effects:
+    teleport:
+    - class: EffectSingle
+      sound: magic.teleport
+      location: target
+      particle_override: particle_nucleus
+      color_override: colorOrbital
+      source_location: eyes
+      effectlib:
+        class: AtomEffect
+        particle_nucleus: explosion_normal
+        particle_orbital: cloud
+        iterations: 8
+        offset: 0,-1,0
+    precast:
+    - class: EffectSingle
+      sound: magic.teleport
+      location: origin
+      particle_override: particle_nucleus
+      color_override: colorOrbital
+      source_location: eyes
+      effectlib:
+        class: AtomEffect
+        updateLocations: false
+        particle_nucleus: explosion_normal
+        particle_orbital: cloud
+        iterations: 8
+        offset: 0,-1,0
+    - class: EffectSingle
+      color_override: color
+      effectlib:
+        class: LineEffect
+        particle: cloud
+        updateLocations: false
+  parameters:
+    target: block
+    allow_max_range: true
+    allow_passthrough: false
+    range: 12
+    cooldown: 10000
+    prevent_passthrough: nopassthrough
+    bypass_confusion: true
+    vertical_range: 8
+  costs:
+    mana: 0
+
+
+
+
+taijutsuevade:
+  name: Уклонение
+  description: Позволяет уклонится от прямой атаки
+  icon: diamond_pickaxe:160
+  worth: 20
+  icon_disabled: diamond_axe:160
+  icon_url: http://textures.minecraft.net/texture/1adaf6e6e387bc18567671bb82e948488bbacff97763ee5985442814989f5d
+  hidden: true
+  category: taijutsu
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: ChangeContext
+        actions:
+        - class: Teleport
+  effects:
+    cast:
+    - location: origin
+      effectlib:
+        class: Sphere
+        particle: cloud
+        iterations: 2
+        speed: 0.5
+        particles: 4
+        particle_count: 2
+  parameters:
+    target: self
+    target_offset: rand(-5,5) 0 rand(-5,5)
+    vertical_range: 5
+    stop_on_success: true
+    repeat: 10
+    unsafe: water,stationary_water,lava,stationary_lava
+    passthrough: transparent_no_water
+    prevent_passthrough: '!transparent_no_water'
+    require_build: true
+    cooldown: 2000
+  costs:
+    mana: 0
+
+
+#
+thousandpunch:
+  name: Удар Тысячи Метров
+  description: Наносит удар противнику, отбросивая его на 1 километр
+  icon: diamond_pickaxe:161
+  icon_disabled: diamond_axe:161
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: taijutsu
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Damage
+    - class: VelocityAction
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 5
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: target
+      requires_entity_target: true
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: cloud
+        particles: 20
+        particle_count: 20
+        iterations: 8
+    - location: source
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: cloud
+        particles: 20
+        particle_count: 20
+        iterations: 1
+        radius: 1
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    range: 5
+    living_entity_speed: 1000
+    hitbox: false
+    fov: 0.4
+    damage: 15
+    target_breakables: 1
+    cooldown: 1000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0
+
+
+#https://naruto.fandom.com/wiki/Strong_Fist
+strongfist:
+  name: Сильный Кулак
+  description: Боевой стиль, цель применения которого - повреждение костей противника.
+  icon: diamond_pickaxe:162
+  icon_disabled: diamond_axe:162
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: taijutsu
+  worth: 30
+  earns_sp: 0
+  actions:
+    cast:
+    - class: AreaOfEffect
+      actions:
+      - class: PotionEffect
+    - class: Damage
+    - class: VelocityAction
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 5
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: target
+      requires_entity_target: true
+      class: EffectSingle
+      particle: block_crack
+      material: quartz_block
+      particles: 30
+      particle_count: 50
+      iterations: 30
+  parameters:
+    target_type: Damageable
+    duartion: 5000
+    radius: 1
+    effect_slow: 2
+    allow_max_range: false
+    range: 5
+    living_entity_speed: 0.1
+    hitbox: false
+    fov: 0.4
+    damage: 5
+    target_breakables: 1
+    cooldown: 1000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0
+
+
+
+#https://naruto.fandom.com/wiki/Front_Lotus
+
+frontlotus:
+  name: Первичный Лотус
+  description: Обматывает противника бинтами, подбрасывая его вверх
+  icon: diamond_pickaxe:163
+  icon_disabled: diamond_axe:163
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: taijutsu
+  worth: 60
+  earns_sp: 0
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+          ignore_result: true
+    - class: FallProtection
+      target: self
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+    tick:
+    - particle: end_rod
+      location: target
+      particle_count: 20
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+      particle_size: 1
+    hit_entity:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      location: target
+      effectlib:
+        class: Modified
+        duration: $duration
+        parameters:
+          size: sin(t/20) + 0.2
+        effect:
+          class: AnimatedBall
+          iterations: 70
+          particle: end_rod
+          color: 000000
+          particles: 60
+          y_offset: -0.5
+          y_factor: 1
+          duration: 15000
+    - location: both
+      effectlib:
+        class: SkyRocket
+        power: 2
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    allow_max_range: true
+    velocity: 200
+    console: true
+    range: 3
+    hitbox: true
+    target_type: Damageable
+    player_damage: 0
+    entity_damage: 0
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    damage: 0
+    radius: 2
+    effect_slow: 100
+    effect_jump: -10
+    effect_weak: 100
+    effect_slow_digging: 100
+    duration: 10000
+  costs:
+    mana: 50
+
+
+
+
+
+
+
+#https://naruto.fandom.com/wiki/Leaf_Whirlwind
+leafwind:
+  name: Вихрь Листа
+  description: Вращающийся удар
+  icon: diamond_axe:178
+  icon_disabled: diamond_hoe:178
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: taijutsu
+  worth: 100
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Repeat
+        actions:
+        - class: ConeOfEffectAction
+          actions:
+          - class: Damage
+          - class: Delay
+            delay: 100
+  effects:
+    cast:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 14
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 4
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: sweep_attack
+        iterations: 1
+        radius: 4
+        speed: 1
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 4000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: source
+      material: redstone_block
+      effectlib:
+        class: Equation
+        iterations: 50
+        particles: 20
+        particle: block_crack
+        xEquation: '1.2'
+        yEquation: -t/20 + 0.5
+        zEquation: -t/20 + 0.5
+        updateLocations: false
+        updateDirections: false
+  parameters:
+    target_type: Damageable
+    repeat: 3
+    radius: 4
+    allow_max_range: false
+    range: 5
+    hitbox: false
+    fov: 0.4
+    damage: 4
+    target_breakables: 1
+    cooldown: 5000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 50
+
+
+
+
+
+#https://naruto.fandom.com/wiki/Daytime_Tiger
+daytiger:
+  name: Полуденный Тигр
+  description: Один невероятно быстрый удар, образующий порыв ветра в форме тигра.
+  icon: diamond_pickaxe:165
+  icon_disabled: diamond_axe:165
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: taijutsu
+  worth: 70
+  earns_sp: 3
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: ArmorStandProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: end_rod
+          particle_base1: end_rod
+          particle_base2: end_rod
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: end_rod
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell_instant
+          particle_base1: spell_instant
+          particle_base2: spell_instant
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell_instant
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    hit:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        iterations: 5
+        speed: 1
+        particle_count: 8
+  parameters:
+    target_type: Entity
+    range: 32
+    velocity: 10
+    right_arm_transform:
+      x: 0
+      y: 0
+      z: 0
+    fov: 1
+    location_offset: -0.5,-0.5,-0.5
+    right_arm_item: diamond_hoe:1
+    damage: 30
+    radius: 6
+    item_speed: 0.1
+    break_durability: 1000
+    destructible_durability: 50000
+    living_entity_speed: 0.3
+    repeat: 6
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+    undo: 30000
+    undo_speed: 0.5
+  costs:
+    mana: 70
+
+
+
+
+
+
+
+#night guy
+nightguy:
+  name: Ночной Мотылёк
+  description: Таюдзюцу смертельной мощи, которое принимает форму дракона
+  icon: diamond_pickaxe:165
+  icon_disabled: diamond_axe:165
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: taijutsu
+  worth: 70
+  earns_sp: 3
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: ArmorStandProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell_mob
+          colorHelix: ff0000
+          color_base1: ff0000
+          color_base2: ff0000
+          particle_base1: spell_mob
+          particle_base2: spell_mob
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell_mob
+        color: ff0000
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: redstone
+          particle_base1: redstone
+          particle_base2: redstone
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell_instant
+          particle_base1: spell_instant
+          particle_base2: spell_instant
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell_instant
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: redstone
+          particle_base1: redstone
+          particle_base2: redstone
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    hit:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        iterations: 10
+        speed: 1
+        particle_count: 20
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: smoke_large
+        iterations: 10
+        speed: 1
+        particle_count: 20
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: explosion_huge
+        iterations: 6
+        particle_count: 5
+        radius: 10
+  parameters:
+    target_type: Entity
+    range: 32
+    velocity: 10
+    right_arm_transform:
+      x: 0
+      y: 0
+      z: 0
+    fov: 1
+    location_offset: -0.5,-0.5,-0.5
+    right_arm_item: diamond_hoe:17
+    damage: 250
+    radius: 12
+    item_speed: 0.1
+    break_durability: 1000
+    destructible_durability: 50000
+    living_entity_speed: 0.3
+    repeat: 6
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+    undo: 30000
+    undo_speed: 0.5
+  costs:
+    mana: 70

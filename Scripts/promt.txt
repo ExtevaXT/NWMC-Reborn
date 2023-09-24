@@ -1,0 +1,255 @@
+#https://naruto.fandom.com/ru/wiki/Стихия_Ветра:_Серия_Вакуумных_Волн
+vacuumwaves:
+  name: Серия Вакуумных Волн
+  description: Техника, которая создаёт несколько последовательных волн воздуха
+  icon: diamond_pickaxe:18
+  icon_disabled: diamond_axe:18
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/7134aed98232d9946f9dbd738a37e68f36a9a773a863dde206bb9115b993d78
+  category: basic
+  worth: 30
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Delay
+    - class: Repeat
+      actions:
+      - class: Retarget
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            actions:
+            - class: Sphere
+              actions:
+              - class: BreakBlock
+            - class: AreaOfEffect
+              actions:
+              - class: Damage
+              - class: Velocity
+      - class: PlayEffects
+        effect: shoot
+        ignore_result: true
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.electrify
+      sound_pitch: 0.1
+      source_location: body
+      origin_offset: 0,0.55,0
+      effectlib:
+        class: Sphere
+        particle: fireworks_spark
+        duration: $warmup
+        particles: 10
+        radius: 0.2
+    shoot:
+    - class: EffectSingle
+      sound: entity_arrow_shoot
+      source_location: body
+      sound_pitch: 0.3
+    tick:
+    - location: target
+      particle: explosion_large
+      particle_count: 2
+      particle_offset_x: 0.01
+      particle_offset_y: 0.01
+      particle_offset_z: 0.01
+    hit:
+    - location: target
+      sound: magic.shimmer
+      effectlib:
+        class: Sphere
+        iterations: 5
+        particles: 5
+        particle_count: 10
+        particle: explosion_normal
+        speed: 1
+        radius: 2
+        auto_orient: true
+        orient: true
+  parameters:
+    target: other
+    target_type: LivingEntity
+    source_location: body
+    range: 32
+    radius: 1
+    velocity: 50
+    spread: 0.3
+    cooldown: 2000
+    speed: 0.2
+    damage: 5
+    repeat: 5
+    push: 1
+    warmup: 0
+    undo: 15000
+    destructible: solid
+    break_durability: 2
+  costs:
+    mana: 40
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Ветра:_Ужасающее_Давление
+windblast:
+  name: Ужасающее Давление
+  description: Сжатый поток воздушной чакры, образующий большой взрыв
+  icon: diamond_pickaxe:19
+  icon_disabled: diamond_axe:19
+  upgrade_required_path: beginner
+  upgrade_required_casts: 15
+  icon_url: http://textures.minecraft.net/texture/e511624fac75f03cf2f3a56d5fe4582d6e74fc9f5e1e1160af1941ee144928
+  category: basic
+  pvp_restricted: true
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - sound: magic.burn
+      sound_volume: 1
+      sound_pitch: -0.25
+    tick:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: cloud
+        color: ff5500
+        particle_count: 5
+        particles: 5
+        particle_size: 1
+        radius: 2
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: explosion_huge
+  parameters:
+    radius: 15
+    undo: 8000
+    cooldown: 1000
+    living_entity_speed: 10
+    start: 1
+    target: none
+    target_type: Damageable
+    target_breakables: 5
+    bypass_backfire: true
+    player_damage: 5
+    entity_damage: 15
+    hitbox_size: 1
+    velocity: 20
+    interval: 250
+    warmup: 3000
+    break_durability: 1
+  costs:
+    mana: 60
+
+#Режим Ветра
+windboost:
+  name: Режим Ветра
+  description: Техника увеличивает скорость реакции и улучшает сопротивление урону
+  icon: diamond_pickaxe:20
+  icon_disabled: diamond_axe:20
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: basic
+  worth: 20
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        color: FFFFFF
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 5
+    effect_jump: 5
+    effect_damage_resistance: 0
+    cooldown: 0
+    cancel_on_death: true
+    repeat: infinite
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+I have file basic/wind.yml.
+First need to add in beginning
+wind:
+  category: basic
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+
+Then need to sort spells by their worth property.
+
+Remove icon_url, alias, category, earns_sp, upgrade_required_path, upgrade_required_casts.
+
+Need to create file wind.json that will have this structure, key will contain index of sorted spell (vacuumwaves is 2, windblast is 3, windboost is 1), en_GB property must have translation of ru_RU property that is name or description properties in yaml file accordingly.
+[
+    {
+      "type": "text",
+      "key": "magic.spells.basic.wind1.name",
+      "languages": {
+        "en_GB": "English translation",
+        "ru_RU": "Серия Вакуумных Волн"
+      }
+    },
+        {
+      "type": "text",
+      "key": "magic.spells.basic.wind1.description",
+      "languages": {
+        "en_GB": "English translation",
+        "ru_RU": "Техника, которая создаёт несколько последовательных волн воздуха"
+      }
+    },
+    ...
+]
+In yaml change name and description props to '[lang]magic.spells.basic.wind1.name[/lang]' and '[lang]magic.spells.basic.wind1.description[/lang]' accordingly, index should also be applied like 'alias: wind1' property.
+
+Make python to this task
+
+
+Need to save order of spell properties and this part to be first in it
+    # Update the YAML data with '[lang]' placeholders
+    spell_data['name'] = f"[lang]{en_name}[/lang]"
+    spell_data['description'] = f"[lang]{en_description}[/lang]"
+    spell_data['alias'] = f"wind{index}"

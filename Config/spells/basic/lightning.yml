@@ -1,0 +1,630 @@
+#LIGHTNING RELEASE
+lightning:
+  category: basic
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Молнии:_Аркан
+arkan:
+  name: '[lang]magic.spells.basic.lightning1.name[/lang]'
+  description: '[lang]magic.spells.basic.lightning1.description[/lang]'
+  alias: lightning1
+  inherit: lightning
+  icon: diamond_pickaxe:11 
+  icon_disabled: diamond_axe:11
+  worth: 10
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: Retarget
+        range: 1
+        actions:
+        - class: CheckBlock
+          allowed: solid
+          actions:
+          - class: ChangeContext
+            target_caster: true
+            actions:
+            - class: Damage
+      - class: ConeOfEffect
+        actions:
+        - class: Damage
+      - class: ChangeContext
+        target_caster: true
+        actions:
+        - class: Velocity
+      - class: Delay
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shimmer_crack
+      sound_volume: 1
+      particle: sweep_attack
+    - class: EffectSingle
+      location: source
+      source_location: body
+      sound: magic.shimmer_crack
+      sound_volume: 1
+      effectlib:
+        class: Flame
+        particle: redstone
+        color: 66CCFF
+        duration: 1000
+    - class: EffectSingle
+      location: source
+      source_location: body
+      effectlib:
+        class: Flame
+        particle: crit_magic
+        color: 66CCFF
+        duration: 1000
+  parameters:
+    target: none
+    target_type: Damageable
+    range: 3
+    living_entity_speed: 5
+    hitbox: false
+    fov: 0.4
+    velocity: 10
+    source_pitch_min: 0
+    source_pitch_max: 0
+    damage: 7
+    target_breakables: 1
+    cooldown: 5000
+    magic_damage: false
+    instant_block_effects: true
+    repeat: 2
+    delay: 100
+  costs:
+    mana: 40
+
+#https://naruto.fandom.com/ru/wiki/Режим_Чакры_Стихии_Молнии
+lightningboost:
+  name: '[lang]magic.spells.basic.lightning2.name[/lang]'
+  description: '[lang]magic.spells.basic.lightning2.description[/lang]'
+  alias: lightning2
+  inherit: lightning
+  icon: diamond_pickaxe:9
+  icon_disabled: diamond_axe:9
+  worth: 20
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: crit_magic
+        color: 00cc66
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 5
+    effect_jump: 5
+    effect_increase_damage: 0
+    cooldown: 0
+    cancel_on_death: true
+    repeat: infinite
+    duration: 36000
+  costs:
+    mana: 5
+  active_costs:
+    mana: 2
+
+#https://naruto.fandom.com/ru/wiki/Удар_Молнии
+lightningchain:
+  name: '[lang]magic.spells.basic.lightning3.name[/lang]'
+  description: '[lang]magic.spells.basic.lightning3.description[/lang]'
+  alias: lightning3
+  inherit: lightning
+  icon: diamond_pickaxe:12
+  icon_disabled: diamond_axe:12
+  worth: 30
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Damage
+      - class: Delay
+      - class: AreaOfEffect
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            velocity: 150
+            actions:
+            - class: Repeat
+              actions:
+              - class: Electrify
+              - class: Damage
+                player_damage: 1
+                entity_damage: 1
+              - class: Delay
+      - class: Electrify
+      - class: Repeat
+        actions:
+        - class: Damage
+        - class: Delay
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap
+      location: origin
+    projectile:
+    - class: EffectSingle
+      effectlib:
+        class: LineEffect
+        isZigZag: true
+        zigZags: 2
+        zigZagOffset: 0,0.05,0
+        length: 20
+        particles: 50
+        particle: redstone
+        color: 87CEEB
+        duration: 2000
+    - location: source
+      effectlib:
+        class: LineEffect
+        isZigZag: true
+        zigZags: 2
+        zigZagOffset: 0,0.05,0
+        length: 10
+        particles: 20
+        particle: redstone
+        color: E0FFFF
+        particle_count: 30
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+        duration: 2000
+    tick:
+    - particle: redstone
+      color: ADD8E6
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+      location: target
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+  parameters:
+    tick_size: 5
+    target: other
+    target_self: false
+    target_source: false
+    range: 48
+    velocity: 100
+    radius: 8
+    target_count: 10
+    target_type: Damageable
+    player_damage: 2
+    entity_damage: 2
+    delay: 250
+    repeat: 5
+    target_breakables: 1
+    cooldown: 5000
+  costs:
+    mana: 30
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Молнии:_Преследующий_Клык_Зверя_Молнии
+lightningchase:
+  name: '[lang]magic.spells.basic.lightning4.name[/lang]'
+  description: '[lang]magic.spells.basic.lightning4.description[/lang]'
+  alias: lightning4
+  inherit: lightning
+  icon: diamond_pickaxe:10
+  icon_disabled: diamond_axe:10
+  worth: 40
+  actions:
+    cast:
+    - class: Message
+      message: lock_on
+      message_type: action_bar
+      message_target: true
+    - class: CustomProjectile
+      hitbox: true
+      actions:
+      - class: Damage
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+      color_override: color
+      effectlib:
+        class: ConeEffect
+        iterations: 15
+        particle: redstone
+        color: FFFFFF
+        lengthGrow: 0.1
+        radiusGrow: 0.02
+        updateLocations: false
+        updateDirections: false
+    tick:
+    - particle: redstone
+      color: 87CEEB
+      location: target
+    - particle: redstone
+      color: ADD8E6
+      particle_count: 20
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+      location: target
+    projectile:
+    - class: EffectSingle
+      effectlib:
+        class: SphereEffect
+        particle: redstone
+        color: 87CEEB
+        duration: $lifetime
+        radius: 0.3
+        particles: 20
+        particle_count: 10
+        particle_offset_y: 0.2
+        particle_offset_x: 0.2
+        particle_offset_z: 0.2
+        particle_size: 3
+    hit:
+    - class: EffectSingle
+      sound: magic.zap
+      sound_volume: 0.3
+      location: target
+      color: FF0000
+      particle: redstone
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: explosion_large
+        radius: 0.2
+        particles: 2
+        particle_count: 2
+        iterations: 3
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+  parameters:
+    fov: 0.75
+    hitbox: false
+    velocity: 20
+    range: 48
+    hitbox_size: 0.5
+    target_type: Damageable
+    player_damage: 8
+    entity_damage: 6
+    target_breakables: 1
+    cooldown: 5000
+    track_target: true
+    lifetime: 20000
+    radius: 1
+    target_self_timeout: 2000
+    track_speed: 0.5
+    use_target_location: false
+  costs:
+    mana: 50
+
+#https://naruto.fandom.com/ru/wiki/Сенбон_Чидори
+chidorisenbon:
+  name: '[lang]magic.spells.basic.lightning5.name[/lang]'
+  description: '[lang]magic.spells.basic.lightning5.description[/lang]'
+  alias: lightning5
+  inherit: lightning
+  icon: diamond_pickaxe:7
+  icon_disabled: diamond_axe:7
+  worth: 50
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: Damage
+          - class: BreakBlock
+            ignore_result: true
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: redstone
+        color: 7e89ef
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    allow_max_range: true
+    velocity: 500
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 10
+    entity_damage: 10
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 20
+    spread: 0.8
+    radius: 0
+  costs:
+    mana: 60
+
+#https://naruto.fandom.com/ru/wiki/Кирин
+kirin:
+  name: '[lang]magic.spells.basic.lightning6.name[/lang]'
+  description: '[lang]magic.spells.basic.lightning6.description[/lang]'
+  alias: lightning6
+  inherit: lightning
+  icon: diamond_pickaxe:8
+  icon_disabled: diamond_axe:8
+  worth: 60
+  actions:
+    cast:
+    - class: Weather
+      weather: storm
+    - class: Delay
+      delay: 6000
+    - class: PlayEffects
+      effect: kirin
+    - class: Repeat
+      actions:
+      - class: Spread
+        actions:
+        - class: Lightning
+        - class: Sphere
+          ignore_result: true
+          actions:
+          - class: ModifyBlock
+    - class: Delay
+      delay: 3000
+    - class: Weather
+      weather: sun
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_firework_large_blast
+    - class: EffectTrail
+      particle: crit_magic
+      color: 7e89ef
+      particle_count: 60
+      particles: 30
+      iterations: 20
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+    kirin:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: HelixEffect
+        particle: smoke_large
+        iterations: 8
+        particle_count: 10
+        particle_offset_x: 1
+        particle_offset_y: 0.1
+        particle_offset_z: 1
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: HelixEffect
+        particle: smoke_large
+        particle_count: 10
+        particle_offset_x: 0.2
+        particle_offset_y: 4
+        particle_offset_z: 0.2
+        iterations: 5
+        particles: 30
+        radius: 10
+        offset: 0,-5,0
+  parameters:
+    target_type: LivingEntity
+    allow_max_range: true
+    range: 32
+    brush: air
+    radius: 4
+    cooldown: 10000
+    undo: 15000
+    undo_speed: 0.5
+    repeat: 128
+  costs:
+    mana: 150
+
+
+
+  name: Преследующая Молния
+  description: Чакра молнии, созданная в форме гончей, которая с мчится на противника
+  icon: diamond_pickaxe:10
+  icon_disabled: diamond_axe:10
+  icon_url: http://textures.minecraft.net/texture/e3152dba6ee22b6e89e88878acc5a01f5964946b8938e9a1470dfabbeeca
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  category: basic
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Message
+      message: lock_on
+      message_type: action_bar
+      message_target: true
+    - class: CustomProjectile
+      hitbox: true
+      actions:
+      - class: Damage
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+      color_override: color
+      effectlib:
+        class: ConeEffect
+        iterations: 15
+        particle: redstone
+        color: FFFFFF
+        lengthGrow: 0.1
+        radiusGrow: 0.02
+        updateLocations: false
+        updateDirections: false
+    tick:
+    - particle: redstone
+      color: 87CEEB
+      location: target
+    - particle: redstone
+      color: ADD8E6
+      particle_count: 20
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+      location: target
+    projectile:
+    - class: EffectSingle
+      effectlib:
+        class: SphereEffect
+        particle: redstone
+        color: 87CEEB
+        duration: $lifetime
+        radius: 0.3
+        particles: 20
+        particle_count: 10
+        particle_offset_y: 0.2
+        particle_offset_x: 0.2
+        particle_offset_z: 0.2
+        particle_size: 3
+    hit:
+    - class: EffectSingle
+      sound: magic.zap
+      sound_volume: 0.3
+      location: target
+      color: FF0000
+      particle: redstone
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: explosion_large
+        radius: 0.2
+        particles: 2
+        particle_count: 2
+        iterations: 3
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+  parameters:
+    fov: 0.75
+    hitbox: false
+    velocity: 20
+    range: 48
+    hitbox_size: 0.5
+    target_type: Damageable
+    player_damage: 8
+    entity_damage: 6
+    target_breakables: 1
+    cooldown: 5000
+    track_target: true
+    lifetime: 20000
+    radius: 1
+    target_self_timeout: 2000
+    track_speed: 0.5
+    use_target_location: false
+  costs:
+    mana: 50
+

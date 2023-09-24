@@ -1,0 +1,47 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "item/naruto/dojutsu/byakuganactive",
+		"particle": "item/naruto/dojutsu/byakuganactive"
+	},
+	"elements": [
+		{
+			"name": "eyes",
+			"from": [4, 6.1, 7],
+			"to": [7, 9.1, 7.1],
+			"faces": {
+				"north": {"uv": [8.5, 7.282, 9.903, 8.752], "texture": "#0"},
+				"east": {"uv": [0, 0, 0.1, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 2, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 0.1, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 2, 0.1], "texture": "#0"},
+				"down": {"uv": [0, 0, 2, 0.1], "texture": "#0"}
+			}
+		},
+		{
+			"name": "eyes",
+			"from": [9, 6.1, 7],
+			"to": [12, 9.1, 7.1],
+			"faces": {
+				"north": {"uv": [6.094, 7.297, 7.497, 8.767], "texture": "#0"},
+				"east": {"uv": [0, 0, 0.1, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 2, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 0.1, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 2, 0.1], "texture": "#0"},
+				"down": {"uv": [0, 0, 2, 0.1], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"head": {
+			"translation": [0, -1.8, -5.41],
+			"scale": [1.59766, 1.6268, 1]
+		}
+	},
+	"groups": [
+		{
+			"name": "Dodjutsu",
+			"children": [0, 1]
+		}
+	]
+}

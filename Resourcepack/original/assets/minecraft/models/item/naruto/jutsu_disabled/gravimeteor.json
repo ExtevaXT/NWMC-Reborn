@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/jutsu_disabled/gravimeteor",
+        "texture": "item/naruto/icons/jutsu_disabled/gravimeteor"
+    }
+}

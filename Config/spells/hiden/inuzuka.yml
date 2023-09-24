@@ -1,0 +1,186 @@
+
+#INUZUKA
+
+#https://naruto.wiki/Shikyaku_no_Jutsu
+inuzukamod:
+  name: Техника Четырёх Лап
+  description: Призывает Насекомых которые увеличивают вашу силу и сопротивление урону
+  icon: diamond_pickaxe:78
+  icon_disabled: diamond_axe:78
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      class: EffectSingle
+      effectlib:
+        particle: crit_magic
+        material: concrete:3
+        color: 00bfff
+        class: Trace
+        radius: 1
+        iterations: 30
+        duration: 180000
+        particle_offset_x: 1
+        particle_offset_y: 1
+        particle_offset_z: 1
+        particle_count: 20
+        particles: 10
+        speed: 0.1
+        disappear_with_origin_entity: true
+  parameters:
+    target: self
+    effect_speed: 7
+    effect_damage_resistance: 0
+    effect_increase_damage: 3
+    effect_jump: 5
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 20
+
+
+##https://jut.su/technique/pronzayuschiy-klyk.html
+inuzukafang:
+  name: Пронзающий Клык
+  description: 
+  icon: diamond_pickaxe:77
+  icon_disabled: diamond_axe:77
+  icon_url: http://textures.minecraft.net/texture/7cc2fb583d1762a16a50fa5ac37bc09b46def63e68205116d650391f9233ed
+  alias: leap
+  category: hiden
+  tags: nojail
+  worth: 40
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Velocity
+    - class: FallProtection
+    - class: Repeat
+      actions:
+      - class: ConeOfEffect
+        actions:
+        - class: Damage
+        - class: Delay
+          delay: 250
+      - class: CustomProjectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_enderdragon_flap
+      sound_volume: 1
+      target: self
+      source_location: body
+      location: origin
+      effectlib:
+        particle: explosion_large
+        class: Sphere
+        radius: 1.5
+        iterations: 10
+        duration: 1500
+    land:
+    - sound: block_stone_step
+      sound_pitch: 0.7
+    - class: EffectRing
+      particle: block_crack
+      source_location: feet
+      period: 4
+      particle_count: 80
+      radius: 4
+      particle_offset_x: 0.9
+      particle_offset_z: 0.9
+      particle_offset_y: 0.1
+  parameters:
+    duration: 1500
+    min_speed: 6
+    max_speed: 8
+    bypass_confusion: true
+    target: self
+    target_type: Damageable
+    range: 6
+    hitbox: false
+    fov: 0.4
+    radius: 4
+    velocity: 300
+    source_pitch_min: 0
+    source_pitch_max: 0
+    damage: 10
+    target_breakables: 1
+    undo: 10000
+    cooldown: 1000
+    repeat: 8
+    destructible: solid
+    destructible_override: true
+    destructible_durability: 1000
+    falling: true
+    break_durability: 100
+    speed: 100
+  costs:
+    mana: 50
+
+
+#Призыв собаки
+summonwolf:
+  name: Призыв Собаки
+  description: Призывает Собаку
+  icon: diamond_pickaxe:76
+  icon_disabled: diamond_axe:76
+  icon_url: http://textures.minecraft.net/texture/f73d8d925fd45eee331437cc496403f96516a5d35a8e62189990d8beee6a14
+  category: hiden
+  class: WolfSpell
+  pvp_restricted: true
+  worth: 10
+  earns: 0
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_wolf_howl
+      effectlib:
+        class: DnaEffect
+        particle_helix: smoke_normal
+        iterations: 24
+        particle_base1: smoke_normal
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: AtomEffect
+        iterations: 32
+        particle_nucleus: smoke_normal
+  parameters:
+    target_type: LivingEntity
+    max_wolves: 1
+    allow_max_range: false
+    cooldown: 60000
+    range: 32
+  costs:
+    mana: 50
+
+

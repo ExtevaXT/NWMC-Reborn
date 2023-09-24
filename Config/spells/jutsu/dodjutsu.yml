@@ -1,0 +1,257 @@
+
+
+#/dis Player @pd setArmor AIR,AIR,AIR,DIAMOND_HOE:10 setViewSelfDisguise false
+
+deactivate:
+  icon: diamond_pickaxe:11
+  icon_disabled: diamond_pickaxe:11
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+      command: undis
+    - class: Deactivate
+  parameters:
+    target: self
+    cooldown: 0
+    cancel_on_death: true
+    op: true
+  costs:
+    mana: 0
+
+sharinganactivate:
+  name: Активация Шарингана
+  description: Активирует ваш Шаринган. (Нажмите F чтобы деактивировать)
+  icon: diamond_pickaxe:173
+  icon_disabled: diamond_axe:173
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 0
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: none
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+      command: undis
+    - class: Deactivate
+    - class: Command
+      command: dis Player @pd setArmor AIR,AIR,AIR,DIAMOND_HOE:7 setViewSelfDisguise false
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+    - class: Command
+      command: undis
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+  parameters:
+    target: self
+    effect_speed: 0
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    op: true
+  costs:
+    mana: 0
+  active_costs:
+    mana: 1
+
+mangekyouactivate:
+  name: Активация Мангекьё Шарингана
+  description: Активирует ваш Мангекьё Шаринган. (Нажмите F чтобы деактивировать)
+  icon: diamond_pickaxe:176
+  icon_disabled: diamond_axe:176
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 0
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: none
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+      command: undis
+    - class: Deactivate
+    - class: Command
+      command: dis Player @pd setArmor AIR,AIR,AIR,DIAMOND_HOE:11 setViewSelfDisguise false
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+    - class: Command
+      command: undis
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+  parameters:
+    target: self
+    effect_speed: 1
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    op: true
+  costs:
+    mana: 0
+  active_costs:
+    mana: 2
+
+byakuganactivate:
+  name: Активация Бьякугана
+  description: Активирует ваш Бьякуган. (Нажмите F чтобы деактивировать)
+  icon: diamond_pickaxe:172
+  icon_disabled: diamond_axe:172
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 0
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: none
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Cast
+      spell: byakuganactive
+    - class: Command
+      command: undis
+    - class: Deactivate
+    - class: Command
+      command: dis Player @pd setArmor AIR,AIR,AIR,DIAMOND_HOE:9 setViewSelfDisguise false
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+    - class: Command
+      command: undis
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+  parameters:
+    target: self
+    effect_night_vision: 0
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    op: true
+  costs:
+    mana: 30
+  active_costs:
+    mana: 1
+
+rinneganactivate:
+  name: Активация Риннегана
+  description: Активирует ваш Риннеган. (Нажмите F чтобы деактивировать)
+  icon: diamond_pickaxe:174
+  icon_disabled: diamond_axe:174
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 0
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: none
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+      command: undis
+    - class: Deactivate
+    - class: Command
+      command: dis Player @pd setArmor AIR,AIR,AIR,DIAMOND_HOE:10 setViewSelfDisguise false
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+    - class: Command
+      command: undis
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+  parameters:
+    target: self
+    effect_speed: 0
+    effect_night_vision: 0
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    op: true
+  costs:
+    mana: 0
+  active_costs:
+    mana: 4
+
+ketsuryuganactivate:
+  name: Активация Кецурьюгана
+  description: Активирует ваш Кецурьюган. (Нажмите F чтобы деактивировать)
+  icon: diamond_pickaxe:175
+  icon_disabled: diamond_axe:175
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 0
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: none
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+      command: undis
+    - class: Deactivate
+    - class: Command
+      command: dis Player @pd setArmor AIR,AIR,AIR,DIAMOND_HOE:8 setViewSelfDisguise false
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+    - class: Command
+      command: undis
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+  parameters:
+    target: self
+    effect_regeneration: 0
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    op: true
+  costs:
+    mana: 0
+  active_costs:
+    mana: 3

@@ -1,0 +1,386 @@
+
+#KETSURYUGAN blood
+
+
+bloodgenjutsu:
+  name: Гендзюцу Кецурьюгана
+  description: Запирает жертву внутри своего гендзюцу
+  icon: diamond_pickaxe:114
+  icon_disabled: diamond_axe:114
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: dodjutsu
+  worth: 20
+  earns_sp: 0
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+        - class: Damage
+          ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+    tick:
+    - particle: block_crack
+      material: redstone_block
+      location: target
+      particle_count: 4
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+      particle_size: 1
+    hit:
+    - location: target
+      sound: entity_wither_break_block
+      sound_pitch: 0.8
+      source_location: body
+      effectlib:
+        class: Modified
+        duration: $duration
+        parameters:
+          size: (1 - (t / i)) * 1.5 + 0.5
+        effect:
+          class: SphereEffect
+          particle: redstone
+          radius: 1.5
+          particle_count: 2
+          particle_offset_x: 0.05
+          particle_offset_y: 0.05
+          particle_offset_z: 0.05
+          particle_size: 2
+          y_factor: 1
+          duration: 1000
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    allow_max_range: true
+    velocity: 200
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 0
+    entity_damage: 0
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    damage: 0
+    radius: 2
+    potion_effects:
+      slow: 10
+      jump: 250
+      weakness: 5
+      nausea: 100
+      duration: 10000
+    duration: 10000
+  costs:
+    mana: 15
+
+
+
+
+
+bloodtouch:
+  name: Касание Крови
+  description: Используя небольшое количество своей крови вы запускаете её с огромной скоростью в жертву
+  icon: diamond_pickaxe:115
+  icon_disabled: diamond_axe:115
+  icon_url: http://textures.minecraft.net/texture/71a235c48123b487e864fa21016e223ad4070c6d977b0a519f7dd743d39e47c
+  category: dodjutsu
+  worth: 30
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Damage
+  effects:
+    cast:
+    - sound: magic.zap_big
+      sound_volume: 1
+      location: origin
+      source_location: cast
+      effectlib:
+        class: ConeEffect
+        iterations: 16
+        particle: redstone
+        color: FF0000
+        lengthGrow: 0.4
+    hit:
+    - location: target
+      target_location: hit
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: FF0000
+        radius: 0.01
+    headshot:
+    - location: target
+      target_location: hit
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: 990000
+        radius: 0.01
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    velocity: 5000
+    target: other
+    target_type: Damageable
+    cooldown: 500
+    target_breakables: 5
+    bypass_backfire: true
+    bypass_pvp: true
+    range: 64
+    damage_type: OUT_OF_WORLD
+    damage: 7.5
+  costs:
+    mana: 100
+
+
+
+
+
+
+bloodcontrol:
+  name: Управление Кровью
+  description: Контролируя кровь живых существ, вы можете управлять ими
+  icon: diamond_pickaxe:116
+  icon_disabled: diamond_axe:116
+  icon_url: http://textures.minecraft.net/texture/c7142a19d8c84389da74b69641542b8b2fafbed8f7515d1d36c63c96bd749
+  category: dodjutsu
+  tags: noduel
+  class: ForceSpell
+  worth: 60
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_big
+      location: origin
+      effectlib:
+        class: DnaEffect
+        particles_base: 0
+        particles_helix: 7
+        particle_helix: redstone
+        particle_base1: redstone
+        particle_base2: redstone
+        iterations: 10
+    target_selected:
+    - class: EffectSingle
+      location: origin
+      sound: magic.hit
+      sound_volume: 0.5
+    - class: EffectSingle
+      location: target
+      use_hit_location: false
+      effectlib:
+        class: StarEffect
+        iterations: 4
+        particle: redstone
+        color: '990000'
+        spikeHeight: 1.2
+        innerRadius: 0.2
+    - class: EffectSingle
+      location: target
+      use_hit_location: false
+      source_location: eyes
+      color_override: color
+      effectlib:
+        class: IconEffect
+        iterations: 1000
+        particle: redstone
+        color: '990000'
+        period: 1
+        y_offset: 0
+        offset: 0,0.7,0
+    - class: EffectTrail
+      particle: redstone
+      color: '990000'
+  parameters:
+    target_type: LivingEntity
+    target_breakables: 1
+    target: other_entity
+    range: 24
+    item_force: 1
+    entity_force: 3
+    bypass_backfire: true
+  costs:
+    mana: 100
+
+#https://naruto.fandom.com/wiki/Blood_Dragon_Ascension
+blooddragon:
+  name: Восхождение Кровавого Дракона
+  icon: diamond_pickaxe:117
+  icon_disabled: diamond_axe:117
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: dodjutsu
+  worth: 40
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: ArmorStandProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: end_rod
+          particle_base1: end_rod
+          particle_base2: end_rod
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: end_rod
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell_instant
+          particle_base1: spell_instant
+          particle_base2: spell_instant
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell_instant
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    hit:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        iterations: 5
+        speed: 1
+        particle_count: 8
+  parameters:
+    target_type: Entity
+    range: 16
+    velocity: 10
+    right_arm_transform:
+      x: 0
+      y: 0
+      z: 0
+    fov: 1
+    location_offset: -0.5,-0.5,-0.5
+    right_arm_item: diamond_hoe:16
+    damage: 30
+    radius: 6
+    item_speed: 0.1
+    break_durability: 1000
+    destructible_durability: 5000
+    living_entity_speed: 0.3
+    repeat: 6
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+    undo: 30000
+    undo_speed: 0.5
+  costs:
+    mana: 20

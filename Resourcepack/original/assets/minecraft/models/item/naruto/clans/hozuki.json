@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/clans/hozuki",
+        "texture": "item/naruto/icons/clans/hozuki"
+    }
+}

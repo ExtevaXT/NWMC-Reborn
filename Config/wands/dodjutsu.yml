@@ -1,0 +1,232 @@
+
+#DODJUTSU EYES
+
+
+
+
+#SHARINGAN
+fullsharingan:
+  path: sharingan
+  description: Техники Шарингана
+  name: Шаринган
+  spells:
+  - sharinganactivate
+  - sharingancrows
+  - sharinganselfcrows
+  - sharinganspikes
+  - sharingancoercion
+  inherit: startsharingan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startsharingan:
+  path: sharingan
+  spells:
+  - sharinganactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:377
+  description: Техники Шарингана
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Шаринган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#MANGEKYUO SHARINGAN
+fullmangekyou:
+  path: mangekyou
+  description: Техники Мангекьё Шарингана
+  name: Мангекьё Шаринган
+  spells:
+  - amaterasu
+  - gravimeteor
+  - miniblackhole
+  - susano
+  inherit: startmangekyou
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startmangekyou:
+  path: mangekyou
+  spells:
+  - mangekyouactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:378
+  description: Техники Мангекьё Шарингана
+  mana: 800
+  mana_max: 800
+  mana_regeneration: 1
+  name: Мангекьё Шаринган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#BYAKUGAN
+fullbyakugan:
+  path: byakugan
+  description: Техники Бьякугана
+  name: Бьякуган
+  spells:
+  - byakuganactivate
+  - gentlefist
+  - byakuganrotate
+  - byakuganairpunch
+  - byakuganexplosion
+  - 64fist
+  inherit: startbyakugan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startbyakugan:
+  path: byakugan
+  spells:
+  - byakuganactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:379
+  description: Техники Бьякугана
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Бьякуган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#RINNEGAN
+fullrinnegan:
+  path: rinnegan
+  description: Техники Риннегана
+  name: Риннеган
+  spells:
+  - gravipull
+  - gravipush
+  - blackhole
+  - superfly
+  - mvrandomtravel
+  - rinneganactivate
+  inherit: startrinnegan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startrinnegan:
+  path: rinnegan
+  spells:
+  - rinneganactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:380
+  description: Техники Риннегана
+  mana: 1000
+  mana_max: 1000
+  mana_regeneration: 2
+  name: Риннеган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#KETSURYUGAN
+fullketsuryugan:
+  path: ketsuryugan
+  description: Техники Кецурьюгана
+  name: Кецурьюган
+  spells:
+  - bloodgenjutsu
+  - bloodtouch
+  - bloodcontrol
+  - blooddragon
+  - ketsuryuganactivate
+  inherit: startketsuryugan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startketsuryugan:
+  path: ketsuryugan
+  spells:
+  - ketsuryuganactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:381
+  description: Техники Кецурьюгана
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Кецурьюган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable

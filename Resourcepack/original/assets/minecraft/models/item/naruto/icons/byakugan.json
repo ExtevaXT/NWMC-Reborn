@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/icons/byakugan",
+        "texture": "item/naruto/icons/icons/byakugan"
+    }
+}

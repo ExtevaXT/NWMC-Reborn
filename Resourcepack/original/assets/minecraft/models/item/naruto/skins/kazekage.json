@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/skins/kazekage",
+        "texture": "item/naruto/icons/skins/kazekage"
+    }
+}

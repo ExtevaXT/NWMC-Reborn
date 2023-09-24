@@ -1,0 +1,192 @@
+
+#SARUTOBI CLAN
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Огня:_Горящее_Облако_Пепла
+sarutobismoke:
+  name: Горящее Облако Пепла
+  description: Создаёт Горящее Облако Пепла, которое наносит периодический урон 
+  icon: diamond_pickaxe:89
+  icon_disabled: diamond_axe:89
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: hiden
+  worth: 50
+  earns_sp: 3
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: fire
+      - class: Repeat
+        actions:
+        - class: AreaOfEffect
+          actions:
+          - class: Delay
+          - class: Damage
+  effects:
+    cast:
+    - sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Cone
+        particle: smoke_large
+        radius_grow: 0.05
+        particle_count: 5
+        iterations: 1
+        duration: 1000
+    hit:
+    - location: target
+      effectlib:
+        class: Cylinder
+        particles: 10
+        particle: smoke_large
+        duration: 3000
+        particle_count: 40
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        angular_velocity_z: 0
+        angular_velocity_y: 0
+        angular_velocity_x: 0
+        solid: true
+        size: 8
+        height: 8
+        radius: 8
+    fire:
+    - location: target
+      effectlib:
+        class: Cylinder
+        particles: 10
+        particle: flame
+        duration: 5000
+        particle_count: 40
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        angular_velocity_z: 0
+        angular_velocity_y: 0
+        angular_velocity_x: 0
+        solid: true
+        size: 8
+        height: 9
+        radius: 8
+  parameters:
+    range: 16
+    allow_max_range: true
+    fov: 1
+    radius: 8
+    damage: 2
+    item_speed: 0.1
+    living_entity_speed: 0.5
+    repeat: 60
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+    target: none
+    size: 5
+    warmup: 3000
+  costs:
+    mana: 20
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Огня:_Техника_Великого_Пламени
+sarutobifire:
+  name: Великое Пламя
+  description: Создаёт пламя из рта, наносящее огромный периодический урон
+  icon: diamond_pickaxe:90
+  icon_disabled: diamond_axe:90
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: hiden
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 60
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 21
+          particle_helix: flame
+          particle_base1: flame
+          particle_base2: flame
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: flame
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 30
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 21
+          particle_helix: flame
+          particle_base1: flame
+          particle_base2: flame
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: flame
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    range: 24
+    fov: 1
+    item_speed: 0.1
+    living_entity_speed: 0.5
+    repeat: 20
+    damage: 8
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 20
+

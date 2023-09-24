@@ -1,0 +1,25 @@
+{
+  "minecraft:recipes/decorations/torch": {
+    "criteria": {
+      "has_stone_pickaxe": "2023-09-20 14:05:36 +0500"
+    },
+    "done": true
+  },
+  "minecraft:story/upgrade_tools": {
+    "criteria": {
+      "stone_pickaxe": "2023-09-20 14:05:36 +0500"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:cold_ocean": "2023-09-20 14:06:36 +0500",
+      "minecraft:taiga": "2023-09-20 14:05:36 +0500",
+      "minecraft:deep_frozen_ocean": "2023-09-20 14:06:55 +0500",
+      "minecraft:beach": "2023-09-20 14:06:35 +0500",
+      "minecraft:river": "2023-09-20 14:06:34 +0500"
+    },
+    "done": false
+  },
+  "DataVersion": 2586
+}

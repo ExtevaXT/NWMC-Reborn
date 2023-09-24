@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/blocks/DeathPossessionTR",
+        "texture": "item/naruto/icons/blocks/DeathPossessionTR"
+    }
+}

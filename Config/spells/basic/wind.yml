@@ -1,0 +1,468 @@
+
+
+#WIND RELEASE
+
+#https://naruto.fandom.com/ru/wiki/Разрывающая_Ладонь_Зверя
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Ветра:_Серия_Вакуумных_Волн
+vacuumwaves:
+  name: Серия Вакуумных Волн
+  description: Техника, которая создаёт несколько последовательных волн воздуха
+  icon: diamond_pickaxe:18
+  icon_disabled: diamond_axe:18
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/7134aed98232d9946f9dbd738a37e68f36a9a773a863dde206bb9115b993d78
+  category: basic
+  worth: 30
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Delay
+    - class: Repeat
+      actions:
+      - class: Retarget
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            actions:
+            - class: Sphere
+              actions:
+              - class: BreakBlock
+            - class: AreaOfEffect
+              actions:
+              - class: Damage
+              - class: Velocity
+      - class: PlayEffects
+        effect: shoot
+        ignore_result: true
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.electrify
+      sound_pitch: 0.1
+      source_location: body
+      origin_offset: 0,0.55,0
+      effectlib:
+        class: Sphere
+        particle: fireworks_spark
+        duration: $warmup
+        particles: 10
+        radius: 0.2
+    shoot:
+    - class: EffectSingle
+      sound: entity_arrow_shoot
+      source_location: body
+      sound_pitch: 0.3
+    tick:
+    - location: target
+      particle: explosion_large
+      particle_count: 2
+      particle_offset_x: 0.01
+      particle_offset_y: 0.01
+      particle_offset_z: 0.01
+    hit:
+    - location: target
+      sound: magic.shimmer
+      effectlib:
+        class: Sphere
+        iterations: 5
+        particles: 5
+        particle_count: 10
+        particle: explosion_normal
+        speed: 1
+        radius: 2
+        auto_orient: true
+        orient: true
+  parameters:
+    target: other
+    target_type: LivingEntity
+    source_location: body
+    range: 32
+    radius: 1
+    velocity: 50
+    spread: 0.3
+    cooldown: 2000
+    speed: 0.2
+    damage: 5
+    repeat: 5
+    push: 1
+    warmup: 0
+    undo: 15000
+    destructible: solid
+    break_durability: 2
+  costs:
+    mana: 40
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Ветра:_Ужасающее_Давление
+windblast:
+  name: Ужасающее Давление
+  description: Сжатый поток воздушной чакры, образующий большой взрыв
+  icon: diamond_pickaxe:19
+  icon_disabled: diamond_axe:19
+  upgrade_required_path: beginner
+  upgrade_required_casts: 15
+  icon_url: http://textures.minecraft.net/texture/e511624fac75f03cf2f3a56d5fe4582d6e74fc9f5e1e1160af1941ee144928
+  category: basic
+  pvp_restricted: true
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - sound: magic.burn
+      sound_volume: 1
+      sound_pitch: -0.25
+    tick:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: cloud
+        color: ff5500
+        particle_count: 5
+        particles: 5
+        particle_size: 1
+        radius: 2
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: explosion_huge
+  parameters:
+    radius: 15
+    undo: 8000
+    cooldown: 1000
+    living_entity_speed: 10
+    start: 1
+    target: none
+    target_type: Damageable
+    target_breakables: 5
+    bypass_backfire: true
+    player_damage: 5
+    entity_damage: 15
+    hitbox_size: 1
+    velocity: 20
+    interval: 250
+    warmup: 3000
+    break_durability: 1
+  costs:
+    mana: 60
+
+
+
+
+#Режим Ветра
+windboost:
+  name: Режим Ветра
+  description: Техника увеличивает скорость реакции и улучшает сопротивление урону
+  icon: diamond_pickaxe:20
+  icon_disabled: diamond_axe:20
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: basic
+  worth: 20
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        color: FFFFFF
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_speed: 5
+    effect_jump: 5
+    effect_damage_resistance: 0
+    cooldown: 0
+    cancel_on_death: true
+    repeat: infinite
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Ветра:_Порыв
+windpush:
+  name: Порыв
+  description: Поток воздушной чакры, отталкивающий всё на своём пути
+  icon: diamond_pickaxe:21
+  icon_disabled: diamond_axe:21
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: basic
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: VelocityAction
+      y_offset: 1
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: VelocityAction
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    range: 8
+    fov: 1
+    target_count: 2
+    item_speed: 0.1
+    living_entity_speed: 2
+    repeat: 3
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 40
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Ветра:_Расенсюрикен
+rasensuriken:
+  name: Расенсюрикен
+  description: Невероятно мощная техника, является сюрикеноподобным вариантом техники Стихия Ветра Расенган
+  icon: diamond_pickaxe:22
+  icon_disabled: diamond_axe:22
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: basic
+  worth: 60
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Delay
+      ignore_result: true
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Delay
+          delay: 1000
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: naruto.rasensuriken
+      sound_volume: 10
+      location: origin
+      effectlib:
+        class: AtomEffect
+        particle_nucleus: redstone
+        particles_nucleus: 20
+        radius_nucleus: 0.2
+        colorNucleus: 99FFFF
+        particle_orbital: end_rod
+        colorOrbital: 99FFFF
+        iterations: 48
+        radius: 3
+        particle_count: 10
+    tick:
+    - class: EffectSingle
+      location: target
+      material: wool
+      effectlib:
+        class: Modified
+        iterations: 1
+        parameters:
+        effect:
+          class: HelixEffect
+          particle: end_rod
+          particles: 20
+          particle_count: 3
+          particle_offset_x: 1
+          particle_offset_y: 0.05
+          particle_offset_z: 1
+          radius: 5
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 1
+        particle: redstone
+        particle_count: 50
+        particles: 20
+        color: AFEEEE
+        radius: 2
+    hit:
+    - class: EffectSingle
+      sound: magic.shield_boom
+      sound_volume: 15
+      sound_pitch: -0.25
+      location: both
+    - location: target
+      effectlib:
+        class: Sphere
+        radius: 12
+        particle: explosion_huge
+        iterations: 15
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    velocity: 100
+    allow_max_range: false
+    range: 48
+    speed: 2
+    living_entity_speed: 0.7
+    direction: 0,0.8,0
+    falling: false
+    radius: 15
+    cooldown: 5000
+    destructible: solid
+    destructible_override: true
+    select_self: false
+    undo_speed: 0.5
+    damage: 100
+    break_durability: 20000
+    destructible_durability: 10000
+    durability_max_distance: 15
+    damage_max_distance: 8
+    undo: 30000
+    warmup: 5000
+    interval: 250
+  costs:
+    mana: 170
+

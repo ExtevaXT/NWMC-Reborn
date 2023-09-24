@@ -1,0 +1,131 @@
+
+#DUST RELEASE
+
+#https://naruto.fandom.com/wiki/Dust_Release:_Detachment_of_the_Primitive_World_Technique
+#https://naruto.fandom.com/ru/wiki/Стихия_Пыли:_Атомное_Расщепление:_Столб
+dustsplit:
+  name: Атомное Расщепление
+  description: Запускает луч Стихии Пыли расщепляющий всё до атомов
+  icon: diamond_pickaxe:137
+  icon_disabled: diamond_axe:137
+  icon_url: http://textures.minecraft.net/texture/7cc8e096a2ac99bf264b3e827f1e3aa07ba688d7b4f470128f741132625e
+  example_thumbnail: https://thumbs.gfycat.com/SnivelingDependentHuman-size_restricted.gif
+  example_link: https://thumbs.gfycat.com/SnivelingDependentHuman
+  category: additional
+  worth: 100
+  earns_sp: 0
+  upgrade_required_path: storm
+  upgrade_required_casts: 50
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: PlayEffects
+        effect: beam
+        ignore_result: true
+      - class: Line
+        ignore_result: true
+        actions:
+        - class: Disc
+          actions:
+          - class: CheckBlock
+            actions:
+            - class: BreakBlock
+            - class: PlayEffects
+              effects: burn
+              ignore_result: true
+      - class: Repeat
+        actions:
+        - class: Delay
+        - class: Retarget
+          actions:
+          - class: PlayEffects
+            effect: beam
+            ignore_result: true
+          - class: Line
+            ignore_result: true
+            actions:
+            - class: Disc
+              actions:
+              - class: CheckBlock
+                actions:
+                - class: BreakBlock
+                - class: PlayEffects
+                  effects: burn
+                  ignore_result: true
+          - class: ConeOfEffect
+            actions:
+            - class: Damage
+  effects:
+    beam:
+    - class: EffectSingle
+      sound: magic.zap
+      location: origin
+      sound_volume: 0.1
+      color_override: colorHelix
+      effectlib:
+        class: DnaEffect
+        particles_base: 5
+        particles_helix: 7
+        particle_helix: redstone
+        color_helix: FFFFFF
+        particle_base1: cloud
+        color_base1: 7b68ee
+        particle_base2: explosion_normal
+        color_base2: 1e90ff
+        iterations: 10
+        radius: 1.5
+        grow: 0.2
+        base_interval: 5
+        length: 32
+    burn:
+    - location: target
+      particle: explosion_huge
+      particle_count: 1
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      target_offset: 0.5,0.5,0.5
+    - location: target
+      particle: cloud
+      speed: 1
+      particle_count: 1
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      target_offset: 0.5,0.5,0.5
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+  parameters:
+    target: block
+    target_type: Damageable
+    fov: 0.1
+    close_range: 4
+    close_fov: 0.4
+    allow_max_range: true
+    player_damage: 20
+    entity_damage: 20
+    target_count: 5
+    range: 32
+    size: 2
+    start_at_target: true
+    increment_data: false
+    check_destructible: true
+    destructible: solid
+    destructible_durability: 10000000
+    break_durability: 10000000000
+    transparent: air
+    radius: 5
+    undo: 30000
+    cooldown: 1000
+    delay: 100
+    repeat: 15
+    undo_speed: 1
+    orient: true
+    axis: z
+    multiply: 1
+  costs:
+    mana: 120

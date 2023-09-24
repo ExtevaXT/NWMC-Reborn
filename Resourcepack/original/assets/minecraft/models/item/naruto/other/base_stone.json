@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/other/base_stone",
+        "texture": "item/naruto/icons/other/base_stone"
+    }
+}

@@ -1,0 +1,758 @@
+
+#MANGEKYO SHARINGAN
+
+#https://naruto.fandom.com/ru/wiki/Камуи
+miniblackhole:
+  name: Камуи Дальнего Действия
+  icon: diamond_pickaxe:101
+  icon_disabled: diamond_axe:101
+  icon_url: http://textures.minecraft.net/texture/7cc8e096a2ac99bf264b3e827f1e3aa07ba688d7b4f470128f741132625e
+  example_thumbnail: https://thumbs.gfycat.com/SnivelingDependentHuman-size_restricted.gif
+  example_link: https://thumbs.gfycat.com/SnivelingDependentHuman
+  category: dodjutsu
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: PlayEffects
+      effect: beam
+      ignore_result: true
+    - class: Line
+      ignore_result: true
+      actions:
+      - class: Disc
+        actions:
+        - class: CheckBlock
+          actions:
+          - class: BreakBlock
+          - class: PlayEffects
+            effects: burn
+            ignore_result: true
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: Retarget
+        actions:
+        - class: PlayEffects
+          effect: beam
+          ignore_result: true
+        - class: Line
+          ignore_result: true
+          actions:
+          - class: Disc
+            actions:
+            - class: CheckBlock
+              actions:
+              - class: BreakBlock
+              - class: PlayEffects
+                effects: burn
+                ignore_result: true
+        - class: ConeOfEffect
+          actions:
+          - class: Damage
+  effects:
+    beam:
+    - class: EffectSingle
+      sound: magic.zap
+      location: target
+      target_location: hit
+      sound_volume: 0.1
+      color_override: color
+      effectlib:
+        class: Sphere
+        particle: redstone
+        iterations: 2
+        color: 000000
+        radius: 0.3
+        particle_count: 20
+    burn:
+    - location: target
+      particle: smoke_large
+      particle_count: 4
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      target_offset: 0.5,0.5,0.5
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+  parameters:
+    target: other
+    target_type: Damageable
+    fov: 0.1
+    close_range: 4
+    close_fov: 0.4
+    allow_max_range: true
+    player_damage: 2
+    entity_damage: 2
+    target_count: 5
+    range: 32
+    size: 1
+    start_at_target: true
+    increment_data: false
+    check_destructible: true
+    destructible: solid
+    destructible_durability: 100
+    break_durability: 4
+    transparent: air
+    radius: 0
+    undo: 15000
+    cooldown: 1000
+    delay: 100
+    repeat: 30
+    undo_speed: 1
+    orient: true
+    axis: z
+  costs:
+    mana: 120
+
+
+#SUSANOO
+#https://naruto.fandom.com/ru/wiki/Сусаноо
+susanoo1st:
+  icon: diamond_pickaxe:11
+  icon_disabled: diamond_pickaxe:11
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: none
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+      command: undis
+    - class: Deactivate
+    - class: Command
+      command: dis Player @pd setItemInMainHand DIAMOND_HOE:101
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+    - class: Command
+      command: undis
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Cylinder
+        heigth: 7
+        radius: 2
+        enable_rotation: false
+        duration: 300000
+        relative_offset: 0,0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+  parameters:
+    target: self
+    effect_slow: 2
+    effect_jump: -10
+    effect_damage_resistance: 3
+    cooldown: 100
+    cancel_on_death: true
+    repeat: 30
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+susanoo2st:
+  icon: diamond_axe:11
+  icon_disabled: diamond_pickaxe:11
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,0,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,1,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Cylinder
+        heigth: 2
+        radius: 0.2
+        enable_rotation: false
+        duration: 3600000
+        relative_offset: -1.5,0,0
+        disappear_with_origin_entity: true
+        particle: redstone
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Cylinder
+        heigth: 2
+        radius: 0.2
+        enable_rotation: true
+        angular_velocity_z: 0
+        angular_velocity_y: 0
+        angular_velocity_x: 0
+        rotation_x: 180
+        duration: 3600000
+        relative_offset: 0,1,0
+        disappear_with_origin_entity: true
+        particle: redstone
+  parameters:
+    target: self
+    effect_slow: 1
+    effect_damage_resistance: 3
+    effect_increase_damage: 3
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd add susanoo3st
+    - wandp @pd remove susanoo2st
+    - wandp @pd remove susanoo4st
+    - wandp @pd add susanoo1st
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+
+
+susanoo3st:
+  icon: diamond_axe:11
+  icon_disabled: diamond_pickaxe:11
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,0,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,1,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Cylinder
+        heigth: 2
+        radius: 0.2
+        enable_rotation: false
+        duration: 3600000
+        relative_offset: -1.5,0,0
+        disappear_with_origin_entity: true
+        particle: redstone
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Cylinder
+        heigth: 2
+        radius: 0.2
+        enable_rotation: true
+        angular_velocity_z: 0
+        angular_velocity_y: 0
+        angular_velocity_x: 0
+        rotation_x: 180
+        duration: 3600000
+        relative_offset: 0,1,0
+        disappear_with_origin_entity: true
+        particle: redstone
+  parameters:
+    target: self
+    effect_slow: 1
+    effect_damage_resistance: 3
+    effect_increase_damage: 3
+    effect_night_vision: 10
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd add susanoo4st
+    - wandp @pd remove susanoo3st
+    - wandp @pd remove susanoo1st
+    - wandp @pd add susanoo2st
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+
+susanoo4st:
+  icon: diamond_axe:11
+  icon_disabled: diamond_pickaxe:11
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: dodjutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Command
+    - class: Deactivate
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,0,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,1,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Warp
+        radius: 1.5
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: redstone
+        grow: 0
+        update_directions: true
+        update_locations: false
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Cylinder
+        heigth: 2
+        radius: 0.2
+        enable_rotation: false
+        duration: 3600000
+        relative_offset: -1.5,0,0
+        disappear_with_origin_entity: true
+        particle: redstone
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Cylinder
+        heigth: 2
+        radius: 0.2
+        enable_rotation: true
+        angular_velocity_z: 0
+        angular_velocity_y: 0
+        angular_velocity_x: 0
+        rotation_x: 180
+        duration: 3600000
+        relative_offset: 0,1,0
+        disappear_with_origin_entity: true
+        particle: redstone
+  parameters:
+    target: self
+    effect_slow: 1
+    effect_damage_resistance: 3
+    effect_increase_damage: 3
+    effect_night_vision: 10
+    effect_regeneration: 5
+    cooldown: 100
+    cancel_on_death: true
+    repeat: infinite
+    commands:
+    - wandp @pd add susanoo3st
+    - wandp @pd remove susanoo4st
+    - wandp @pd remove susanoo1st
+    - wandp @pd remove susanoo2st
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+
+
+amaterasu:
+  name: Аматерасу
+  description: Создаёт огонь, который сжигает абсолютно всё
+  icon: diamond_pickaxe:102
+  icon_disabled: diamond_axe:102
+  icon_url: http://textures.minecraft.net/texture/7dbb7f75e74ad4218d2af7191752b5952144436ce8aa2bb6fb27168e6f28af
+  alias: inferno
+  category: dodjutsu
+  pvp_restricted: true
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Disc
+        actions:
+        - class: Cover
+          actions:
+          - class: Burn
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.burn
+      sound_volume: 1
+      location: origin
+    tick:
+    - class: EffectSingle
+      location: target
+      particle: lava
+      particle_count: 2
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+    hit:
+    - class: EffectSingle
+      location: target
+      color: FE642E
+      firework: ball
+  parameters:
+    velocity: 80
+    target_type: LivingEntity
+    allow_max_range: true
+    range: 48
+    hitbox: true
+    fov: 0.03
+    radius: 2
+    vertical_range: 4
+    cooldown: 3000
+    target_breakables: 0
+    destructible: burnable
+    unbreakable: true
+  costs:
+    mana: 35
+
+#https://naruto.fandom.com/ru/wiki/Тенгай_Шинсей
+gravimeteor:
+  icon: diamond_pickaxe:100
+  icon_disabled: diamond_axe:100
+  icon_url: http://textures.minecraft.net/texture/f554672caf6e5335954614fb185acb15148e71423d97d0d5ff6023c247d5eb21
+  category: dodjutsu
+  worth: 80
+  earns_sp: 0
+  actions:
+    cast:
+    - class: ChangeContext
+      actions:
+      - class: Multiply
+        actions:
+        - class: Delay
+        - class: CustomProjectile
+          actions:
+          - class: AreaOfEffect
+            radius: 5
+            actions:
+            - class: Velocity
+            - class: PotionEffect
+            - class: Ignite
+            - class: Damage
+          - class: Sphere
+            actions:
+            - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      custom_sound: magic.burn
+      location: both
+    - class: EffectSingle
+      location: target
+      target_offset: 0,.15,0
+      effectlib:
+        class: HelixEffect
+        particles: 26
+        iterations: 5
+        radius: 10
+        particle: drip_lava
+    tick:
+    - particle: fireworks_spark
+      location: target
+      particle_count: 3
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+    - effectlib:
+        particle: smoke_large
+        radius: 1.5
+        particle_count: 1
+        particle_offset_x: 0.7
+        particle_offset_y: 0.7
+        particle_offset_z: 0.7
+      location: target
+    projectile:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: SphereEffect
+        particle: block_crack
+        material: stone
+        iterations: 100
+        particles: 10
+        particle_count: 100
+        radius: 3
+    - effectlib:
+        particle: lava
+        radius: 1
+        particle_count: 4
+        particle_offset_x: 0.7
+        particle_offset_y: 0.7
+        particle_offset_z: 0.7
+      location: target
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        speed: 0.5
+        radius: 1
+        iterations: 5
+    - class: EffectSingle
+      sound: entity_generic_explode
+      sound_volume: 2
+      location: both
+    - class: EffectSingle
+      target_offset: 0,0.5,0
+      location: target
+      particle: explosion_huge
+      iterations: 5
+  parameters:
+    spread: 0.5
+    first:
+      spread: 0
+      delay: 0
+    radius: 6
+    delay: rand(0,2000)
+    multiply: 30
+    target: other
+    item_speed: 1
+    living_entity_speed: 1
+    y_offset: 1
+    player_damage: 25
+    entity_damage: 25
+    target_breakables: 1
+    range: 64
+    allow_max_range: true
+    hitbox: true
+    size: 3
+    velocity: 50
+    bypass_backfire: false
+    undo: 10000
+    cooldown: 1000
+    speed: 0.9
+    falling: true
+    brush: air
+    source_offset: 0,50,0
+    direction: 0,0.75,0
+    destructible: destructible,destructible2,destructible3
+    destructible_override: true
+    undo_speed: 2
+  costs:
+    mana: 200

@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/other/BringerOfDarkness",
+        "texture": "item/naruto/icons/other/BringerOfDarkness"
+    }
+}

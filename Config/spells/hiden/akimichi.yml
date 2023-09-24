@@ -1,0 +1,316 @@
+
+#AKIMICHI
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Частичного_Увеличения_Размера
+sizepartgrow:
+  name: Частичное Увелечение Размера
+  description: Позволяет увеличивать отдельные части собственного тела
+  icon: diamond_pickaxe:74
+  icon_disabled: diamond_axe:74
+  icon_url: http://textures.minecraft.net/texture/5d9ddb39f5cd587f63bb175dfaf55baaa917c1a2a3ca987a18d90c9e1a578d
+  category: hiden
+  pvp_restricted: true
+  worth: 10
+  actions:
+    cast:
+    - class: Line
+      actions:
+      - class: ModifyBlock
+    - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_grass_step
+    iterate:
+    - class: EffectSingle
+      particle: block_crack
+      location: target
+  parameters:
+    target_type: Damageable
+    transparent: transparent_to_construction
+    allow_max_range: true
+    range: 6
+    size: 6
+    increment_data: false
+    undo: 1000
+    brush: stained_clay
+    player_damage: 8
+    entity_damage: 8
+    destructible: destructible_replace
+  costs:
+    mana: 20
+
+
+#https://naruto.fandom.com/ru/wiki/Три_Цветные_Таблетки
+
+
+
+
+
+
+#https://jut.su/technique/myasnoy-tank.html
+akimichiroll:
+  name: Мясной Танк
+  description: Используя технику увеличения тела, вы превращаете своё тело в огромный шар и катитесь на врага
+  icon: diamond_pickaxe:75
+  icon_disabled: diamond_axe:75
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: hiden
+  worth: 20
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: Retarget
+        range: 1
+        actions:
+        - class: CheckBlock
+          allowed: solid
+          actions:
+          - class: ChangeContext
+            target_caster: true
+            actions:
+            - class: Damage
+      - class: ConeOfEffect
+        actions:
+        - class: Damage
+      - class: ChangeContext
+        target_caster: true
+        actions:
+        - class: Velocity
+      - class: Delay
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_enderdragon_flap
+      sound_volume: 1
+      target: self
+      source_location: body
+      location: origin
+      effectlib:
+        particle: explosion_large
+        class: Sphere
+        radius: 3
+        iterations: 10
+        particle_count: 2
+        duration: 5000
+    - class: EffectSingle
+      sound: entity_enderdragon_flap
+      sound_volume: 1
+      target: self
+      source_location: body
+      location: origin
+      effectlib:
+        particle: block_crack
+        material: stained_clay
+        class: Sphere
+        radius: 3
+        iterations: 10
+        particle_count: 10
+        duration: 5000
+  parameters:
+    target: none
+    target_type: Damageable
+    range: 3
+    hitbox: false
+    fov: 0.4
+    velocity: 10
+    source_pitch_min: 0
+    source_pitch_max: 0
+    damage: 8
+    speed: 2
+    target_breakables: 1
+    cooldown: 5000
+    magic_damage: false
+    instant_block_effects: true
+    repeat: 40
+    delay: 100
+    radius: 3
+    destructible: solid
+    destructible_override: true
+    destructible_durability: 50
+    break_durability: 1
+    undo: 30000
+  costs:
+    mana: 40
+
+
+
+
+butterflypunch:
+  name: Удар Бабочки
+  description: Концетрирует чакру в руке и наносит смертельный удар
+  icon: diamond_pickaxe:73
+  icon_disabled: diamond_axe:73
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: hiden
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Damage
+    - class: VelocityAction
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 5
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: target
+      requires_entity_target: true
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: 00AACC
+        particles: 20
+        particle_count: 20
+        iterations: 8
+    - location: target
+      requires_entity_target: true
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        color: 00AACC
+        particles: 20
+        particle_count: 20
+        iterations: 8
+    - location: source
+      effectlib:
+        class: Sphere
+        color: 00AACC
+        particles: 20
+        particle_count: 20
+        iterations: 8
+        radius: 1
+    - location: source
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: 00AACC
+        particles: 20
+        particle_count: 20
+        iterations: 8
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    range: 5
+    living_entity_speed: 5
+    hitbox: false
+    fov: 0.4
+    damage: 40
+    target_breakables: 1
+    cooldown: 1000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Режим_Бабочки
+butterflymod:
+  name: Режим Бабочки
+  description: Использует большое количество чакры, чтобы создать крылья из чистой чакры
+  icon: diamond_pickaxe:72
+  icon_disabled: diamond_axe:72
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: FallProtection
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: EquationEffect
+        x_equation: 0
+        y_equation: 0.4 * (cos(t/57.2958)  * (2.71828^(cos(t/57.2958)) - 2 * cos(4t/57.2958)
+          - (sin(t/(12 * 57.2958)))^5))
+        z_equation: 0.4 * (sin(t/57.2958)  * (2.71828^(cos(t/57.2958)) - 2 * cos(4t/57.2958)
+          - (sin(t/(12 * 57.2958)))^5))
+        particles: 50
+        duration: 3600000
+        relative_offset: -0.5,0,0
+        disappear_with_origin_entity: true
+        color: 00AACC
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: EquationEffect
+        x_equation: 0
+        y_equation: 0.4 * (cos(t/57.2958)  * (2.71828^(cos(t/57.2958)) - 2 * cos(4t/57.2958)
+          - (sin(t/(12 * 57.2958)))^10))
+        z_equation: 0.4 * (sin(t/57.2958)  * (2.71828^(cos(t/57.2958)) - 2 * cos(4t/57.2958)
+          - (sin(t/(12 * 57.2958)))^10))
+        particles: 5
+        duration: 3600000
+        relative_offset: -0.5,0,0
+        disappear_with_origin_entity: true
+        color: 00AACC
+        particle: spell_mob
+  parameters:
+    target: self
+    damage: 4
+    effect_speed: 5
+    effect_jump: 30
+    effect_increase_damage: 5
+    effect_damage_resistance: 0
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+  costs:
+    mana: 50
+  active_costs:
+    mana: 50
+    health: 1
+

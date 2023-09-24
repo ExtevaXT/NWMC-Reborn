@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/skins/sixPaths (2)",
+        "texture": "item/naruto/icons/skins/sixPaths (2)"
+    }
+}

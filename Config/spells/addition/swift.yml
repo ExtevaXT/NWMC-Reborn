@@ -1,0 +1,75 @@
+
+#SWIFT RELEASE
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Скорости:_Бестеневое_Бегство
+swiftrun:
+  name: Бестеневое Бегство
+  description: Ускоряет вас до невообразимой скорости.
+  icon: diamond_pickaxe:138
+  icon_disabled: diamond_axe:138
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: additional
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      effectlib:
+        class: CylinderEffect
+        particle: redstone
+        color: FFFFFF
+        iterations: 1
+        radius: 0.5
+        height: 2
+        enable_rotation: false
+        particles: 10
+        particle_count: 10
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0,-0.1,0
+        duration: 1200000
+    - class: EffectSingle
+      location: origin
+      source_location: feet
+      effectlib:
+        class: CylinderEffect
+        particle: cloud
+        radius: 0.6
+        height: 0
+        enable_rotation: false
+        particles: 20
+        iterations: 40
+        particle_count: 4
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0,-0.1,0
+        duration: 1200000
+  parameters:
+    target: self
+    effect_speed: 30
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5

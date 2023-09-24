@@ -1,0 +1,55 @@
+
+bonesword:
+  name: '&f&lКостянной Клинок'
+  inherit: base_bound
+  icon: diamond_sword:16
+  hide_flags: 62
+  alternate_spell: bonewound
+  left_click: alt_cast
+  uses: 20
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: -100
+
+
+hatakesword:
+  name: '&f&lКлинок Чакры Белого Света'
+  inherit: base_bound
+  icon: diamond_sword:15
+  effect_color: 11FF88
+  hide_flags: 62
+  alternate_spell: hatakewound
+  left_click: alt_cast
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: -100
+
+
+
+fullsusanoo:
+  path: susanoo
+  icon: diamond_pickaxe:1
+  description: 
+  name: Сусаноо
+  spells:
+  - susanoo1st
+  - susanoo2st
+  - susanoo3st
+  - susanoo4st
+  inherit: startsusanoo
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+startsusanoo:
+  path: susanoo
+  icon: diamond_pickaxe:1
+  description: 
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 2
+  name: Сусаноо
+  spells:
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle

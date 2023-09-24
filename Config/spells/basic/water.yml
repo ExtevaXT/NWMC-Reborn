@@ -1,0 +1,607 @@
+
+#WATER RELEASE waater
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Воды:_Техника_Снаряда_Водяной_Акулы
+watershark:
+  icon: diamond_pickaxe:126
+  icon_disabled: diamond_axe:126
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: basic
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: ArmorStandProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: end_rod
+          particle_base1: end_rod
+          particle_base2: end_rod
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: end_rod
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell_instant
+          particle_base1: spell_instant
+          particle_base2: spell_instant
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell_instant
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell
+          particle_base1: spell
+          particle_base2: spell
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    hit:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        iterations: 5
+        speed: 1
+        particle_count: 8
+  parameters:
+    target_type: Entity
+    range: 16
+    velocity: 10
+    right_arm_transform:
+      x: 0
+      y: 0
+      z: 0
+    fov: 1
+    location_offset: -0.5,-0.5,-0.5
+    right_arm_item: daytimeprojectile
+    damage: 30
+    radius: 6
+    item_speed: 0.1
+    break_durability: 1000
+    destructible_durability: 5000
+    living_entity_speed: 0.3
+    repeat: 6
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+    undo: 30000
+    undo_speed: 0.5
+  costs:
+    mana: 20
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Водяной_Тюрьмы
+waterprison:
+  name: Водяная Тюрьма
+  description: Техника, которая используется, чтобы обездвижить противника, заключив его внутрь водяной сферы
+  icon: diamond_pickaxe:13
+  icon_disabled: diamond_axe:13
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: basic
+  worth: 30
+  earns_sp: 0
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+        - class: Damage
+          ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+    tick:
+    - particle: block_crack
+      material: water
+      location: target
+      particle_count: 20
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+      particle_size: 1
+    hit:
+    - location: target
+      sound: entity_wither_break_block
+      sound_pitch: 0.8
+      source_location: body
+      effectlib:
+        class: Modified
+        duration: $duration
+        parameters:
+          size: (1 - (t / i)) * 1.5 + 0.5
+        effect:
+          class: Cylinder
+          particle: water_splash
+          particle_count: 8
+          particle_offset_x: 0.05
+          particle_offset_y: 0.05
+          particle_offset_z: 0.05
+          particle_size: 2
+          y_factor: 1
+          duration: 10000
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    allow_max_range: true
+    velocity: 200
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 0
+    entity_damage: 0
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    damage: 0
+    radius: 2
+    potion_effects:
+      slow: 250
+      jump: 250
+      weakness: 100
+      duration: 10000
+    duration: 10000
+  costs:
+    mana: 50
+
+
+
+
+
+
+
+#Как вариант можно перенести в Хозуки https://naruto.fandom.com/ru/wiki/Стихия_Воды:_Техника_Большой_Водяной_Руки
+#https://naruto.fandom.com/ru/wiki/Стихия_Воды:_Водяной_Поток
+watercontrol:
+  name: Водяной Поток
+  description: Техника, в ходе применения которой пользователь выпускает из руки непрерывную струю воды
+  icon: diamond_pickaxe:17
+  icon_disabled: diamond_axe:17
+  icon_url: http://textures.minecraft.net/texture/b750768d23e447d95b662344f426cc96228a4047f7a8ced0f4861edbbeaced
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 30
+  category: basic
+  pvp_restricted: true
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: DisablePhysics
+      ignore_result: true
+    - class: CustomProjectile
+      tick:
+      - class: ModifyBlock
+        ignore_result: true
+      - class: Undo
+        ignore_result: true
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_water_ambient
+    projectile:
+    - location: origin
+      effectlib:
+        class: Sphere
+        particle: water_splash
+        radius: 1
+        particles: 10
+  parameters:
+    target: none
+    target_type: Damageable
+    radius: 2
+    velocity: 10
+    track_range: 8
+    lifetime: 5000
+    range: 32
+    duration: 10000
+    brush: stationary_water
+    increment_data: true
+    player_damage: 4
+    entity_damage: 4
+    cooldown: 5000
+    destructible: destructible_replace
+    undo: 50
+    undo_to: 10
+  costs:
+    mana: 40
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Воды:_Построение_Водяной_Стены
+waterwall:
+  name: Водяная Стена
+  description: Техника, при использовании которой пользователь создаёт стену из воды
+  icon: diamond_pickaxe:14
+  icon_disabled: diamond_axe:14
+  alias: cushion
+  icon_url: http://textures.minecraft.net/texture/b750768d23e447d95b662344f426cc96228a4047f7a8ced0f4861edbbeaced
+  category: basic
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: DisablePhysics
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_generic_splash
+      location: both
+    tick:
+    - location: target
+      particle: water_splash
+      particle_count: 8
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Shield
+        iterations: 10
+        particle: water_splash
+        radius: 1.8
+        particles: 30
+        particle_count: 20
+        particle_offset_x: 0.2
+        particle_offset_y: 0.2
+        particle_offset_z: 0.2
+  parameters:
+    velocity: 250
+    target_type: LivingEntity
+    allow_max_range: true
+    radius: 1
+    range: 5
+    cooldown: 2000
+    undo: 10000
+    duration: 3000
+    destructible: destructible_replace
+    brush: stationary_water
+    hitbox: true
+    x_size: 5
+    y_size: 6
+    z_size: 2
+    volume_type: yxz
+    orient: true
+  costs:
+    mana: 20
+
+
+
+
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Воды:_Водяные_Пули
+waterbullet:
+  name: Водяные Пули
+  description: Большой водный снаряд
+  icon: diamond_pickaxe:15
+  icon_disabled: diamond_axe:15
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: basic
+  worth: 20
+  earns_sp: 0
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+          ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+      color_override: color
+      effectlib:
+        class: ConeEffect
+        iterations: 10
+        particle: WATER_SPLASH
+        lengthGrow: 0.1
+        radiusGrow: 0.006
+        updateLocations: false
+        updateDirections: false
+        particle_count: 20
+        particle_offset_y: 0.1
+        particle_offset_x: 0.1
+        particle_offset_z: 0.1
+    tick:
+    - particle: WATER_SPLASH
+      location: target
+      particle_count: 4
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+      particle_size: 1
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: water_splash
+        radius: 0.5
+        particle_count: 5
+        iterations: 1
+    break:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.6
+      particle_offset_y: 0.6
+      particle_offset_z: 0.6
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: water_splash
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: WATER_SPLASH
+      particle_count: 30
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+      sound: magic.zap
+      sound_volume: 0.3
+      particle_data: 0.1
+    headshot:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 10
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+      particle_data: 0.1
+      sound: magic.zap
+      sound_volume: 0.3
+    - sound: entity_player_attack_crit
+      sound_pitch: 0.8
+      location: target
+      particle: redstone
+      particle_count: 30
+      particle_offset_y: 1
+      particle_offset_x: 1
+      particle_offset_z: 1
+      particle_data: 0.5
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    allow_max_range: true
+    velocity: 200
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 100
+    break_durability: 2
+    damage: 5
+    undo: 10000
+    radius: 2
+    falling: false
+  costs:
+    mana: 30
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Акульего_Танца_Водяной_Тюрьмы
+waterultimate:
+  name: Акулья Водяная Тюрьма
+  description: Техника, которая создаёт огромную сферу из воды
+  icon: diamond_pickaxe:16
+  icon_disabled: diamond_axe:16
+  icon_url: http://textures.minecraft.net/texture/bc8e7e971bbac56883fe9bfe1b38c5f568ece6cbe09ca59d85f6dab4688d14
+  category: basic
+  worth: 60
+  earns_sp: 0
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Sphere
+        actions:
+        - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shield
+    tick:
+    - location: target
+      particle: block_crack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: block_crack
+        particle_count: 10
+        particles: 5
+        particle_offset_x: 0.3
+        particle_offset_y: 0.3
+        particle_offset_z: 0.3
+        radius: $radius
+        duration: 2000
+  parameters:
+    velocity: 50
+    target_type: LivingEntity
+    miss_effects: hit
+    miss: actions
+    allow_max_range: true
+    range: 32
+    tick_size: 2
+    radius: 30
+    transparent: transparent_to_construction
+    undo: 15000
+    cooldown: 4000
+    brush: stationary_water
+    brushcolor: true
+    breakable: 3
+    destructible: destructible_replace
+  costs:
+    mana: 150

@@ -1,0 +1,529 @@
+
+#BYAKUGAN
+
+#https://naruto.fandom.com/ru/wiki/Восемь_Триграмм_Небесное_Вращение
+byakuganrotate:
+  name: Восемь Триграмм Небесное Вращение
+  description: Вращаясь вы испускаете большое количество чакры, отражая все атаки
+  icon: diamond_pickaxe:111
+  icon_disabled: diamond_axe:111
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: dodjutsu
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: Cast
+      spell: rotate
+    - class: AreaOfEffect
+      actions:
+      - class: VelocityAction
+  effects:
+    cast:
+    - location: origin
+      effectlib:
+        class: Sphere
+        particle: cloud
+        speed: 0.3
+        radius: 1.5
+        iterations: 15
+    - location: origin
+      effectlib:
+        class: Sphere
+        particle: crit_magic
+        radius: 2
+        iterations: 15
+  parameters:
+    target_type: Entity
+    target: self
+    radius: 3
+    range: 2
+    item_speed: 0.1
+    living_entity_speed: 1.5
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 50
+
+rotate:
+  icon: diamond_axe:178
+  icon_disabled: diamond_hoe:178
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: dodjutsu
+  worth: 100
+  earns_sp: 8
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: ChangeContext
+        target_caster: true
+        actions:
+        - class: Orient
+      - class: Delay
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shimmer_crack
+      sound_volume: 1
+      particle: sweep_attack
+  parameters:
+    allow_max_range: true
+    target: none
+    target_type: Damageable
+    range: 3
+    fov: 0.4
+    target_breakables: 1
+    cooldown: 1
+    magic_damage: false
+    instant_block_effects: true
+    yaw_offset: 20
+    repeat: 27
+    delay: 1
+  costs:
+    mana: 0
+
+
+
+
+
+
+
+byakuganactive:
+  name: Активация Бьякугана
+  icon: diamond_pickaxe:109
+  icon_disabled: diamond_axe:109
+  category: dodjutsu
+  worth: 50
+  hidden: true
+  actions:
+    alternate_down:
+    - class: TileEntities
+      actions:
+      - class: Count
+    alternate_up:
+    - class: AllEntities
+      actions:
+      - class: Count
+    cast:
+    - class: AreaOfEffect
+      actions:
+      - class: Count
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shimmer
+      effectlib:
+        class: HelixEffect
+        iterations: 1
+        particle: cloud
+      offset: 0,-1.2,0
+      target: self
+  parameters:
+    target: block
+    range: 64
+    target_type: Entity
+    target_self: false
+    radius: 64
+    messsage_targets: false
+    cooldown: 5000
+
+
+
+
+
+
+
+gentlefist:
+  icon: diamond_pickaxe:110
+  icon_disabled: diamond_axe:110
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: dodjutsu
+  worth: 150
+  earns_sp: 0
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: Damage
+        - class: BreakBlock
+          ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+      color_override: color
+      effectlib:
+        class: ConeEffect
+        iterations: 8
+        particle: redstone
+        color: AFEEEE
+        lengthGrow: 0.01
+        radiusGrow: 0.001
+        updateLocations: false
+        updateDirections: false
+        particle_count: 8
+        particle_offset_y: 0.1
+        particle_offset_x: 0.1
+        particle_offset_z: 0.1
+    break:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 100
+      particle_offset_x: 0.6
+      particle_offset_y: 0.6
+      particle_offset_z: 0.6
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      color: AFEEEE
+      particle_count: 30
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+      sound: magic.zap
+      sound_volume: 0.3
+  parameters:
+    allow_max_range: true
+    velocity: 2000
+    range: 2
+    hitbox: true
+    target_type: Damageable
+    player_damage: 2
+    entity_damage: 4
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+  costs:
+    mana: 15
+
+
+#https://naruto.fandom.com/ru/wiki/Восемь_Триграмм_Вакуумная_Ладонь
+byakuganairpunch:
+  icon: diamond_pickaxe:112
+  icon_disabled: diamond_axe:112
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: dodjutsu
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: VelocityAction
+      y_offset: 1
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: VelocityAction
+        - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: cloud
+          particle_base1: cloud
+          particle_base2: cloud
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        speed: 0.3
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      sound: block_fire_extinguish
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: cloud
+          particle_base1: cloud
+          particle_base2: cloud
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        speed: 0.3
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    range: 8
+    damage: 4
+    fov: 1
+    target_count: 2
+    item_speed: 0.1
+    living_entity_speed: 1
+    repeat: 3
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 20
+
+64fist:
+  name: Восемь Триграмм Шестьдесят Четыре Ладони
+  icon: diamond_pickaxe:113
+  icon_disabled: diamond_axe:113
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: dodjutsu
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: VelocityAction
+      y_offset: 1
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlaySound
+        sound: magic.crack
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: Damage
+        - class: ApplyCooldown
+        - class: Deactivate
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 5
+        parameters:
+          radius: (t/i) * 2 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: sweep_attack
+          particle_base1: sweep_attack
+          particle_base2: sweep_attack
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: sweep_attack
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 2
+        parameters:
+          radius: (t/i) * 2 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: sweep_attack
+          particle_base1: sweep_attack
+          particle_base2: sweep_attack
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: sweep_attack
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    duration: 5000
+    damage: 5
+    range: 4
+    fov: 1
+    target_count: 2
+    item_speed: 0.1
+    living_entity_speed: 0.5
+    repeat: 10
+    delay: 100
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 20
+
+
+byakuganexplosion:
+  name: Разрушающая Ладонь
+  description: Выпускает из руки разрушительный порыв чакры
+  icon: diamond_pickaxe:170
+  icon_disabled: diamond_axe:170
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: dodjutsu
+  worth: 40
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_generic_explode
+      location: origin
+      sound_volume: 3
+      sound_pitch: 1.1
+    tick:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Sphere
+        particle: cloud
+        radius: 0.5
+        speed: 0.3
+        iterations: 5
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: ConeEffect
+        iterations: 10
+        particle: explosion_large
+        lengthGrow: 0.1
+        radiusGrow: 0.01
+        updateLocations: false
+        updateDirections: false
+        particle_count: 1
+        particle_offset_y: 0.1
+        particle_offset_x: 0.1
+        particle_offset_z: 0.1
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: explosion_large
+      speed: 3
+      particle_count: 1
+      iterations: 10
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    velocity: 2000
+    allow_max_range: false
+    range: 15
+    speed: 0.9
+    living_entity_speed: 0.7
+    direction: 0,0.8,0
+    falling: false
+    radius: 8
+    durability_max_distance: 3
+    damage_max_distance: 6
+    undo: 15000
+    cooldown: 5000
+    destructible: solid
+    destructible_override: true
+    destructible_durability: 5000
+    break_durability: 100
+    select_self: false
+    undo_speed: 0.5
+    damage: 10
+  costs:
+    mana: 45

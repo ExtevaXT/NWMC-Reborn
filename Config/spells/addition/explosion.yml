@@ -1,0 +1,544 @@
+
+#EXPLOSION boom
+
+
+
+
+
+
+
+explosionmount:
+  worth: 100
+  name: Большая Птица из глины
+  description: Создаёт Большую птицу из глины, которую можно будет оседлать
+  icon: diamond_pickaxe:501
+  icon_disabled: diamond_axe:501
+  category: additional
+  actions:
+    cast:
+    - class: GiveItem
+  parameters:
+    item: explosionmount
+    loud: true
+    target: self
+  costs:
+    mana: 300
+    clay|*: 64
+
+
+
+
+
+
+explosionmountbase:
+  hidden: true
+  icon_url: http://textures.minecraft.net/texture/7f4f1b4c6661ab552b21df8ed841a221296512de46c86e8dee891efbd2fba6
+  category: dodjutsu
+  worth: 600
+  upgrade_required_path: broom
+  upgrade_required_casts: 20
+  world_border_restricted: true
+  actions:
+    cast:
+    - class: MountArmorStand
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_enderdragon_flap
+      sound_volume: 1.1
+    - class: EffectSingle
+      effectlib:
+        class: TraceEffect
+        iterations: 30
+        particle: block_crack
+        material: clay
+        particle_count: 20
+        particles: 20
+        offset: 0,-1,0
+    crash:
+    - class: EffectSingle
+      location: origin
+      entity_effect: hurt
+      effectlib:
+        particle: explosion_huge
+        class: Sphere
+        iterations: 10
+        particle_count: 2
+        particles: 2
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: SmokeEffect
+        iterations: 12
+    land:
+    - sound: block_stone_step
+      sound_pitch: 0.7
+    - class: EffectRing
+      particle: block_crack
+      source_location: feet
+      period: 4
+      particle_count: 80
+      radius: 4
+      particle_offset_x: 0.9
+      particle_offset_z: 0.9
+      particle_offset_y: 0.1
+  parameters:
+    target: self
+    mount_name: ExplosionMount
+    mount_wand: true
+    start_speed: 0.2
+    min_speed: 0.1
+    max_speed: 1
+    max_acceleration: 0.01
+    max_deceleration: 0.02
+    bypass_confusion: false
+    liftoff_duration: 600
+    liftoff_thrust: 1
+    steer_speed: 0.03
+    fall_protection: 8000
+    duration: 60000
+    cooldown: 15000
+    crash_distance: 0.9
+    crash_effects:
+      confusion: 400,10
+      harm: 1
+    cancel_on_no_permission: true
+    sound: magic.flying
+    sound_interval: 500
+    sound_max_volume: 4
+    sound_min_volume: 0.9
+    sound_max_pitch: 2
+    sound_min_pitch: 0.5
+    armor_stand_pitch: 0.3
+    controllable: true
+    strafe_controllable: 1
+    jump_controllable: 1
+    exemption_duration: 5000
+    armor_stand_marker: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/C1
+explosionclaybomb:
+  name: C1
+  description: Запускает в указанную область шар из взрывной глины, который взрывается через некоторое время
+  icon: diamond_pickaxe:44
+  icon_disabled: diamond_axe:44
+  icon_url: http://textures.minecraft.net/texture/f873525428823bffa57b74bdb1251de6e7c49660b35c995d2bf5d04a1ff34b8f
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  category: additional
+  worth: 20
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: PlayEffects
+        effects: explode
+        ignore_result: true
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+    tick:
+    - particle: block_crack
+      material: clay
+      location: target
+    projectile:
+    - class: EffectSingle
+      effectlib:
+        class: SphereEffect
+        particle: redstone
+        color: CCCCCC
+        iterations: 30
+        radius: 0.2
+        particles: 10
+    hit:
+    - class: EffectSingle
+      sound: magic.zap
+      sound_volume: 0.3
+      location: target
+      effectlib:
+        class: Modified
+        duration: $attach_duration
+        parameters:
+          radius: sin(t/8) * 0.5
+        effect:
+          class: SphereEffect
+          particle: redstone
+          color: CCCCCC
+          particles: 10
+          particle_count: 4
+          particle_offset_x: 0.01
+          particle_offset_y: 0.01
+          particle_offset_z: 0.01
+    explode:
+    - location: target
+      particle: explosion_huge
+      sound: entity_generic_explode
+  parameters:
+    target: other
+    hitbox: true
+    allow_max_range: true
+    velocity: 30
+    gravity: 0.05
+    range: 120
+    target_type: Damageable
+    player_damage: 10
+    entity_damage: 10
+    target_breakables: 0
+    cooldown: 1000
+    target_self_timeout: 2000
+    attach_duration: 5000
+    speed: 1.2
+    falling: true
+    direction: 0,0.5,0
+    undo: 15000
+    destructible_durability: 5000
+    break_durability: 1000
+    radius: 2
+    durability_max_distance: 4
+    damage_max_distance: 3
+  costs:
+    mana: 80
+    clay_ball|*: 8
+
+
+
+#https://naruto.fandom.com/ru/wiki/C1
+explosionspider:
+  name: Паучки Из Взрывной Глины
+  description: Создаёт с помощью взрывной глины Паучков
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_axe:45
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: additional
+  worth: 10
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: SpawnEntity
+          actions:
+          - class: Explosion
+  effects:
+    cast:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Sphere
+        duration: 20000
+        particle: block_crack
+        material: quartz_block
+        radius: 1
+        particles: 20
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 1000
+        particle_count: 40
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    tick:
+    - class: EffectSingle
+      location: origin
+      color_override: color
+      effectlib:
+        class: ConeEffect
+        iterations: 1
+        particle: block_crack
+        material: quartz_block
+        lengthGrow: 0.01
+        radiusGrow: 0.003
+        updateLocations: false
+        updateDirections: false
+        particle_count: 1
+        particle_offset_y: 0.1
+        particle_offset_x: 0.1
+        particle_offset_z: 0.1
+  parameters:
+    target: other
+    type: explosion_spider
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 24
+    loot: false
+    undo: 30000
+    size: 3
+    lifetime: 10000
+    multiply: 3
+    spread: 0.3
+  costs:
+    mana: 75
+    clay_ball|*: 16
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Взрыва:_Минный_Кулак
+explosionblast:
+  name: Минный Кулак
+  description: Выпускает из руки взрывную чакру
+  icon: diamond_pickaxe:46
+  icon_disabled: diamond_axe:46
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: additional
+  worth: 40
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_generic_explode
+      location: origin
+      color_override: color
+      effectlib:
+        class: ConeEffect
+        iterations: 2
+        particle: flame
+        lengthGrow: 0.1
+        radiusGrow: 0.05
+        updateLocations: false
+        updateDirections: false
+        particle_count: 10
+        particle_offset_y: 0.1
+        particle_offset_x: 0.1
+        particle_offset_z: 0.1
+    tick:
+    - class: EffectSingle
+      location: origin
+      color_override: color
+      effectlib:
+        class: ConeEffect
+        iterations: 10
+        particle: explosion_large
+        lengthGrow: 0.1
+        radiusGrow: 0.01
+        updateLocations: false
+        updateDirections: false
+        particle_count: 1
+        particle_offset_y: 0.1
+        particle_offset_x: 0.1
+        particle_offset_z: 0.1
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: explosion_large
+      speed: 3
+      particle_count: 1
+      iterations: 10
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    velocity: 2000
+    allow_max_range: false
+    range: 15
+    speed: 0.9
+    living_entity_speed: 0.7
+    direction: 0,0.8,0
+    falling: false
+    radius: 8
+    durability_max_distance: 3
+    damage_max_distance: 6
+    undo: 15000
+    cooldown: 5000
+    destructible: solid
+    destructible_override: true
+    destructible_durability: 5000
+    break_durability: 100
+    select_self: false
+    undo_speed: 0.5
+    damage: 10
+  costs:
+    mana: 45
+
+
+#https://naruto.fandom.com/ru/wiki/C1
+explosionbird:
+  name: Птички Из Взрывной Глины
+  description: Создаёт из взрывной глины Птичек
+  icon: diamond_pickaxe:47
+  worth: 30
+  icon_disabled: diamond_axe:47
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: additional
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: SpawnEntity
+          actions:
+          - class: Explosion
+  effects:
+    cast:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Sphere
+        duration: 20000
+        particle: block_crack
+        material: quartz_block
+        radius: 1
+        particles: 20
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 1000
+        particle_count: 40
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    tick:
+    - class: EffectSingle
+      location: origin
+      color_override: color
+      effectlib:
+        class: ConeEffect
+        iterations: 1
+        particle: block_crack
+        material: quartz_block
+        lengthGrow: 0.01
+        radiusGrow: 0.003
+        updateLocations: false
+        updateDirections: false
+        particle_count: 1
+        particle_offset_y: 0.1
+        particle_offset_x: 0.1
+        particle_offset_z: 0.1
+  parameters:
+    target: other
+    type: explosion_bird
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 24
+    loot: false
+    undo: 30000
+    size: 4
+    lifetime: 10000
+    multiply: 2
+    spread: 0.6
+  costs:
+    mana: 75
+    clay_ball|*: 24
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/C0
+explosionsuicide:
+  name: C0
+  description: Наполняет себя взрывной глиной, которая через определённое время взрывает вас
+  icon: diamond_pickaxe:48
+  icon_disabled: diamond_axe:48
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: additional
+  worth: 50
+  pvp_restricted: true
+  actions:
+    cast:
+      - class: Delay
+      - class: PlayEffects
+        effect: launch
+      - class: Explosion
+      - class: Kill
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.electrify
+      sound_volume: 5
+      sound_pitch: -0.25
+      location: origin
+      effectlib:
+        class: AtomEffect
+        particle_nucleus: redstone
+        colorNucleus: 000000
+        particle_orbital: redstone
+        colorOrbital: 000000
+        iterations: 64
+        radius: 2
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 1000
+        particle_count: 40
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+  parameters:
+    target: self
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 24
+    loot: false
+    undo: 30000
+    size: 50
+    warmup: 6000
+  costs:
+    mana: 75
+    clay_ball|*: 64

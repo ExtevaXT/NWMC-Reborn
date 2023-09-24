@@ -1,0 +1,98 @@
+[
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire1.name",
+      "languages": {
+        "en_GB": "Phoenix Flame",
+        "ru_RU": "Пламя Феникса"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire1.description",
+      "languages": {
+        "en_GB": "Several small fireballs that are directed at the enemy along an unpredictable trajectory",
+        "ru_RU": "Несколько небольших огненных шаров, которые направляются в противника по непредсказуемой траектории"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire2.name",
+      "languages": {
+        "en_GB": "Fire Whirlwind",
+        "ru_RU": "Оненный Вихрь"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire2.description",
+      "languages": {
+        "en_GB": "Fire chakra, twisted in the form of a spiral",
+        "ru_RU": "Огненная чакра, закрученная в форме спирали"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire3.name",
+      "languages": {
+        "en_GB": "Phoenix Flower",
+        "ru_RU": "Цветок Феникса"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire3.description",
+      "languages": {
+        "en_GB": "A fiery chakra resembling a flower",
+        "ru_RU": "Огненная чакра, напоминающая цветок"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire4.name",
+      "languages": {
+        "en_GB": "Flaming Shot",
+        "ru_RU": "Пламенный Выстрел"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire4.description",
+      "languages": {
+        "en_GB": "Fire projectile from the chakra",
+        "ru_RU": "Огненный снаряд из чакры"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire5.name",
+      "languages": {
+        "en_GB": "The Great Fireball",
+        "ru_RU": "Великий Огненный Шар"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire5.description",
+      "languages": {
+        "en_GB": "A fiery chakra that exhales from the mouth in the form of a large sphere",
+        "ru_RU": "Огненная чакра, которая выдыхается изо рта в виде крупной сферы"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire6.name",
+      "languages": {
+        "en_GB": "The Great Fire Annihilation",
+        "ru_RU": "Великое Огненное Уничтожение"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.fire6.description",
+      "languages": {
+        "en_GB": "A stream of flame covering a huge area",
+        "ru_RU": "Поток пламени, покрывающий огромную территорию"
+      }
+    }
+  ]

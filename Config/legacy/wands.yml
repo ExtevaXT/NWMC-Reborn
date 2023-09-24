@@ -1,0 +1,2367 @@
+#
+# Modify this file to change the available default wands.
+# New wands can be added, existing wands modified or removed (disabled)
+#
+# You can also add individual files to the wands/ folder
+#
+# To see the current default builtin configs, look in this folder:
+# https://github.com/elBukkit/MagicPlugin/tree/master/Magic/src/main/resources/defaults/wands
+#
+# For customization help see: 
+# https://github.com/elBukkit/MagicPlugin/wiki/Customization
+#
+
+#
+# This is the Wand configuration file for the Magic plugin.
+#
+# This defines all of the wand "templates" that can be created with the
+# /wand and /wandp commands.
+#
+# Once a wand is created, it is its own unique item. It may be modified after that,
+# and may bear no direct relationship back to the template that created it.
+# 
+# The name and description, of a wand should be defined in messages.yml as
+#  messages.wands.<wandkey>.name
+#  messages.wands.<wandkey>.description
+#
+# Note that wands can also be renamed on an anvil.
+#
+# There are two special entries in here:
+# - The "default" wand is used as a template when creating a new and with /wand.
+# - The "random" wand has a different and specific configuration format.
+#
+# General format:
+#
+# <wandkey>:
+#
+#       # If true, this wand can not be enchanted, combined or otherwise modified
+#
+#       modifiable: true
+#
+#       # Set to false to disable a preset wand
+#       enabled: <true|false>
+#
+#       # Casting cost and cooldown reduction
+#
+#       cost_reduction: (0.0-1.0)
+#       cooldown_reduction: (0.0-1.0)
+#
+#       # Overall and specific protection
+#
+#       protection: (0.0-1.0)
+#       protection_physical: (0.0-1.0)
+#       protection_fire: (0.0-1.0)
+#       protection_falling: (0.0-1.0)
+#       protection_blast: (0.0-1.0)
+#
+#       # Regeneration values are added every second
+#
+#       health_regeneration: (0-20)
+#       hunger_regeneration: (0-20)
+#
+#       # If non-zero, this wand will use the Mana system instead of XP
+#
+#       xp_regeneration: (0-200)
+#       xp_max: (0-?)
+#
+#       # This provides bonus damage and effects to some spells
+#       # and increases the overall range of all targeted spells
+#
+#       power: (0.0-1.0)
+#
+#       # Increases player walk/fly speed- is limited by Bukkit
+#
+#       haste: (0.0 - 0.4-ish)
+#
+#       # Applies a potioneffect to the player while holding the wand
+#       # also used by many spells that have visual effects when cast with this wand
+#
+#       effect_color: <hex color, eg 'FF0000')
+#       spells:
+#           - <spellname>
+#       materials:
+#           - <materialname>
+#
+
+#
+# Examples:
+# Note that a "#" character means the line is commented out and has no effect.
+# Make sure to not comment out the lines you add, there should not be a space in front of the name, indentation is important.
+# Use http://www.yamllint.com if you have issues with your config, make sure not to use tabs!
+# 
+
+# Change starting mana of default wand
+# Note that wand progression (when upgraded/enchanted) is defined in enchanting.yml
+# wand:
+#    mana_max: 100
+#    mana: 100
+#    mana_regeneration: 10
+
+
+
+#ALL
+naruto:
+  icon: emerald
+  description: Все Техники
+  name: Все Техники
+  spells:
+  - fenixfire
+  - greatfireball
+  - fenixflower
+  - firewind
+  - fireblast
+  - fireannihilation
+  - lightningchain
+  - lightningchase
+  - kirin
+  - lightningboost
+  - arkan
+  - chidorisenbon
+  - waterprison
+  - waterwall
+  - waterbullet
+  - waterultimate
+  - watercontrol
+  - vacuumwaves
+  - windblast
+  - windboost
+  - windpush
+  - rasensuriken
+  - earthwave
+  - underearth
+  - earthharden
+  - earthcollapse
+  - sandshield
+  - sandfall
+  inherit: base_wand
+  mana: 10000
+  mana_max: 10000
+  mana_regeneration: 100
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+jutsu:
+  icon: paper
+  name: '&7Бумага Чакры'
+  description: ПКМ - Использовать
+  spells:
+  - jutsu
+  inherit: base_wand
+  unstashable: true
+  unmoveable: true
+  right_click: cast
+  left_click: none
+  drop: none
+  swap: none
+  uses: 1
+
+#ITEMS
+
+headprotector:
+  mode: cast
+  name: '&1Налобный Протектор'
+  description: Защищает вашу голову
+  active_spell: wear
+  icon: diamond_pickaxe:251
+  migrate_icon: ender_portal_frame
+  indestructible: true
+  locked: true
+  keep: true
+  item_attributes:
+    GENERIC_ARMOR: 2
+  spells:
+  - wear
+
+kunai:
+  name: '&fКунай'
+  enchantments:
+    vanishing_curse: 1
+  description: '&5Нажмите ПКМ для броска'
+  alternate_spell: kunai
+  right_click: alt_cast
+  icon: magma_cream
+  indestructible: false
+  locked: true
+  keep: false
+  uses: 1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 4
+
+suriken:
+  name: '&fСюрикен'
+  enchantments:
+    vanishing_curse: 2
+  description: '&5Нажмите ПКМ для броска'
+  alternate_spell: suriken
+  right_click: alt_cast
+  icon: magma_cream
+  indestructible: false
+  locked: true
+  keep: false
+  uses: 1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 2
+
+senbon:
+  name: '&fСенбон'
+  enchantments:
+    vanishing_curse: 3
+  description: '&5Нажмите ПКМ для броска'
+  alternate_spell: senbon
+  right_click: alt_cast
+  icon: magma_cream
+  indestructible: false
+  locked: true
+  keep: false
+  uses: 1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 2
+
+fuumasuriken:
+  name: '&7Фуума Сюрикен'
+  enchantments:
+    vanishing_curse: 3
+  description: '&5Нажмите ПКМ для броска'
+  alternate_spell: fuumasuriken
+  right_click: alt_cast
+  icon: diamond_sword:13
+  indestructible: true
+  locked: true
+  keep: false
+  uses: 1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+
+
+#FULL WEAPONS
+
+
+
+
+
+startironkatana:
+  name: '§7§lКатана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fСамая обычная катана'
+  inherit: base_legsw
+  icon: diamond_sword:1
+  drop: toggle
+  hide_flags: 62
+  left_click: none
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - sharpenable
+fullironkatana:
+  name: '§7§lКатана'
+  mode: cycle
+  drop: toggle
+  path: kenjutsu
+  description: '&fСамая обычная катана'
+  inherit: base_legsw
+  icon: diamond_sword:1
+  hide_flags: 62
+  spells:
+  - chakraslash
+  - heavencutter
+  - moonlight
+  - crescentmoonlight
+  - chakraflash
+  - samuraistrength
+  right_click: cast
+  left_click: none
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - sharpenable
+
+
+
+starttanto:
+  name: '§7§lТанто'
+  mode: cycle
+  path: kenjutsu
+  description: '&fУкороченная версия катаны'
+  inherit: base_legsw
+  drop: toggle
+  icon: diamond_sword:14
+  hide_flags: 62
+  left_click: none
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - sharpenable
+fulltanto:
+  name: '§7§lТанто'
+  mode: cycle
+  path: kenjutsu
+  description: '&fУкороченная версия катаны'
+  inherit: base_legsw
+  drop: toggle
+  spells:
+  - chakraslash
+  - heavencutter
+  - moonlight
+  - crescentmoonlight
+  - chakraflash
+  - samuraistrength
+  icon: diamond_sword:14
+  left_click: none
+  hide_flags: 62
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - sharpenable
+
+
+startgoldkatana:
+  name: '§e§lЗолотая Катана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fКатана сделанная из чистого золота'
+  inherit: base_legsw
+  drop: toggle
+  icon: diamond_sword:4
+  hide_flags: 62
+  left_click: none
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+  tags:
+  - sharpenable
+fullgoldkatana:
+  name: '§e§lЗолотая Катана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fКатана сделанная из чистого золота'
+  inherit: base_legsw
+  drop: toggle
+  spells:
+  - chakraslash
+  - heavencutter
+  - moonlight
+  - crescentmoonlight
+  - chakraflash
+  - samuraistrength
+  icon: diamond_sword:4
+  left_click: none
+  hide_flags: 62
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+  tags:
+  - sharpenable
+
+
+startdiamondkatana:
+  name: '§3§lАлмазная Катана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fКатана покрытая чистыми алмазами'
+  inherit: base_legsw
+  drop: toggle
+  icon: diamond_sword:4
+  hide_flags: 62
+  left_click: none
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 8
+  tags:
+  - sharpenable
+fulldiamondkatana:
+  name: '§3§lАлмазная Катана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fКатана покрытая чистыми алмазами'
+  inherit: base_legsw
+  drop: toggle
+  spells:
+  - chakraslash
+  - heavencutter
+  - moonlight
+  - crescentmoonlight
+  - chakraflash
+  - samuraistrength
+  icon: diamond_sword:4
+  left_click: none
+  hide_flags: 62
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 8
+  tags:
+  - sharpenable
+
+
+woodkatana:
+  name: '§f§lДеревянная Катана'
+  description: '&fТренировочная катана из дерева'
+  inherit: base_legsw
+  icon: diamond_sword:2
+  keep: true
+  hide_flags: 62
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 5
+  tags:
+  - sharpenable
+stonekatana:
+  name: '§8§lКаменная Катана'
+  description: '&fДревний артефакт, катана созданная из разных пород камней'
+  inherit: base_legsw
+  icon: diamond_sword:3
+  keep: true
+  hide_flags: 62
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+  tags:
+  - sharpenable
+
+cursedblade:
+  name: '§4§lПроклятый Клинок'
+  inherit: base_legsw
+  icon: diamond_sword:17
+  keep: true
+  hide_flags: 62
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 10
+  potion_effects: speed:0
+  tags:
+  - sharpenable
+
+
+
+
+
+
+
+
+
+
+
+bonesword:
+  name: '&f&lКостянной Клинок'
+  inherit: base_bound
+  icon: diamond_sword:16
+  hide_flags: 62
+  alternate_spell: bonewound
+  left_click: alt_cast
+  uses: 20
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: -100
+
+
+hatakesword:
+  name: '&f&lКлинок Чакры Белого Света'
+  inherit: base_bound
+  icon: diamond_sword:15
+  effect_color: 11FF88
+  hide_flags: 62
+  alternate_spell: hatakewound
+  left_click: alt_cast
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: -100
+
+
+
+hiramekarei:
+  name: '&3&lХирамекарей'
+  description: '&fМеч способный хранить и выпускать чакру'
+  inherit: base_legsw
+  icon: diamond_sword:6
+  hide_flags: 62
+  alternate_spell: chakrasmash
+  right_click: alt_cast
+  potion_effects: slow_digging:2
+  mana_max: 500
+  mana: 500
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 10
+    GENERIC_ATTACK_SPEED: -0.5
+  tags:
+  - buffable
+  - sharpenable
+
+kubikiribocho:
+  name: '§8§lКубикирибочо'
+  description: '&fМеч способный восстанавливаться от крови жертвы'
+  inherit: base_legsw
+  icon: diamond_sword:7
+  hide_flags: 62
+  alternate_spell: bigsmashattack
+  right_click: alt_cast
+  potion_effects: slow_digging:2
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 12
+  tags:
+  - buffable
+  - sharpenable
+
+samehada:
+  name: '§b§lСамехада'
+  description: '&fЖивой меч, поглащающий чакру жертвы'
+  inherit: base_legsw
+  icon: diamond_sword:11
+  hide_flags: 62
+  potion_effects: slow_digging:1
+  alternate_spell: chakrastealattack
+  alternate_spell2: tearingattack
+  right_click: alt_cast
+  left_click: alt_cast2
+  protection:
+    physical: 0.2
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 8
+    GENERIC_ATTACK_SPEED: -0.5
+  tags:
+  - buffable
+  - sharpenable
+
+kabutowari:
+  name: '§6§lКабутовари'
+  description: '&fМеч состоящий из одностороннего топора и молота'
+  inherit: base_legsw
+  icon: diamond_sword:9
+  hide_flags: 62
+  alternate_spell: smashpunch
+  potion_effects: slow_digging:1
+  right_click: alt_cast
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 10
+  tags:
+  - buffable
+  - sharpenable
+
+kiba:
+  name: '§9§lКиба'
+  description: '&fМечи пропитанные Чакрой Молнии'
+  inherit: base_legsw
+  icon: diamond_sword:8
+  hide_flags: 62
+  alternate_spell: lightningsmite
+  alternate_spell2: kibaattack
+  right_click: alt_cast
+  left_click: alt_cast2
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+    GENERIC_ATTACK_SPEED: 1
+  tags:
+  - buffable
+  - sharpenable
+
+nuibari:
+  name: '§f§lНуибари'
+  description: '&fМеч в форме большой иглы, с длинным и тонким мотком проволоки'
+  inherit: base_legsw
+  icon: diamond_sword:10
+  hide_flags: 62
+  alternate_spell: needlethrow
+  alternate_spell2: nuibariattack
+  right_click: alt_cast
+  left_click: alt_cast2
+  protection:
+    physical: 0.1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 5
+    GENERIC_ATTACK_SPEED: 2
+  tags:
+  - buffable
+  - sharpenable
+
+shibuki:
+  name: '§7§lШибуки'
+  description: '&fМеч покрытый взрывными печатями'
+  inherit: base_legsw
+  icon: diamond_sword:12
+  potion_effects: slow_digging:1
+  hide_flags: 62
+  alternate_spell: explosionsword
+  right_click: alt_cast
+  protection:
+    physical: 0.1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 8
+  tags:
+  - buffable
+  - sharpenable
+
+ironkatana:
+  name: '§7§lЖелезная Катана'
+  description: '&fСамая обычная катана'
+  inherit: base_legsw
+  icon: diamond_sword:12
+  hide_flags: 62
+  alternate_spell: explosionsword
+  right_click: alt_cast
+  keep: true
+  protection:
+    physical: 0.1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - buffable
+  - sharpenable
+
+woodkatana:
+  name: '§f§lДеревянная Катана'
+  description: '&fТренировочная катана из дерева'
+  inherit: base_legsw
+  icon: diamond_sword:2
+  keep: true
+  hide_flags: 62
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 5
+  tags:
+  - buffable
+  - sharpenable
+
+
+
+
+
+base_legsw:
+  hidden: true
+  bound: false
+  keep: false
+  invulnerable: true
+  immortal: true
+  track: true
+  undroppable: true
+  indestructible: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fullsusanoo:
+  path: susanoo
+  icon: diamond_pickaxe:1
+  description: 
+  name: Сусаноо
+  spells:
+  - susanoo1st
+  - susanoo2st
+  - susanoo3st
+  - susanoo4st
+  inherit: startsusanoo
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+startsusanoo:
+  path: susanoo
+  icon: diamond_pickaxe:1
+  description: 
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 2
+  name: Сусаноо
+  spells:
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#BASIC RELEASES
+
+
+#FIRE RELEASE
+fullfire:
+  path: fire
+  description: Техники Стихии Огня
+  name: Стихия Огня
+  spells:
+  - fenixfire
+  - greatfireball
+  - fenixflower
+  - firewind
+  - fireblast
+  - fireannihilation
+  inherit: startfire
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startfire:
+  path: fire
+  icon: diamond_pickaxe:361
+  description: Техники Стихии Огня
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 2
+  name: Стихия Огня
+  spells:
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+#LIGHTNING RELEASE
+fulllightning:
+  path: lightning
+  description: Техники Стихии Молнии
+  name: Стихия Молнии
+  spells:
+  - lightningchain
+  - lightningchase
+  - kirin
+  - lightningboost
+  - arkan
+  - chidorisenbon
+  inherit: startlightning
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startlightning:
+  path: lightning
+  icon: diamond_pickaxe:362
+  description: Техники Стихии Молнии
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 2
+  name: Стихия Молнии
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+#WATER RELEASE
+fullwater:
+  path: water
+  description: Техники Стихии Воды
+  name: Стихия Воды
+  spells:
+  - waterprison
+  - waterwall
+  - waterbullet
+  - waterultimate
+  - watercontrol
+  inherit: startwater
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startwater:
+  path: water
+  icon: diamond_pickaxe:363
+  description: Техники Стихии Воды
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 2
+  name: Стихия Воды
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+
+
+#WIND RELEASE
+fullwind:
+  path: wind
+  description: Техники Стихии Ветра
+  name: Стихия Ветра
+  spells:
+  - vacuumwaves
+  - windblast
+  - windboost
+  - windpush
+  - rasensuriken
+  inherit: startwind
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startwind:
+  path: wind
+  icon: diamond_pickaxe:364
+  description: Техники Стихии Ветра
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 2
+  name: Стихия Ветра
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+
+#EARTH RELEASE
+fullearth:
+  path: earth
+  description: Техники Стихии Земли
+  name: Стихия Земли
+  spells:
+  - earthwave
+  - underearth
+  - earthharden
+  - earthcollapse
+  - earthsandshield
+  - earthultimate
+  inherit: startearth
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startearth:
+  path: earth
+  icon: diamond_pickaxe:365
+  description: Техники Стихии Земли
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 2
+  name: Стихия Земли
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+#ADDITIONAL RELEASES
+
+#ICE RELEASE
+fullice:
+  path: ice
+  description: Техники Стихии Льда
+  name: Стихия Льда
+  spells:
+  - icespikes
+  - icemirrors
+  - iceshell
+  - iceshards
+  inherit: startice
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startice:
+  path: ice
+  icon: diamond_pickaxe:366
+  description: Техники Стихии Льда
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 3
+  name: Стихия Льда
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#LAVA RELEASE
+fulllava:
+  path: lava
+  description: Техники Стихии Лавы
+  name: Стихия Лавы
+  spells:
+  - lavamod
+  - lavaball
+  - lavablast
+  - lavaharden
+  inherit: startlava
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startlava:
+  path: lava
+  icon: diamond_pickaxe:367
+  description: Техники Стихии Лавы
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 3
+  name: Стихия Лавы
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+#WOOD RELEASE
+fullwood:
+  path: wood
+  description: Техники Стихии Дерева
+  name: Стихия Дерева
+  spells:
+  - woodspikes
+  - woodwave
+  - woodsphere
+  - woodcut
+  - woodcapture
+  inherit: startwood
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startwood:
+  path: wood
+  icon: diamond_pickaxe:368
+  description: Техники Стихии Дерева
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 4
+  name: Стихия Дерева
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#EXPLOSION RELEASE
+fullexplosion:
+  path: explosion
+  description: Техники Стихии Взрыва
+  name: Стихия Взрыва
+  spells:
+  - explosionclaybomb
+  - explosionspider
+  - explosionblast
+  - explosionbird
+  - explosionsuicide
+  inherit: startexplosion
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startexplosion:
+  path: explosion
+  icon: diamond_pickaxe:369
+  description: Техники Стихии Взрыва
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Взрыва
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+explosionmount:
+  class: broomrider
+  name: Большая Птица из глины
+  describe: ПКМ - чтобы летать на ней
+  mode: cast
+  keep: true
+  locked: true
+  indestructible: true
+  active_spell: explosionmountbase
+  icon: diamond_pickaxe:501
+  uses: 10
+  spells:
+  - explosionmountbase
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#BOIL RELEASE
+fullboil:
+  path: boil
+  description: Техники Стихии Кипения
+  name: Стихия Кипения
+  spells:
+  - boilfog
+  - boiledsteam
+  - boilpunch
+  - boilmod
+  inherit: startboil
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startboil:
+  path: boil
+  icon: diamond_pickaxe:370
+  description: Техники Стихии Кипения
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Кипения
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#STORM RELEASE
+fullstorm:
+  path: storm
+  description: Техники Стихии Шторма
+  name: Стихия Шторма
+  spells:
+  - stormlaser
+  - stormminilaser
+  - demonstorm
+  - blackpanther
+  inherit: startstorm
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startstorm:
+  path: storm
+  icon: diamond_pickaxe:375
+  description: Техники Стихии Шторма
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Шторма
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+#CRYSTAL RELEASE
+fullcrystal:
+  path: crystal
+  description: Техники Стихии Кристалла
+  name: Стихия Кристалла
+  spells:
+  - crystalshell
+  - crystalshots
+  - crystalspikes
+  - crystalprison
+  - crystalarmor
+  inherit: startcrystal
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startcrystal:
+  path: crystal
+  icon: diamond_pickaxe:382
+  description: Техники Стихии Кристалла
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Кристалла
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#DARK RELEASE
+fulldark:
+  path: dark
+  description: Техники Стихии Тьмы
+  name: Стихия Тьмы
+  spells:
+  - chakrasteal
+  - otherrelease
+  inherit: startdark
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startdark:
+  path: dark
+  icon: diamond_pickaxe:372
+  description: Техники Стихии Тьмы
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Тьмы
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#SWIFT RELEASE
+fullswift:
+  path: swift
+  description: Техники Стихии Скорости
+  name: Стихия Скорости
+  spells:
+  - swiftrun
+  inherit: startswift
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startswift:
+  path: swift
+  icon: diamond_pickaxe:373
+  description: Техники Стихии Скорости
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 1
+  name: Стихия Скорости
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#MAGNET RELEASE
+#DARK IRON VERSION
+fullmagnetiron:
+  path: magnetiron
+  description: Техники Стихии Магнетизма |Тёмное Железо|
+  name: Стихия Магнетизма
+  spells:
+  - ironfist
+  - irontrack
+  - ironwave
+  - ironwings
+  - ironwall
+  - ironshots
+  inherit: startmagnetiron
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startmagnetiron:
+  path: magnetiron
+  icon: diamond_pickaxe:374
+  description: Техники Стихии Магнетизма |Тёмное Железо|
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Магнетизма
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+#GOLD VERSION
+fullmagnetgold:
+  path: magnetgold
+  description: Техники Стихии Магнетизма |Золото|
+  name: Стихия Магнетизма
+  spells:
+  - goldfist
+  - goldtrack
+  - goldwave
+  - goldwings
+  - goldwall
+  - goldshots
+  inherit: startmagnetgold
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startmagnetgold:
+  path: magnetgold
+  icon: diamond_pickaxe:374
+  description: Техники Стихии Магнетизма |Золото|
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Магнетизма
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#SCORCH RELEASE
+fullscorch:
+  path: scorch
+  description: Техники Стихии Жара
+  name: Стихия Жара
+  spells:
+  - scorchblasts
+  - scorchmegablast
+  inherit: startscorch
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startscorch:
+  path: scorch
+  icon: diamond_pickaxe:371
+  description: Техники Стихии Жара
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Жара
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#DUST RELEASE
+fulldust:
+  path: dust
+  description: Техники Стихии Пыли
+  name: Стихия Пыли
+  spells:
+  - dustsplit
+  inherit: startdust
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startdust:
+  path: dust
+  icon: diamond_pickaxe:376
+  description: Техники Стихии Пыли
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Стихия Пыли
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+
+
+#YAN RELEASE
+fullyan:
+  path: yan
+  icon: diamond_pickaxe:396
+  description: Техники Стихии Ян
+  name: Стихия Ян
+  spells:
+  - lightsword
+  - lightmultisword
+  - lightflash
+  - lightdome
+  inherit: startyan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startyan:
+  path: yan
+  icon: diamond_pickaxe:396
+  description: Техники Стихии Ян
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Стихия Ян
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#IN RELEASE
+fullin:
+  path: in
+  icon: diamond_pickaxe:395
+  description: Техники Стихии Инь
+  name: Стихия Инь
+  spells:
+  - darksword
+  - darkmultisword
+  - darkflash
+  - darkdome
+  inherit: startin
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startin:
+  path: in
+  icon: diamond_pickaxe:395
+  description: Техники Стихии Инь
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Стихия Инь
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#INYAN RELEASE
+fullinyan:
+  path: inyan
+  icon: diamond_pickaxe:397
+  description: Техники Стихии Инь-Ян
+  name: Стихия Инь-Ян
+  spells:
+  - earthwave
+  - underearth
+  - earthharden
+  - earthcollapse
+  - sandshield
+  - sandfall
+  inherit: startinyan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startinyan:
+  path: inyan
+  icon: diamond_pickaxe:398
+  description: Техники Стихии Инь-Ян
+  mana: 800
+  mana_max: 800
+  mana_regeneration: 1
+  name: Стихия Инь-Ян
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#DODJUTSU EYES
+
+
+
+
+#SHARINGAN
+fullsharingan:
+  path: sharingan
+  description: Техники Шарингана
+  name: Шаринган
+  spells:
+  - sharinganactivate
+  - sharingancrows
+  - sharinganselfcrows
+  - sharinganspikes
+  - sharingancoercion
+  inherit: startsharingan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startsharingan:
+  path: sharingan
+  spells:
+  - sharinganactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:377
+  description: Техники Шарингана
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Шаринган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#MANGEKYUO SHARINGAN
+fullmangekyou:
+  path: mangekyou
+  description: Техники Мангекьё Шарингана
+  name: Мангекьё Шаринган
+  spells:
+  - amaterasu
+  - gravimeteor
+  - miniblackhole
+  - susano
+  inherit: startmangekyou
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startmangekyou:
+  path: mangekyou
+  spells:
+  - mangekyouactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:378
+  description: Техники Мангекьё Шарингана
+  mana: 800
+  mana_max: 800
+  mana_regeneration: 1
+  name: Мангекьё Шаринган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#BYAKUGAN
+fullbyakugan:
+  path: byakugan
+  description: Техники Бьякугана
+  name: Бьякуган
+  spells:
+  - byakuganactivate
+  - gentlefist
+  - byakuganrotate
+  - byakuganairpunch
+  - byakuganexplosion
+  - 64fist
+  inherit: startbyakugan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startbyakugan:
+  path: byakugan
+  spells:
+  - byakuganactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:379
+  description: Техники Бьякугана
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Бьякуган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#RINNEGAN
+fullrinnegan:
+  path: rinnegan
+  description: Техники Риннегана
+  name: Риннеган
+  spells:
+  - gravipull
+  - gravipush
+  - blackhole
+  - superfly
+  - mvrandomtravel
+  - rinneganactivate
+  inherit: startrinnegan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startrinnegan:
+  path: rinnegan
+  spells:
+  - rinneganactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:380
+  description: Техники Риннегана
+  mana: 1000
+  mana_max: 1000
+  mana_regeneration: 2
+  name: Риннеган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#KETSURYUGAN
+fullketsuryugan:
+  path: ketsuryugan
+  description: Техники Кецурьюгана
+  name: Кецурьюган
+  spells:
+  - bloodgenjutsu
+  - bloodtouch
+  - bloodcontrol
+  - blooddragon
+  - ketsuryuganactivate
+  inherit: startketsuryugan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startketsuryugan:
+  path: ketsuryugan
+  spells:
+  - ketsuryuganactivate
+  alternate_spell: deactivate
+  icon: diamond_pickaxe:381
+  description: Техники Кецурьюгана
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Кецурьюган
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: alt_cast
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+#KEKKEI GENKAI / HIDEN
+
+
+
+
+
+
+#JUGO CLAN
+fulljugo:
+  path: jugo
+  description: Техники Улучшенного Генома Клана Джуго
+  name: Улучшенный Геном Клана Джуго
+  spells:
+  - jugomod
+  - jugoarm
+  - jugoheal
+  - jugosword
+  inherit: startjugo
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startjugo:
+  path: jugo
+  icon: diamond_pickaxe:383
+  description: Техники Улучшенного Генома Клана Джуго
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 4
+  name: Улучшенный Геном Клана Джуго
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#SHIKOTSUMYAKU CLAN
+fullshikotsumyaku:
+  path: shikotsumyaku
+  description: Техники Шикоцумьяку
+  name: Шикоцумьяку
+  spells:
+  - bonesword
+  - bonearmor
+  - bonespikes
+  - bonebullets
+  inherit: startshikotsumyaku
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startshikotsumyaku:
+  path: shikotsumyaku
+  icon: diamond_pickaxe:384
+  description: Техники Шикоцумьяку
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Шикоцумьяку
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#IBURI CLAN
+fulliburi:
+  path: iburi
+  description: Техники Улучшенного Генома Клана Ибури
+  name: Улучшенный Геном Клана Ибури
+  spells:
+  - smokegun
+  - smokeform
+  - instantsmokeform
+  - smokefist
+  inherit: startiburi
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startiburi:
+  path: iburi
+  icon: diamond_pickaxe:385
+  description: Техники Улучшенного Генома Клана Ибури
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Улучшенный Геном Клана Ибури
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#NARA CLAN
+fullnara:
+  path: nara
+  description: Техники Клана Нара
+  name: Хиден Клана Нара
+  spells:
+  - shadowneck
+  - shadowneedles
+  - shadowimitation
+  inherit: startnara
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startnara:
+  path: nara
+  icon: diamond_pickaxe:386
+  description: Техники Клана Нара
+  mana: 300
+  mana_max: 300
+  mana_regeneration: 1
+  name: Хиден Клана Нара
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#AKIMICHI CLAN
+fullakimichi:
+  path: akimichi
+  description: Техники Клана Акимичи
+  name: Хиден Клана Акимичи
+  spells:
+  - butterflymod
+  - butterflypunch
+  - sizepartgrow
+  - akimichiroll
+  inherit: startakimichi
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startakimichi:
+  path: akimichi
+  icon: diamond_pickaxe:387
+  description: Техники Клана Акимичи
+  mana: 800
+  mana_max: 800
+  mana_regeneration: 1
+  name: Хиден Клана Акимичи
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#INUZUKA CLAN
+fullinuzuka:
+  path: inuzuka
+  description: Техники Клана Инузука
+  name: Хиден Клана Инузука
+  spells:
+  - summonwolf
+  - inuzukafang
+  - inuzukaclone
+  - inuzukamod
+  inherit: startinuzuka
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startinuzuka:
+  path: inuzuka
+  icon: diamond_pickaxe:388
+  description: Техники Клана Инузука
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Хиден Клана Инузука
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#ABURAME CLAN
+fullaburame:
+  path: aburame
+  description: Техники Клана Абураме
+  name: Хиден Клана Абураме
+  spells:
+  - insectmod
+  - insectinfection
+  - insectsphere
+  - insectspray
+  inherit: startaburame
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startaburame:
+  path: aburame
+  icon: diamond_pickaxe:389
+  description: Техники Клана Абураме
+  mana: 300
+  mana_max: 300
+  mana_regeneration: 2
+  name: Хиден Клана Абураме
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#UZUMAKI CLAN
+fulluzumaki:
+  path: uzumaki
+  description: Техники Клана Узумаки
+  name: Хиден Клана Узумаки
+  spells:
+  - reflectprint
+  - uzumakiblink
+  - demonprint
+  - uzumakichainscapture
+  - uzumakichainsdamage
+  inherit: startuzumaki
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startuzumaki:
+  path: uzumaki
+  icon: diamond_pickaxe:390
+  description: Техники Клана Узумаки
+  mana: 600
+  mana_max: 600
+  mana_regeneration: 4
+  name: Хиден Клана Узумаки
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+#SARUTOBI CLAN
+fullsarutobi:
+  path: sarutobi
+  description: Техники Клана Сарутоби
+  name: Хиден Клана Сарутоби
+  spells:
+  - sarutobismoke
+  - sarutobifire
+  inherit: startsarutobi
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startsarutobi:
+  path: sarutobi
+  icon: diamond_pickaxe:391
+  description: Техники Клана Сарутоби
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Хиден Клана Сарутоби
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#YAMANAKA CLAN
+fullyamanaka:
+  path: yamanaka
+  description: Техники Клана Яманака
+  name: Хиден Клана Яманака
+  spells:
+  - mindcontrol
+  - mindtransfer
+  - mindbreak
+  inherit: startyamanaka
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startyamanaka:
+  path: yamanaka
+  icon: diamond_pickaxe:392
+  description: Техники Клана Яманака
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Хиден Клана Яманака
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+#YAMANAKA CLAN
+fullhozuki:
+  path: hozuki
+  description: Техники Клана Хозуки
+  name: Хиден Клана Хозуки
+  spells:
+  - hozukishot
+  - hozukimorph
+  - hozukistrength
+  - hozukibubbles
+  inherit: starthozuki
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+starthozuki:
+  path: hozuki
+  icon: diamond_pickaxe:393
+  description: Техники Клана Хозуки
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Хиден Клана Хозуки
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

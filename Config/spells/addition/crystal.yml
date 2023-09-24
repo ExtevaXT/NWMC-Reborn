@@ -1,0 +1,347 @@
+
+#CRYSTAL RELEASE
+
+#https://naruto.fandom.com/wiki/Crystal_Release:_Crimson_Fruit
+crystalshell:
+  name: Багровый Фрукт
+  description: Создаёт кристаллический купол в форме фрукта
+  icon: diamond_pickaxe:133
+  icon_disabled: diamond_axe:133
+  icon_url: http://textures.minecraft.net/texture/3dbb78853b526f9b712b4e431fb332eae0e6cd3dea9a610e9ecf54c31f7c6d
+  alias: dome
+  category: additional
+  worth: 40
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Sphere
+        actions:
+        - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shield
+    tick:
+    - location: target
+      particle: block_crack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: block_crack
+        particle_count: 10
+        particles: 5
+        particle_offset_x: 0.3
+        particle_offset_y: 0.3
+        particle_offset_z: 0.3
+        radius: $radius
+        duration: 2000
+  parameters:
+    target: other
+    allow_max_range: false
+    velocity: 50
+    target_type: LivingEntity
+    range: 32
+    thickness: 1
+    radius: 5
+    type: sphere
+    transparent: transparent_to_construction
+    destructible: destructible_replace
+    check_destructible: true
+    undo: 8000
+    brush: stained_glass:6
+    unbreakable: true
+    brushcolor: true
+    cooldown: 5000
+    breakable: 1
+    reflect_chance: 0
+    miss_effects: hit
+    miss: actions
+  costs:
+    mana: 50
+
+#https://naruto.fandom.com/wiki/Crystal_Release:_Crystal_Needles
+crystalshots:
+  name: Кристаллические Иглы
+  description: Стреляет множеством кристаллических игл в быстрой последовательности.
+  icon: diamond_pickaxe:132
+  icon_disabled: diamond_axe:132
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: additional
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: Damage
+          - class: BreakBlock
+            ignore_result: true
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: redstone
+        color: ff57c1
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    allow_max_range: true
+    velocity: 100
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 2
+    entity_damage: 2
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 60
+    spread: 0.5
+    radius: 0
+  costs:
+    mana: 70
+
+
+
+#https://naruto.fandom.com/wiki/Crystal_Release:_Jade_Crystal_Prison_Technique
+crystalprison:
+  name: Кристаллическая Тюрьма
+  description: Заковывает противника в кристалл
+  icon: diamond_pickaxe:134
+  icon_disabled: diamond_axe:134
+  alias: cushion
+  icon_url: http://textures.minecraft.net/texture/b750768d23e447d95b662344f426cc96228a4047f7a8ced0f4861edbbeaced
+  category: additional
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+      - class: Volume
+        actions:
+        - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_generic_splash
+      location: both
+    tick:
+    - location: target
+      particle: block_crack
+      material: stained_glass:6
+      particle_count: 8
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Shield
+        iterations: 10
+        particle: block_crack
+        material: stained_glass:6
+        radius: 1.8
+        particles: 30
+        particle_count: 20
+        particle_offset_x: 0.2
+        particle_offset_y: 0.2
+        particle_offset_z: 0.2
+  parameters:
+    velocity: 250
+    target_type: LivingEntity
+    allow_max_range: true
+    radius: 1
+    y_size: 3
+    range: 25
+    cooldown: 2000
+    undo: 10000
+    unbreakable: true
+    potion_effects:
+      slow: 250
+      jump: 250
+      weakness: 100
+      duration: 10000
+    duration: 3000
+    destructible: destructible_replace
+    brush: stained_glass:6
+    hitbox: true
+  costs:
+    mana: 40
+
+
+#https://naruto.fandom.com/wiki/Crystal_Release:_The_Gods%27_Crossings_Technique
+crystalspikes:
+  name: Кристаллические Шипы
+  description: Техника создаёт на указанной области кристаллические шипы
+  icon: diamond_pickaxe:136
+  icon_disabled: diamond_axe:136
+  icon_url: http://textures.minecraft.net/texture/443e10a710998d47d238e291a8ba8f6abf42bc7e419d1d8dcc8c55707ebb19
+  category: additional
+  worth: 20
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+      - class: Skip
+        skip: 100
+        actions:
+        - class: PlayEffects
+          effects: column
+    - class: AreaOfEffect
+      actions:
+      - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_anvil_use
+    - class: EffectTrail
+      particle: block_crack
+    column:
+    - location: target
+      particle: block_crack
+      particle_count: 100
+      material: stained_glass:3
+      particle_offset_x: 0.2
+      particle_offset_y: 5
+      particle_offset_z: 0.2
+      offset: 0,-2,0
+  parameters:
+    target_type: LivingEntity
+    target: any
+    allow_max_range: false
+    range: 16
+    radius: 10
+    type: sphere
+    cooldown: 1000
+    undo: 10000
+    brush: schematic|crystalspikes
+    transparent: transparent_to_construction
+    destructible: destructible_replace,destructible
+    damage: 10
+  costs:
+    mana: 70
+
+#https://naruto.fandom.com/wiki/Crystal_Armour
+
+crystalarmor:
+  name: Кристаллическая Броня
+  description: Покрывает кожу кристаллической оболочкой
+  icon: diamond_pickaxe:135
+  icon_disabled: diamond_axe:135
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: additional
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        particles: 50
+        particle: redstone
+        color: ff57c1
+        material: stained_glass:3
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+  parameters:
+    target: self
+    effect_damage_resistance: 1
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5

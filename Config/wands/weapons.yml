@@ -1,0 +1,251 @@
+#FULL WEAPONS
+
+
+
+
+
+startironkatana:
+  name: '§7§lКатана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fСамая обычная катана'
+  inherit: base_legsw
+  icon: diamond_sword:1
+  drop: toggle
+  hide_flags: 62
+  left_click: none
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - sharpenable
+fullironkatana:
+  name: '§7§lКатана'
+  mode: cycle
+  drop: toggle
+  path: kenjutsu
+  description: '&fСамая обычная катана'
+  inherit: base_legsw
+  icon: diamond_sword:1
+  hide_flags: 62
+  spells:
+  - chakraslash
+  - heavencutter
+  - moonlight
+  - crescentmoonlight
+  - chakraflash
+  - samuraistrength
+  right_click: cast
+  left_click: none
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - sharpenable
+
+
+
+starttanto:
+  name: '§7§lТанто'
+  mode: cycle
+  path: kenjutsu
+  description: '&fУкороченная версия катаны'
+  inherit: base_legsw
+  drop: toggle
+  icon: diamond_sword:14
+  hide_flags: 62
+  left_click: none
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - sharpenable
+fulltanto:
+  name: '§7§lТанто'
+  mode: cycle
+  path: kenjutsu
+  description: '&fУкороченная версия катаны'
+  inherit: base_legsw
+  drop: toggle
+  spells:
+  - chakraslash
+  - heavencutter
+  - moonlight
+  - crescentmoonlight
+  - chakraflash
+  - samuraistrength
+  icon: diamond_sword:14
+  left_click: none
+  hide_flags: 62
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - sharpenable
+
+
+startgoldkatana:
+  name: '§e§lЗолотая Катана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fКатана сделанная из чистого золота'
+  inherit: base_legsw
+  drop: toggle
+  icon: diamond_sword:4
+  hide_flags: 62
+  left_click: none
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+  tags:
+  - sharpenable
+fullgoldkatana:
+  name: '§e§lЗолотая Катана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fКатана сделанная из чистого золота'
+  inherit: base_legsw
+  drop: toggle
+  spells:
+  - chakraslash
+  - heavencutter
+  - moonlight
+  - crescentmoonlight
+  - chakraflash
+  - samuraistrength
+  icon: diamond_sword:4
+  left_click: none
+  hide_flags: 62
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+  tags:
+  - sharpenable
+
+
+startdiamondkatana:
+  name: '§3§lАлмазная Катана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fКатана покрытая чистыми алмазами'
+  inherit: base_legsw
+  drop: toggle
+  icon: diamond_sword:4
+  hide_flags: 62
+  left_click: none
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 8
+  tags:
+  - sharpenable
+fulldiamondkatana:
+  name: '§3§lАлмазная Катана'
+  mode: cycle
+  path: kenjutsu
+  description: '&fКатана покрытая чистыми алмазами'
+  inherit: base_legsw
+  drop: toggle
+  spells:
+  - chakraslash
+  - heavencutter
+  - moonlight
+  - crescentmoonlight
+  - chakraflash
+  - samuraistrength
+  icon: diamond_sword:4
+  left_click: none
+  hide_flags: 62
+  right_click: cast
+  keep: true
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 8
+  tags:
+  - sharpenable
+
+
+woodkatana:
+  name: '§f§lДеревянная Катана'
+  description: '&fТренировочная катана из дерева'
+  inherit: base_legsw
+  icon: diamond_sword:2
+  keep: true
+  hide_flags: 62
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 5
+  tags:
+  - sharpenable
+stonekatana:
+  name: '§8§lКаменная Катана'
+  description: '&fДревний артефакт, катана созданная из разных пород камней'
+  inherit: base_legsw
+  icon: diamond_sword:3
+  keep: true
+  hide_flags: 62
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+  tags:
+  - sharpenable
+
+cursedblade:
+  name: '§4§lПроклятый Клинок'
+  inherit: base_legsw
+  icon: diamond_sword:17
+  keep: true
+  hide_flags: 62
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 10
+  potion_effects: speed:0
+  tags:
+  - sharpenable
+
+
+ironkatana:
+  name: '§7§lЖелезная Катана'
+  description: '&fСамая обычная катана'
+  inherit: base_legsw
+  icon: diamond_sword:12
+  hide_flags: 62
+  alternate_spell: explosionsword
+  right_click: alt_cast
+  keep: true
+  protection:
+    physical: 0.1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 7
+  tags:
+  - buffable
+  - sharpenable
+
+woodkatana:
+  name: '§f§lДеревянная Катана'
+  description: '&fТренировочная катана из дерева'
+  inherit: base_legsw
+  icon: diamond_sword:2
+  keep: true
+  hide_flags: 62
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 5
+  tags:
+  - buffable
+  - sharpenable
+
+
+
+
+base_legsw:
+  hidden: true
+  bound: false
+  keep: false
+  invulnerable: true
+  immortal: true
+  track: true
+  undroppable: true
+  indestructible: true
+
+

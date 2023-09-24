@@ -1,0 +1,253 @@
+
+
+#SENJUTSU     | SUMMONING |  SAGE MODE   |
+
+
+#https://naruto.fandom.com/ru/wiki/Режим_Мудреца
+sagemod:
+  name: Режим Мудреца
+  description: Режим в котором вы смешиваете в себе природную энергию и свою чакру
+  icon: diamond_pickaxe:142
+  icon_disabled: diamond_axe:142
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: senjutsu
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      sound: entity_wither_break_block
+      sound_pitch: 0.8
+      source_location: body
+      effectlib:
+        class: Modified
+        duration: 4000
+        parameters:
+          size: (1 - (t / i)) * 1.5 + 0.5
+        effect:
+          class: AnimatedBall
+          particle: villager_happy
+          color: 663300
+          particle_count: 1
+          particle_offset_x: 0.05
+          particle_offset_y: -1
+          particle_offset_z: 0.05
+          particle_size: 2
+          y_factor: 0
+  parameters:
+    target: self
+    effect_speed: 5
+    effect_jump: 5
+    effect_damage_resistance: 2
+    effect_increase_damage: 3
+    cooldown_reduction: 0.2
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+
+
+#SUMMONING
+
+#Призыв 8 нинкенов
+summoning8dogs:
+  name: Призыв 8 Нинкенов
+  description: Призывает 8 собак, которые атакуют только монстров
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+        type: 8dog
+      - class: Delay
+        delay: 60000
+      - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: target
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: origin
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    multiply: 8
+    spread: 1
+  costs:
+    mana: 100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Пример призыва
+summoning:
+  name: Призыв 
+  description: Призывает 
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+        type: none
+      - class: Delay
+        delay: 60000
+      - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    multiply: 3
+    spread: 1
+  costs:
+    mana: 100
+
+
+
+#https://naruto.fandom.com/ru/wiki/Призыв:_Рашомон
+
+

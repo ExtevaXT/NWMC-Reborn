@@ -1,0 +1,82 @@
+[
+    {
+      "type": "text",
+      "key": "magic.wands.basic.fire.name",
+      "languages": {
+        "en_GB": "Fire Release",
+        "ru_RU": "Стихия Огня"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.fire.description",
+      "languages": {
+        "en_GB": "Fire Release Jutsu",
+        "ru_RU": "Техники Стихии Огня"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.lightning.name",
+      "languages": {
+        "en_GB": "Lightning Release",
+        "ru_RU": "Стихия Молнии"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.lightning.description",
+      "languages": {
+        "en_GB": "Lightning Release Jutsu",
+        "ru_RU": "Техники Стихии Молнии"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.water.name",
+      "languages": {
+        "en_GB": "Water Release",
+        "ru_RU": "Стихия Воды"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.water.description",
+      "languages": {
+        "en_GB": "Water Release Jutsu",
+        "ru_RU": "Техники Стихии Воды"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.wind.name",
+      "languages": {
+        "en_GB": "Wind Release",
+        "ru_RU": "Стихия Ветра"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.wind.description",
+      "languages": {
+        "en_GB": "Wind Release Jutsu",
+        "ru_RU": "Техники Стихии Ветра"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.earth.name",
+      "languages": {
+        "en_GB": "Earth Release",
+        "ru_RU": "Стихия Земли"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.wands.basic.earth.description",
+      "languages": {
+        "en_GB": "Earth Release Jutsu",
+        "ru_RU": "Техники Стихии Земли"
+      }
+    }
+  ]

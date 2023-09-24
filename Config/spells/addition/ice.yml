@@ -1,0 +1,299 @@
+
+#YUKI/ICE JUTSU
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Смертельные_Ледяные_Шипы
+icespikes:
+  name: Ледяные Шипы
+  description: Техника создаёт на указанной области ледяные шипы
+  icon: diamond_pickaxe:29
+  icon_disabled: diamond_axe:29
+  icon_url: http://textures.minecraft.net/texture/443e10a710998d47d238e291a8ba8f6abf42bc7e419d1d8dcc8c55707ebb19
+  category: additional
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+      - class: Skip
+        skip: 100
+        actions:
+        - class: PlayEffects
+          effects: column
+    - class: AreaOfEffect
+      actions:
+      - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_anvil_use
+    - class: EffectTrail
+      particle: block_crack
+    column:
+    - location: target
+      particle: block_crack
+      particle_count: 100
+      material: packed_ice
+      particle_offset_x: 0.2
+      particle_offset_y: 5
+      particle_offset_z: 0.2
+      offset: 0,-2,0
+  parameters:
+    target_type: LivingEntity
+    target: any
+    allow_max_range: false
+    range: 16
+    radius: 12
+    y_size: 20
+    type: sphere
+    cooldown: 1000
+    undo: 10000
+    brush: schematic|icespikes
+    transparent: transparent_to_construction
+    destructible: destructible_replace,destructible
+    damage: 20
+    oby: -3
+  costs:
+    mana: 150
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Демонические_Ледяные_Зеркала
+icemirrors:
+  name: Демонические Ледяные Зеркала
+  description: Создаёт в указанной области Демонические Ледяные Зеркала
+  icon: diamond_pickaxe:30
+  icon_disabled: diamond_axe:30
+  icon_url: http://textures.minecraft.net/texture/4fed122b86ffaeaee36ab4a8c1c27f46fb5bddc83322c8a165d0f27aeb1830
+  category: additional
+  worth: 30
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Cylinder
+      actions:
+      - class: ModifyBlock
+      - class: Skip
+        skip: 4
+        actions:
+        - class: PlayEffects
+          effects: column
+        - class: Delay
+          delay: 10
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shield
+    - class: EffectTrail
+      particle: WATER_DROP
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    column:
+    - location: target
+      particle: WATER_DROP
+      particle_count: 100
+      particle_offset_x: 0.2
+      particle_offset_y: 5
+      particle_offset_z: 0.2
+      offset: 0,-2,0
+  parameters:
+    target_type: LivingEntity
+    allow_max_range: true
+    range: 32
+    radius: 8
+    thickness: 1
+    transparent: transparent_to_construction
+    undo: 20000
+    cooldown: 10000
+    brush: packed_ice
+    brushcolor: true
+    unbreakable: true
+    destructible: destructible_replace
+    volume_type: xzy
+  costs:
+    mana: 75
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Льда:_Ледяной_Скалистый_Купол_Великолепного_Ничто
+iceshell:
+  name: Ледяной Купол
+  description: Создаёт вокруг вас защитный ледяной купол
+  icon: diamond_pickaxe:31
+  icon_disabled: diamond_axe:31
+  icon_url: http://textures.minecraft.net/texture/3dbb78853b526f9b712b4e431fb332eae0e6cd3dea9a610e9ecf54c31f7c6d
+  alias: dome
+  category: additional
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Sphere
+        actions:
+        - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shield
+    tick:
+    - location: target
+      particle: block_crack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: block_crack
+        particle_count: 10
+        particles: 5
+        particle_offset_x: 0.3
+        particle_offset_y: 0.3
+        particle_offset_z: 0.3
+        radius: $radius
+        duration: 2000
+  parameters:
+    target: self
+    allow_max_range: false
+    velocity: 50
+    target_type: LivingEntity
+    range: 32
+    thickness: 1
+    radius: 4
+    type: sphere
+    transparent: transparent_to_construction
+    destructible: destructible_replace
+    check_destructible: true
+    undo: 8000
+    brush: ice
+    brushcolor: true
+    cooldown: 5000
+    breakable: 1
+    reflect_chance: 0
+    miss_effects: hit
+    miss: actions
+  costs:
+    mana: 75
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Тысяча_Летящих_Водяных_Игл_Смерти
+iceshards:
+  name: Летящие Ледяные Иглы
+  description: Создаёт иглы, которые взлетают вверх и летят ко всем существам в большом радиусе 
+  icon: diamond_pickaxe:32
+  icon_disabled: diamond_axe:32
+  icon_url: http://textures.minecraft.net/texture/c64f6eeb78485e49b219f40a9d6a8131c539fef932f1cbb5f379adfebdd8c31
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  category: additional
+  worth: 2000
+  earns_sp: 20
+  actions:
+    cast:
+    - class: AreaOfEffect
+      actions:
+      - class: Asynchronous
+        actions:
+        - class: CustomProjectile
+          target: other
+          actions:
+          - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+      color_override: color
+      effectlib:
+        class: SphereEffect
+        duration: 100
+        particle: redstone
+        color: 00CCFF
+        radius: 0.5
+        offset: 0,0.5,0
+    tick:
+    - particle: redstone
+      color: 00CCFF
+      particle_count: 5
+      particle_offset_x: 0.05
+      particle_offset_y: 0.05
+      particle_offset_z: 0.05
+      location: target
+    hit:
+    - class: EffectSingle
+      sound: magic.zap
+      sound_volume: 0.3
+      location: target
+    target:
+    - class: EffectSingle
+      sound: entity_firework_launch
+      sound_volume: 0.5
+      location: source
+      particle: redstone
+      color: 00CCFF
+      particle_count: 50
+      particle_offset_x: 2
+      particle_offset_y: 2
+      particle_offset_z: 2
+      effectlib:
+        class: LineEffect
+        length: 3
+        duration: 5000
+        particle: redstone
+        color: 00CCFF
+        particles: 5
+        particle_count: 5
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+  parameters:
+    target: self
+    target_self: false
+    range: 64
+    velocity: 8
+    radius: 24
+    tick_size: 0.2
+    target_count: 30
+    target_type: Damageable
+    player_damage: 5
+    entity_damage: 8
+    target_breakables: 1
+    cooldown: 5000
+    lifetime: 10000
+    target_self_timeout: 2000
+    track_speed: 10
+    use_target_location: false
+    velocity_transform:
+      orient: false
+      x: rand(-3,3) * cos(t)
+      y: rand(3,10)
+      z: rand(-3,3) * sin(t)
+    plan:
+    - time: 2000
+      track_target: true
+      velocity_transform: ''
+      velocity: 30
+      effects: target
+    - time: 3000
+      track_speed: 0.1
+  costs:
+    mana: 100

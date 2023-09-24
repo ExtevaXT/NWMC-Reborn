@@ -1,0 +1,310 @@
+
+
+#STEEL RELEASE
+
+#https://naruto.fandom.com/wiki/Steel_Release:_Steel_Shield_Technique
+steelwall:
+  name: Стальная Стена
+  description: Техника, при использовании которой пользователь создаёт стену из стали
+  icon: diamond_pickaxe:138
+  icon_disabled: diamond_axe:138
+  alias: cushion
+  icon_url: http://textures.minecraft.net/texture/b750768d23e447d95b662344f426cc96228a4047f7a8ced0f4861edbbeaced
+  category: additional
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: DisablePhysics
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_generic_splash
+      location: both
+    tick:
+    - location: target
+      particle: water_splash
+      particle_count: 8
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Shield
+        iterations: 10
+        particle: water_splash
+        radius: 1.8
+        particles: 30
+        particle_count: 20
+        particle_offset_x: 0.2
+        particle_offset_y: 0.2
+        particle_offset_z: 0.2
+  parameters:
+    velocity: 250
+    target_type: LivingEntity
+    allow_max_range: true
+    radius: 1
+    range: 6
+    cooldown: 2000
+    undo: 10000
+    duration: 3000
+    destructible: destructible_replace
+    brush: iron_block
+    hitbox: true
+    x_size: 10
+    y_size: 6
+    z_size: 2
+    volume_type: yxz
+    orient: true
+  costs:
+    mana: 20
+
+#https://naruto.fandom.com/wiki/Steel_Release:_Steel_Projectile
+steelarmor:
+  name: Стальная Броня
+  description: Вы уплотняете свою кожу сталью
+  icon: diamond_pickaxe:139
+  icon_disabled: diamond_axe:139
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: additional
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: Flame
+        particles: 50
+        particle: redstone
+        color: 808696
+        material: stained_glass:3
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+  parameters:
+    target: self
+    effect_damage_resistance: 5
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+  costs:
+    mana: 20
+  active_costs:
+    mana: 10
+
+
+#https://naruto.fandom.com/wiki/Steel_Release:_Steel_Projectile
+steelprojectile:
+  name: Стальной Снаряд
+  description: Запускает снаряд из стали
+  icon: diamond_pickaxe:140
+  icon_disabled: diamond_axe:140
+  upgrade_required_path: beginner
+  upgrade_required_casts: 15
+  icon_url: http://textures.minecraft.net/texture/e511624fac75f03cf2f3a56d5fe4582d6e74fc9f5e1e1160af1941ee144928
+  category: additional
+  pvp_restricted: true
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - sound: magic.burn
+      sound_volume: 1
+      sound_pitch: -0.25
+    projectile:
+    - location: origin
+      effectlib:
+        class: Sphere
+        iterations: 10
+        period: 2
+        particles: 5
+        particle: lava
+        disappear_with_origin_entity: true
+    tick:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: 808696
+        particle_count: 50
+        particles: 50
+        particle_size: 5
+        radius: 1.5
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: block_crack
+        material: iron_block
+        particle_count: 10
+        particles: 10
+        iterations: 2
+        radius: 0.9
+        radius_increase: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        speed: 0.5
+        iterations: 5
+        particle_count: 10
+        particles: 10
+  parameters:
+    projectile: LargeFireball
+    fire: true
+    radius: 2
+    undo: 8000
+    cooldown: 1000
+    start: 1
+    break_blocks: true
+    undo_speed: 1
+    target: none
+    target_type: Damageable
+    cooldown_mage: 1000
+    target_breakables: 5
+    bypass_backfire: true
+    player_damage: 10
+    entity_damage: 15
+    hitbox_size: 1
+    velocity: 20
+    interval: 250
+    warmup: 3000
+    break_durability: 1000
+    destructible_durability: 5000
+  costs:
+    mana: 100
+
+#https://narutofanon.fandom.com/wiki/Assimilation:_Steel_Shrapnel
+steelshrapnel:
+  name: Стальная Шрапнель
+  description: Запускает несколько снарядов из стали
+  icon: diamond_pickaxe:141
+  icon_disabled: diamond_axe:141
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: additional
+  worth: 20
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: Damage
+          - class: BreakBlock
+            ignore_result: true
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: redstone
+        color: 808696
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    allow_max_range: true
+    velocity: 500
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 12
+    entity_damage: 12
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 20
+    spread: 0.4
+    radius: 0
+  costs:
+    mana: 60

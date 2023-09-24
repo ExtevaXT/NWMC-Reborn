@@ -1,0 +1,204 @@
+
+
+#HOZUKI
+
+#https://naruto.fandom.com/ru/wiki/Техника_Гидрификации
+hozukimorph:
+  name: Техники Гидрификации
+  description: Техника, позволяющая превращать тело пользователя в воду.
+  icon: diamond_pickaxe:119
+  icon_disabled: diamond_axe:119
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 20
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      effectlib:
+        class: Flame
+        particle: water_splash
+        offset: 0,-1.5,0
+        particle_count: 30
+  parameters:
+    target: self
+    effect_slow: 0
+    effect_regeneration: 2
+    cooldown: 1000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 10
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Воды:_Техника_Большой_Водяной_Руки
+hozukistrength:
+  name: Техника Большой Водяной Руки
+  description: Техника увеличивает скорость реакции и доводит до предельного уровня физические параметры пользователя
+  icon: diamond_pickaxe:120
+  icon_disabled: diamond_axe:120
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 20
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 1500
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      source_location: cast
+      color_override: color
+      effectlib:
+        class: Cylinder
+        radius: 0.8
+        iterations: 5
+        particles: 50
+        duration: 3600000
+        relative_offset: 0,-0.5,0
+        disappear_with_origin_entity: true
+        particle: crit_magic
+        color: 00cc66
+        grow: 0
+        update_directions: true
+        update_locations: false
+  parameters:
+    target: self
+    effect_increase_damage: 2
+    cooldown: 0
+    cancel_on_death: true
+    repeat: infinite
+    duration: 36000
+  costs:
+    mana: 5
+  active_costs:
+    mana: 5
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Водяного_Пистолета
+hozukishot:
+  name: Водяной Пистолет
+  description: Выстреливает из руки маленькой водяной пулей
+  icon: diamond_pickaxe:118
+  icon_disabled: diamond_axe:118
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: hiden
+  worth: 30
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Damage
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+          ignore_result: true
+  effects:
+    tick:
+    - particle: drip_water
+      location: target
+      particle_count: 1
+      particles: 1
+      iterations: 1
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+    break:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.6
+      particle_offset_y: 0.6
+      particle_offset_z: 0.6
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Sphere
+        radius: 0.01
+        iterations: 4
+        speed: 1
+        particle: WATER_SPLASH
+        particle_count: 10
+        particle_offset_x: 0.3
+        particle_offset_y: 0.3
+        particle_offset_z: 0.3
+      sound: magic.zap
+      sound_volume: 0.3
+    hit_entity:
+    - sound: entity_player_attack_crit
+      sound_pitch: 0.8
+      location: target
+      effectlib:
+        class: Sphere
+        iterations: 5
+        radius: 0.05
+        particle: redstone
+        color: 980000
+        particle_count: 30
+        particle_offset_y: 1
+        particle_offset_x: 1
+        particle_offset_z: 1
+        particle_data: 0.5
+  headshot_parameters:
+    damage_multiplier: 2
+  parameters:
+    allow_max_range: true
+    velocity: 100
+    range: 32
+    hitbox: true
+    target_type: Damageable
+    player_damage: 12
+    entity_damage: 12
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 100
+    break_durability: 1000000
+    damage: 5
+    undo: 10000
+    radius: 0
+    falling: false
+  costs:
+    mana: 30
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Водяных_Пузырей
+
+
+

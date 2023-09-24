@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/skins/DONE/gaara",
+        "texture": "item/naruto/icons/skins/DONE/gaara"
+    }
+}

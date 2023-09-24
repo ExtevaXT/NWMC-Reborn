@@ -1,0 +1,103 @@
+
+#BASIC RELEASES
+basic:
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 2
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+#FIRE RELEASE
+fire:
+  name: '[lang]magic.wands.basic.fire.name[/lang]'
+  description: '[lang]magic.wands.basic.fire.description[/lang]'
+  path: fire
+  icon: diamond_pickaxe:361
+  inherit: basic
+fire_full:
+  inherit: fire
+  spells:
+  - fenixfire
+  - greatfireball
+  - fenixflower
+  - firewind
+  - fireblast
+  - fireannihilation
+
+#LIGHTNING RELEASE
+lightning:
+  name: '[lang]magic.wands.basic.lightning.name[/lang]'
+  description: '[lang]magic.wands.basic.lightning.description[/lang]'
+  path: lightning
+  icon: diamond_pickaxe:362
+  inherit: basic
+lightning_full:
+  inherit: lightning
+  spells:
+  - lightningchain
+  - lightningchase
+  - kirin
+  - lightningboost
+  - arkan
+  - chidorisenbon
+
+
+#WATER RELEASE
+water:
+  name: '[lang]magic.wands.basic.water.name[/lang]'
+  description: '[lang]magic.wands.basic.water.description[/lang]'
+  path: water
+  icon: diamond_pickaxe:363
+  inherit: basic
+water_full:
+  inherit: water
+  spells:
+  - waterprison
+  - waterwall
+  - waterbullet
+  - waterultimate
+  - watercontrol
+
+
+
+#WIND RELEASE
+wind:
+  name: '[lang]magic.wands.basic.wind.name[/lang]'
+  description: '[lang]magic.wands.basic.wind.description[/lang]'
+  path: wind
+  icon: diamond_pickaxe:364
+  inherit: basic
+wind_full:
+  inherit: wind
+  spells:
+  - vacuumwaves
+  - windblast
+  - windboost
+  - windpush
+  - rasensuriken
+
+
+#EARTH RELEASE
+earth:
+  name: '[lang]magic.wands.basic.earth.name[/lang]'
+  description: '[lang]magic.wands.basic.earth.description[/lang]'
+  path: earth
+  icon: diamond_pickaxe:365
+  inherit: basic
+earth_full:
+  inherit: earth
+  spells:
+  - earthwave
+  - underearth
+  - earthharden
+  - earthcollapse
+  - earthsandshield
+  - earthultimate

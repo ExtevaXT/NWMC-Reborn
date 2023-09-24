@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/dojutsu/Mangekyo sharingan rinnegan Mathioks2",
+        "texture": "item/naruto/icons/dojutsu/Mangekyo sharingan rinnegan Mathioks2"
+    }
+}

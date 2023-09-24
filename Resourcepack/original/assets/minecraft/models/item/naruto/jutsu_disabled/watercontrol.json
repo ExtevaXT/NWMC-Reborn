@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/jutsu_disabled/watercontrol",
+        "texture": "item/naruto/icons/jutsu_disabled/watercontrol"
+    }
+}

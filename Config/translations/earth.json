@@ -1,0 +1,98 @@
+[
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth1.name",
+      "languages": {
+        "en_GB": "Dance of Sand",
+        "ru_RU": "Танец Песка"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth1.description",
+      "languages": {
+        "en_GB": "A technique that turns any material into sand and spills everything underneath it",
+        "ru_RU": "Техника, которая превращает любой материал в песок и проливает все, что под ним"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth2.name",
+      "languages": {
+        "en_GB": "Hardening",
+        "ru_RU": "Упрочнение"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth2.description",
+      "languages": {
+        "en_GB": "A technique that hardens the surface",
+        "ru_RU": "Техника, которая упрочняет поверхность"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth3.name",
+      "languages": {
+        "en_GB": "Sand Shield",
+        "ru_RU": "Щит Песка"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth3.description",
+      "languages": {
+        "en_GB": "Creates a dome of maximally compacted sand",
+        "ru_RU": "Создаёт купол из максимально уплотнённого песка"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth4.name",
+      "languages": {
+        "en_GB": "Underground Coffin",
+        "ru_RU": "Подземный Гроб"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth4.description",
+      "languages": {
+        "en_GB": "Creates a pit under the victim, which closes after a second",
+        "ru_RU": "Создаёт яму под жертвой, которая через секунду закрывается"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth5.name",
+      "languages": {
+        "en_GB": "Earth Wave",
+        "ru_RU": "Земляная Волна"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth5.description",
+      "languages": {
+        "en_GB": "A technique that makes the earth move in the form of a wave",
+        "ru_RU": "Техника которая заставляет землю двигаться в форме волны"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth6.name",
+      "languages": {
+        "en_GB": "Earth Mound",
+        "ru_RU": "Земляной Вал"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.earth6.description",
+      "languages": {
+        "en_GB": "Creates a huge wall of earth",
+        "ru_RU": "Создаёт огромную стену из земли"
+      }
+    }
+  ]

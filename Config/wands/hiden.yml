@@ -1,0 +1,452 @@
+
+#KEKKEI GENKAI / HIDEN
+
+
+
+
+
+
+#JUGO CLAN
+fulljugo:
+  path: jugo
+  description: Техники Улучшенного Генома Клана Джуго
+  name: Улучшенный Геном Клана Джуго
+  spells:
+  - jugomod
+  - jugoarm
+  - jugoheal
+  - jugosword
+  inherit: startjugo
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startjugo:
+  path: jugo
+  icon: diamond_pickaxe:383
+  description: Техники Улучшенного Генома Клана Джуго
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 4
+  name: Улучшенный Геном Клана Джуго
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#SHIKOTSUMYAKU CLAN
+fullshikotsumyaku:
+  path: shikotsumyaku
+  description: Техники Шикоцумьяку
+  name: Шикоцумьяку
+  spells:
+  - bonesword
+  - bonearmor
+  - bonespikes
+  - bonebullets
+  inherit: startshikotsumyaku
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startshikotsumyaku:
+  path: shikotsumyaku
+  icon: diamond_pickaxe:384
+  description: Техники Шикоцумьяку
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Шикоцумьяку
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#IBURI CLAN
+fulliburi:
+  path: iburi
+  description: Техники Улучшенного Генома Клана Ибури
+  name: Улучшенный Геном Клана Ибури
+  spells:
+  - smokegun
+  - smokeform
+  - instantsmokeform
+  - smokefist
+  inherit: startiburi
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startiburi:
+  path: iburi
+  icon: diamond_pickaxe:385
+  description: Техники Улучшенного Генома Клана Ибури
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Улучшенный Геном Клана Ибури
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#NARA CLAN
+fullnara:
+  path: nara
+  description: Техники Клана Нара
+  name: Хиден Клана Нара
+  spells:
+  - shadowneck
+  - shadowneedles
+  - shadowimitation
+  inherit: startnara
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startnara:
+  path: nara
+  icon: diamond_pickaxe:386
+  description: Техники Клана Нара
+  mana: 300
+  mana_max: 300
+  mana_regeneration: 1
+  name: Хиден Клана Нара
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#AKIMICHI CLAN
+fullakimichi:
+  path: akimichi
+  description: Техники Клана Акимичи
+  name: Хиден Клана Акимичи
+  spells:
+  - butterflymod
+  - butterflypunch
+  - sizepartgrow
+  - akimichiroll
+  inherit: startakimichi
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startakimichi:
+  path: akimichi
+  icon: diamond_pickaxe:387
+  description: Техники Клана Акимичи
+  mana: 800
+  mana_max: 800
+  mana_regeneration: 1
+  name: Хиден Клана Акимичи
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#INUZUKA CLAN
+fullinuzuka:
+  path: inuzuka
+  description: Техники Клана Инузука
+  name: Хиден Клана Инузука
+  spells:
+  - summonwolf
+  - inuzukafang
+  - inuzukaclone
+  - inuzukamod
+  inherit: startinuzuka
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startinuzuka:
+  path: inuzuka
+  icon: diamond_pickaxe:388
+  description: Техники Клана Инузука
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Хиден Клана Инузука
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#ABURAME CLAN
+fullaburame:
+  path: aburame
+  description: Техники Клана Абураме
+  name: Хиден Клана Абураме
+  spells:
+  - insectmod
+  - insectinfection
+  - insectsphere
+  - insectspray
+  inherit: startaburame
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startaburame:
+  path: aburame
+  icon: diamond_pickaxe:389
+  description: Техники Клана Абураме
+  mana: 300
+  mana_max: 300
+  mana_regeneration: 2
+  name: Хиден Клана Абураме
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#UZUMAKI CLAN
+fulluzumaki:
+  path: uzumaki
+  description: Техники Клана Узумаки
+  name: Хиден Клана Узумаки
+  spells:
+  - reflectprint
+  - uzumakiblink
+  - demonprint
+  - uzumakichainscapture
+  - uzumakichainsdamage
+  inherit: startuzumaki
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startuzumaki:
+  path: uzumaki
+  icon: diamond_pickaxe:390
+  description: Техники Клана Узумаки
+  mana: 600
+  mana_max: 600
+  mana_regeneration: 4
+  name: Хиден Клана Узумаки
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+#SARUTOBI CLAN
+fullsarutobi:
+  path: sarutobi
+  description: Техники Клана Сарутоби
+  name: Хиден Клана Сарутоби
+  spells:
+  - sarutobismoke
+  - sarutobifire
+  inherit: startsarutobi
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startsarutobi:
+  path: sarutobi
+  icon: diamond_pickaxe:391
+  description: Техники Клана Сарутоби
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Хиден Клана Сарутоби
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#YAMANAKA CLAN
+fullyamanaka:
+  path: yamanaka
+  description: Техники Клана Яманака
+  name: Хиден Клана Яманака
+  spells:
+  - mindcontrol
+  - mindtransfer
+  - mindbreak
+  inherit: startyamanaka
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startyamanaka:
+  path: yamanaka
+  icon: diamond_pickaxe:392
+  description: Техники Клана Яманака
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Хиден Клана Яманака
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+#YAMANAKA CLAN
+fullhozuki:
+  path: hozuki
+  description: Техники Клана Хозуки
+  name: Хиден Клана Хозуки
+  spells:
+  - hozukishot
+  - hozukimorph
+  - hozukistrength
+  - hozukibubbles
+  inherit: starthozuki
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+starthozuki:
+  path: hozuki
+  icon: diamond_pickaxe:393
+  description: Техники Клана Хозуки
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Хиден Клана Хозуки
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable

@@ -1,0 +1,481 @@
+
+
+#FIRE RELEASE fireee
+fire:
+  category: basic
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Огня:_Техника_Пламени_Феникса_Мудреца
+fenixfire:
+  name: '[lang]magic.spells.basic.fire1.name[/lang]'
+  description: '[lang]magic.spells.basic.fire1.description[/lang]'
+  alias: fire1
+  inherit: fire
+  icon: diamond_pickaxe:3
+  icon_disabled: diamond_axe:3
+  worth: 10
+  actions:
+    cast:
+    - class: Projectile
+      actions:
+      - class: Damage
+      - class: Ignite
+      - class: Disc
+        actions:
+        - class: Cover
+          actions:
+          - class: Burn
+          - class: Damage
+  effects:
+    cast:
+    - sound: entity_wither_shoot
+      sound_pitch: 0.9
+    projectile:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Sphere
+        iterations: 10
+        period: 2
+        particles: 5
+        particle: redstone
+        color: 'ff5500'
+        disappear_with_origin_entity: true
+    tick:
+    - class: EffectSingle
+      location: target
+      particle: lava
+      particle_count: 10
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: flame
+      speed: 1
+      particles: 20
+      particle_count: 40
+      iterations: 5
+  parameters:
+    target: none
+    projectile: SmallFireball
+    duration: 5000
+    radius: 1
+    count: 10
+    undo: 15000
+    cooldown: 5000
+    start: 1
+    break_blocks: false
+    damage: 4
+  costs:
+    mana: 40
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Огня:_Огненный_Вихрь
+firewind:
+  name: '[lang]magic.spells.basic.fire2.name[/lang]'
+  description: '[lang]magic.spells.basic.fire2.description[/lang]'
+  alias: fire2
+  inherit: fire
+  icon: diamond_pickaxe:5
+  icon_disabled: diamond_axe:5
+  worth: 30
+  actions:
+    cast:
+    - class: VelocityAction
+      y_offset: 1
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: VelocityAction
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: dragonbreathe
+          particle_base1: dragonbreathe
+          particle_base2: dragonbreathe
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: dragonbreathe
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: lava
+          particle_base1: lava
+          particle_base2: lava
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: lava
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    range: 8
+    fov: 1
+    target_count: 2
+    item_speed: 0.5
+    living_entity_speed: 1
+    repeat: 3
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 20
+
+
+#Цветок феникса
+fenixflower:
+  name: Цветок Феникса
+  description: Огненная чакра, напоминающая цветок
+  name: '[lang]magic.spells.basic.fire3.name[/lang]'
+  description: '[lang]magic.spells.basic.fire3.description[/lang]'
+  alias: fire3
+  inherit: fire
+  icon: diamond_pickaxe:4
+  icon_disabled: diamond_axe:4
+  worth: 30
+  actions:
+    cast:
+    - class: Line
+      actions:
+      - class: Cover
+        actions:
+        - class: Burn
+      - class: Delay
+    - class: ConeOfEffectAction
+      actions:
+      - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.burn
+      effectlib:
+        class: DragonEffect
+        iterations: 10
+        length: 30
+        stepsPerIteration: 1
+        particles: 20
+        particle_count: 40
+        particle_offset_x: 0.3
+        particle_offset_y: 0.3
+        particle_offset_z: 0.3
+        relativeOffset: 2,0,0
+    iterate:
+    - location: target
+      particle: lava
+      particle_count: 16
+      particle_offset_x: 0.5
+      particle_offset_z: 0.5
+      particle_offset_y: 0.2
+  parameters:
+    target_type: Entity
+    transparent: transparent_to_construction
+    range: 4
+    fov: 1
+    target_count: 2
+    item_speed: 0.5
+    living_entity_speed: 1
+    repeat: 3
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+    target: none
+    target_type: Damageable
+    cooldown_mage: 10000
+    target_breakables: 5
+    bypass_backfire: true
+    player_damage: 8
+    entity_damage: 10
+    hitbox_size: 4
+    interval: 250
+    warmup: 3000
+    destructible: burnable
+    undo: 15000
+    size: 10
+  costs:
+    mana: 30
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Огня:_Пламенный_Выстрел
+fireblast:
+  name: '[lang]magic.spells.basic.fire4.name[/lang]'
+  description: '[lang]magic.spells.basic.fire4.description[/lang]'
+  alias: fire4
+  inherit: fire
+  icon: diamond_pickaxe:1
+  icon_disabled: diamond_axe:1
+  worth: 40
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+      - class: Ignite
+      - class: Disc
+        actions:
+        - class: Cover
+          actions:
+          - class: Burn
+  effects:
+    cast:
+    - sound: magic.burn
+      sound_volume: 1
+      sound_pitch: -0.25
+    tick:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: ff5500
+        particle_count: 10
+        particles: 10
+        particle_size: 5
+        radius: 0.2
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: lava
+        color: ff5500
+        particle_count: 4
+        particles: 1
+        iterations: 1
+        radius: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: explosion_large
+  parameters:
+    velocity: 200
+    allow_max_range: false
+    range: 32
+    speed: 0.9
+    living_entity_speed: 0.7
+    direction: 0,0.8,0
+    falling: false
+    radius: 1
+    durability_max_distance: 3
+    damage_max_distance: 2
+    undo: 15000
+    cooldown: 5000
+    destructible: solid
+    destructible_override: true
+    destructible_durability: 50
+    break_durability: 10
+    select_self: false
+    undo_speed: 0.5
+    damage: 6
+  costs:
+    mana: 40
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Огня:_Техника_Великого_Огненного_Шара
+greatfireball:
+  name: '[lang]magic.spells.basic.fire5.name[/lang]'
+  description: '[lang]magic.spells.basic.fire5.description[/lang]'
+  alias: fire5
+  inherit: fire
+  icon: diamond_pickaxe:2
+  icon_disabled: diamond_axe:2
+  worth: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - sound: magic.burn
+      sound_volume: 1
+      sound_pitch: -0.25
+    projectile:
+    - location: origin
+      effectlib:
+        class: Sphere
+        iterations: 10
+        period: 2
+        particles: 5
+        particle: lava
+        disappear_with_origin_entity: true
+    tick:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: ff5500
+        particle_count: 30
+        particles: 30
+        particle_size: 5
+        radius: 3
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: lava
+        color: ff5500
+        particle_count: 4
+        particles: 1
+        iterations: 1
+        radius: 0.9
+        radius_increase: 0.2
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: flame
+        color: ff5500
+        particle_count: 4
+        particles: 1
+        iterations: 1
+        radius: 3
+        speed: 0.5
+        radius_increase: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: explosion_huge
+  parameters:
+    projectile: LargeFireball
+    range: 10
+    fire: true
+    radius: 4
+    undo: 8000
+    cooldown: 1000
+    start: 1
+    break_blocks: true
+    undo_speed: 1
+    target: none
+    target_type: Damageable
+    cooldown_mage: 1000
+    target_breakables: 5
+    bypass_backfire: true
+    player_damage: 10
+    entity_damage: 15
+    hitbox_size: 1
+    velocity: 20
+    interval: 250
+    warmup: 3000
+    break_durability: 1000
+    destructible_durability: 5000
+  costs:
+    mana: 100
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Огня:_Великое_Огненное_Уничтожение
+fireannihilation:
+  name: Великое Огненное Уничтожение
+  description: Поток пламени, покрывающий огромную территорию
+  name: '[lang]magic.spells.basic.fire6.name[/lang]'
+  description: '[lang]magic.spells.basic.fire6.description[/lang]'
+  alias: fire6
+  inherit: fire
+  icon: diamond_pickaxe:6
+  icon_disabled: diamond_axe:6
+  worth: 60
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Disc
+        actions:
+        - class: Cover
+          actions:
+          - class: Burn
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.burn
+      sound_volume: 1
+      location: origin
+    tick:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: flame
+        radius: 1
+        particle_count: 2
+        particles: 2
+        iterations: 2
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+        duration: 3000
+    hit:
+    - location: target
+      effectlib:
+        class: Helix
+        particle: flame
+        particle_offset_y: 0.4
+        duration: 30000
+  parameters:
+    velocity: 80
+    target_type: LivingEntity
+    allow_max_range: true
+    range: 48
+    hitbox: true
+    fov: 0.03
+    radius: 30
+    vertical_range: 4
+    undo: 30000
+    cooldown: 3000
+    target_breakables: 0
+    destructible: burnable
+  costs:
+    mana: 180
+
+

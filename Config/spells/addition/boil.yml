@@ -1,0 +1,315 @@
+
+#BOIL RELEASE
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Кипения:_Техника_Умелого_Тумана
+boilfog:
+  name: Кислотный Туман
+  description: Создаёт Кислотный Туман, который наносит периодический урон 
+  icon: diamond_pickaxe:49
+  icon_disabled: diamond_axe:49
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: additional
+  worth: 30
+  earns_sp: 3
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Repeat
+        actions:
+        - class: AreaOfEffect
+          actions:
+          - class: Delay
+          - class: Damage
+  effects:
+    cast:
+    - sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Cone
+        particle: cloud
+        radius_grow: 0.05
+        particle_count: 5
+        iterations: 1
+        duration: 1000
+    hit:
+    - location: target
+      effectlib:
+        class: Cylinder
+        particles: 10
+        particle: Cloud
+        duration: 15000
+        particle_count: 40
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        angular_velocity_z: 0
+        angular_velocity_y: 0
+        angular_velocity_x: 0
+        solid: true
+        size: 5
+        height: 8
+        radius: 5
+  parameters:
+    range: 16
+    fov: 1
+    radius: 5
+    damage: 2
+    item_speed: 0.1
+    living_entity_speed: 0.5
+    repeat: 60
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+    target: none
+    size: 5
+  costs:
+    mana: 20
+
+
+#Кипящий пар
+boiledsteam:
+  name: Кипящий Пар
+  description: Создаёт пар из рта, наносящий периодический урон
+  icon: diamond_pickaxe:50
+  icon_disabled: diamond_axe:50
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: additional
+  worth: 40
+  earns_sp: 3
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: cloud
+          particle_base1: cloud
+          particle_base2: cloud
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: cloud
+          particle_base1: cloud
+          particle_base2: cloud
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    range: 8
+    fov: 1
+    item_speed: 0.1
+    living_entity_speed: 0.5
+    repeat: 20
+    damage: 2
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 20
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Кипения:_Непревзойдённая_Сила    (отталкивает всех рядом)
+boilself:
+  name: Паровой Взрыв
+  description: Режим в котором вы получаете усиления, отталкивая всех вокруг
+  icon: diamond_pickaxe:51
+  icon_disabled: diamond_axe:51
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: additional
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+      - class: Sphere
+        actions:
+        - class: VelocityAction
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      sound: entity_wither_break_block
+      sound_pitch: 0.8
+      source_location: body
+      effectlib:
+        class: Modified
+        duration: 4000
+        parameters:
+          size: (1 - (t / i)) * 1.5 + 0.5
+        effect:
+          class: AnimatedBall
+          particle: villager_happy
+          color: 663300
+          particle_count: 1
+          particle_offset_x: 0.05
+          particle_offset_y: -1
+          particle_offset_z: 0.05
+          particle_size: 2
+          y_factor: 0
+  parameters:
+    target: self
+    effect_speed: 5
+    effect_jump: 5
+    effect_damage_resistance: 0
+    effect_increase_damage: 3
+    cooldown_reduction: 0.2
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+    living_entity_speed: 1
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+
+#https://naruto.fandom.com/ru/wiki/Мощная_Нога_Извержения
+boilpunch:
+  name: Удар Извержения
+  description: Удар, усиленный кипящим паром
+  icon: diamond_pickaxe:52
+  icon_disabled: diamond_axe:52
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: additional
+  worth: 20
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Damage
+    - class: VelocityAction
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 5
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: target
+      requires_entity_target: true
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: cloud
+        particles: 20
+        particle_count: 20
+        iterations: 8
+    - location: source
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: cloud
+        particles: 20
+        particle_count: 20
+        iterations: 1
+        radius: 1
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    range: 5
+    living_entity_speed: 100
+    hitbox: false
+    fov: 0.4
+    damage: 15
+    target_breakables: 1
+    cooldown: 1000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0

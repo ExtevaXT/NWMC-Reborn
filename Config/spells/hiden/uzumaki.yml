@@ -1,0 +1,379 @@
+
+#UZUMAKI print
+
+uzumakichainsdamage:
+  name: Атакующие Цепи
+  description: Запускает несколько цепей, которые пронзают жертву
+  icon: diamond_pickaxe:88
+  icon_disabled: diamond_axe:88
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: hiden
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Delay
+    - class: Repeat
+      actions:
+      - class: Retarget
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            actions:
+            - class: Damage
+            - class: Sphere
+              actions:
+              - class: BreakBlock
+        ignore_result: true
+      - class: Delay
+        delay: 10
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: redstone
+        color: fffacd
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 50
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: crit_magic
+        speed: 0.5
+        iterations: 2
+        particle_count: 4
+        particles: 2
+        radius: 0.5
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    allow_max_range: true
+    velocity: 150
+    range: 64
+    hitbox: true
+    target_type: Damageable
+    player_damage: 6
+    entity_damage: 6
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 100
+    break_durability: 40
+    undo: 10000
+    repeat: 10
+    spread: 1
+    radius: 1
+  costs:
+    mana: 60
+
+
+uzumakichainscapture:
+  name: Захватывающие Цепи
+  description: Запускает несколько цепей, которые пронзают сковывают жертву
+  icon: diamond_pickaxe:87
+  icon_disabled: diamond_axe:87
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: hiden
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: Damage
+          - class: PotionEffect
+          - class: BreakBlock
+            ignore_result: true
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: redstone
+        color: fffacd
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      location: target
+      effectlib:
+        class: Modified
+        duration: $duration
+        parameters:
+          size: sin(t/20) + 0.2
+        effect:
+          class: AnimatedBall
+          iterations: 70
+          particle: redstone
+          color: fffacd
+          particles: 60
+          y_offset: -0.5
+          y_factor: 1
+          duration: 15000
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: crit_magic
+        speed: 0.5
+        iterations: 2
+        particle_count: 4
+        particles: 2
+        radius: 0.5
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    allow_max_range: true
+    duration: 15000
+    effect_slow: 100
+    effect_jump: -10
+    effect_weak: 100
+    effect_slow_digging: 100
+    gravity: 0.01
+    velocity: 35
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 4
+    entity_damage: 4
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 10
+    spread: 0.4
+    radius: 0
+  costs:
+    mana: 60
+
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Летящего_Бога_Грома
+uzumakiblink:
+  name: Техника Летящего Бога Грома
+  description: Вы прикрепляете к кунаю вашу метку и кидаете его, после того как кунай достигнет цели вы телепортируетесь к нему
+  icon: diamond_pickaxe:85
+  icon_disabled: diamond_axe:85
+  icon_url: http://textures.minecraft.net/texture/ea96e1b8c4d458f8f5443fa66eb376981f7b2ec385386db67faf3f1589094
+  category: hiden
+  worth: 1000
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Projectile
+      actions:
+      - class: Teleport
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_arrow_shoot
+      sound_pitch: 0.2
+      sound_volume: 0.3
+      location: origin
+    projectile:
+    - location: origin
+      effectlib:
+        class: Sphere
+        iterations: 10
+        period: 2
+        particles: 5
+        radius: 0.1
+        particle_count: 20
+        particle_offset_x: 0.2
+        particle_offset_y: 0.2
+        particle_offset_z: 0.2
+        particle: redstone
+        color: C0C0C0
+        disappear_with_origin_entity: true
+    - location: origin
+      effectlib:
+        class: Sphere
+        iterations: 10
+        period: 2
+        particles: 10
+        particle: explosion_normal
+        color: FF00FF
+        disappear_with_origin_entity: true
+    teleport:
+    - class: EffectSingle
+      sound: magic.teleport
+      location: target
+      source_location: feet
+      particle: cloud
+      speed: 1
+      particle_count: 10
+      particles: 10
+      iterations: 5
+  parameters:
+    target: none
+    projectile: TippedArrow
+    speed: 6
+    spread: 6
+    fire: false
+    tick_increase: 1180
+    entity_undo: false
+    undo: 5000
+    range: 100
+    allow_passthrough: false
+    damage: 5
+  costs:
+    mana: 50
+    tripwire_hook|*: 1
+    paper|*: 1
+    ink_sack|*: 1
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Летящий_Бог_Грома:_Направляющий_Гром
+reflectprint:
+  name: Печать Отражения
+  description: Создаёт печать, которая отражает любые направленные техники
+  icon: diamond_pickaxe:84
+  icon_disabled: diamond_axe:84
+  icon_url: http://textures.minecraft.net/texture/38f77caf858c927df996e277cf6e9fbb9b3cd71aa34e4412da4d6312cc8dfc
+  category: hiden
+  worth: 100
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 25
+  actions:
+    cast:
+    - class: Disc
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shield_boom
+      location: origin
+    - location: target
+      target_location: block
+      effectlib:
+        class: Text
+        text: '|█|'
+        particle: redstone
+        color: 000000
+        size: 0.5
+        particle_count: 100
+        iterations: 10
+        particles: 30
+        duration: 800
+        offset: 0.5,0.5,0.5
+        auto_orient: true
+        orient: true
+        update_directions: true
+  parameters:
+    allow_max_range: true
+    range: 3
+    radius: 3
+    axis: z
+    brush: barrier
+    orient: true
+    orient_snap: 45
+    transparent: transparent_to_construction
+    destructible: destructible_replace
+    check_destructible: true
+    brushcolor: true
+    undo: 800
+    cooldown: 3000
+    breakable: 1
+    reflect_chance: 0.25
+    bypass_confusion: true
+    bypass_backfire: true
+  costs:
+    mana: 40

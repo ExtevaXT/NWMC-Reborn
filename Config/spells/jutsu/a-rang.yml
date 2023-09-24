@@ -1,0 +1,403 @@
+
+#A RANG JUTSU
+
+
+
+#https://naruto.fandom.com/ru/wiki/Чидори
+chidori:
+  name: Чидори
+  description: Сгусток чакры молнии огромной мощности
+  icon: diamond_pickaxe:167
+  icon_disabled: diamond_axe:167
+  icon_url: http://textures.minecraft.net/texture/71a235c48123b487e864fa21016e223ad4070c6d977b0a519f7dd743d39e47c
+  example_thumbnail: https://thumbs.gfycat.com/IllCloudyAfricancivet-size_restricted.gif
+  example_link: https://thumbs.gfycat.com/IllCloudyAfricancivet
+  category: additional
+  tags: noduel
+  worth: 5000
+  earns_sp: 0
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Delay
+    - class: PlayEffects
+      effect: launch
+      ignore_result: true
+    - class: CustomProjectile
+      actions:
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+      - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: naruto.chidori
+      sound_volume: 5
+      location: origin
+      effectlib:
+        class: StarEffect
+        radius: 0.2
+        particle_size: 0.1
+        iterations: 16
+        particle: redstone
+        color: '7e89ef'
+        spikeHeight: 0.15
+        innerRadius: 0.1
+    launch:
+    - class: EffectSingle
+      custom_sound: magic.zap_big
+      sound_volume: 1
+      location: origin
+    tick:
+    - location: target
+      particle: redstone
+      color: 7e89ef
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    projectile:
+    - class: EffectSingle
+      effectlib:
+        class: StarEffect
+        iterations: 10
+        particle: redstone
+        color: '7e89ef'
+        spikeHeight: 0.2
+        innerRadius: 0.1
+    hit_block:
+    - location: target
+      sound: magic.shimmer
+      effectlib:
+        class: Sphere
+        iterations: 5
+        particles: 10
+        particle_count: 15
+        particle: smoke_large
+        speed: 1
+        radius: 2
+        auto_orient: true
+        orient: true
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      target_offset: 0,3,0
+      orient: true
+      effectlib:
+        class: Sphere
+        iterations: 5
+        particles: 5
+        particle_count: 10
+        particle: smoke_normal
+        speed: 0.7
+        offset: 0,-1,0
+        radius: 1
+        auto_orient: true
+        orient: true
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 4000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    hit:
+    - location: source
+      material: redstone_block
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: 7e89ef
+        radius: 0.2
+  parameters:
+    radius: 1
+    z_size: 3
+    orient: true
+    target: none
+    range: 3
+    target_type: Damageable
+    cooldown: 1000
+    target_breakables: 5
+    bypass_backfire: true
+    player_damage: 18
+    entity_damage: 18
+    hitbox_size: 1
+    velocity: 5
+    interval: 250
+    warmup: 3000
+    break_durability: 500
+    destructible_durability: 2500
+    durability_max_distance: 5
+    damage_max_distance: 4
+    undo: 10000
+    destructible: solid
+    destructible_override: true
+    falling: false
+  costs:
+    mana: 50
+
+#https://naruto.fandom.com/ru/wiki/Расенган
+rasengan:
+  description: Техника, которая представляет собой вращающийся шар из чакры
+  name: Расенган
+  icon: diamond_pickaxe:168
+  icon_disabled: diamond_axe:168
+  icon_url: http://textures.minecraft.net/texture/71a235c48123b487e864fa21016e223ad4070c6d977b0a519f7dd743d39e47c
+  example_thumbnail: https://thumbs.gfycat.com/IllCloudyAfricancivet-size_restricted.gif
+  example_link: https://thumbs.gfycat.com/IllCloudyAfricancivet
+  category: additional
+  tags: noduel
+  worth: 5000
+  earns_sp: 0
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Delay
+    - class: PlayEffects
+      effect: launch
+      ignore_result: true
+    - class: CustomProjectile
+      actions:
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: naruto.rasengan
+      sound_volume: 5
+      location: origin
+      effectlib:
+        class: AtomEffect
+        particle_nucleus: redstone
+        colorNucleus: 00b6ff
+        particle_orbital: redstone
+        colorOrbital: 99FFFF
+        iterations: 32
+        radius: 2
+        radius_nucleus: 0.1
+    launch:
+    - class: EffectSingle
+      custom_sound: magic.zap_big
+      sound_volume: 1
+      location: origin
+    tick:
+    - location: target
+      particle: redstone
+      color: 00b6ff
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    projectile:
+    - class: EffectSingle
+      effectlib:
+        class: SphereEffect
+        particle: redstone
+        color: 00b6ff
+        iterations: 10
+        radius: 0.3
+    hit_block:
+    - location: target
+      sound: magic.shimmer
+      effectlib:
+        class: Sphere
+        iterations: 5
+        particles: 5
+        particle_count: 10
+        particle: cloud
+        speed: 1
+        radius: 2
+        auto_orient: true
+        orient: true
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      target_offset: 0,3,0
+      orient: true
+      effectlib:
+        class: Sphere
+        iterations: 5
+        particles: 5
+        particle_count: 10
+        particle: smoke_normal
+        speed: 0.7
+        radius: 1
+        auto_orient: true
+        orient: true
+  parameters:
+    radius: 3
+    target: none
+    range: 3
+    target_type: Damageable
+    cooldown: 1000
+    target_breakables: 5
+    bypass_backfire: true
+    player_damage: 15
+    entity_damage: 15
+    hitbox_size: 1
+    velocity: 5
+    interval: 250
+    warmup: 3000
+    break_durability: 500
+    destructible_durability: 2500
+    durability_max_distance: 5
+    damage_max_distance: 4
+    undo: 10000
+    destructible: solid
+    destructible_override: true
+    falling: false
+  costs:
+    mana: 50
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Клинок_Молнии
+raikiri:
+  name: Райкири
+  description: Улучшенная версия Чидори
+  icon: diamond_pickaxe:169
+  icon_disabled: diamond_axe:169
+  icon_url: http://textures.minecraft.net/texture/71a235c48123b487e864fa21016e223ad4070c6d977b0a519f7dd743d39e47c
+  example_thumbnail: https://thumbs.gfycat.com/IllCloudyAfricancivet-size_restricted.gif
+  example_link: https://thumbs.gfycat.com/IllCloudyAfricancivet
+  category: additional
+  tags: noduel
+  worth: 5000
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Delay
+    - class: PlayEffects
+      effect: launch
+      ignore_result: true
+    - class: CustomProjectile
+      actions:
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+      - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: naruto.chidori
+      location: origin
+      effectlib:
+        class: StarEffect
+        radius: 0.2
+        particle_size: 0.1
+        iterations: 4
+        duration: 3000
+        particle: redstone
+        color: '99FFFF'
+        spikeHeight: 0.15
+        innerRadius: 0.1
+    launch:
+    - class: EffectSingle
+      custom_sound: magic.zap_big
+      sound_volume: 1
+      location: origin
+    tick:
+    - location: target
+      particle: redstone
+      color: 99FFFF
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    projectile:
+    - class: EffectSingle
+      effectlib:
+        class: StarEffect
+        iterations: 10
+        particle: redstone
+        color: '99FFFF'
+        spikeHeight: 0.2
+        innerRadius: 0.1
+    hit_block:
+    - location: target
+      sound: magic.shimmer
+      effectlib:
+        class: Sphere
+        iterations: 5
+        particles: 5
+        particle_count: 10
+        particle: smoke_large
+        speed: 1
+        radius: 2
+        auto_orient: true
+        orient: true
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      target_offset: 0,3,0
+      orient: true
+      effectlib:
+        class: Sphere
+        iterations: 5
+        particles: 5
+        particle_count: 10
+        particle: smoke_normal
+        speed: 0.7
+        radius: 1
+        auto_orient: true
+        orient: true
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 6000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    hit:
+    - location: source
+      material: redstone_block
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: 99FFFF
+        radius: 0.2
+  parameters:
+    radius: 2
+    z_size: 5
+    orient: true
+    target: none
+    range: 4
+    target_type: Damageable
+    cooldown: 1000
+    target_breakables: 5
+    bypass_backfire: true
+    player_damage: 18
+    entity_damage: 18
+    hitbox_size: 1
+    velocity: 10
+    interval: 250
+    warmup: 3000
+    break_durability: 500
+    destructible_durability: 2500
+    durability_max_distance: 5
+    damage_max_distance: 4
+    undo: 10000
+    destructible: solid
+    destructible_override: true
+    falling: false
+  costs:
+    mana: 50

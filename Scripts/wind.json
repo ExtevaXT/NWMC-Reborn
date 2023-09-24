@@ -1,0 +1,82 @@
+[
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind1.name",
+        "languages": {
+            "en_GB": "Rush",
+            "ru_RU": "Порыв"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind1.description",
+        "languages": {
+            "en_GB": "A flow of air chakra that repels everything in its path",
+            "ru_RU": "Поток воздушной чакры, отталкивающий всё на своём пути"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind2.name",
+        "languages": {
+            "en_GB": "Wind Mode",
+            "ru_RU": "Режим Ветра"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind2.description",
+        "languages": {
+            "en_GB": "The technique increases reaction speed and improves damage resistance",
+            "ru_RU": "Техника увеличивает скорость реакции и улучшает сопротивление урону"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind3.name",
+        "languages": {
+            "en_GB": "Vacuum Wave Series",
+            "ru_RU": "Серия Вакуумных Волн"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind3.description",
+        "languages": {
+            "en_GB": "A technique that creates several successive waves of air",
+            "ru_RU": "Техника, которая создаёт несколько последовательных волн воздуха"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind4.name",
+        "languages": {
+            "en_GB": "Terrifying Pressure",
+            "ru_RU": "Ужасающее Давление"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind4.description",
+        "languages": {
+            "en_GB": "Compressed air chakra flow forming a large explosion",
+            "ru_RU": "Сжатый поток воздушной чакры, образующий большой взрыв"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind5.name",
+        "languages": {
+            "en_GB": "Rasenshuriken",
+            "ru_RU": "Расенсюрикен"
+        }
+    },
+    {
+        "type": "text",
+        "key": "magic.spells.basic.wind5.description",
+        "languages": {
+            "en_GB": "An incredibly powerful technique, it is a shuriken-like version of the Wind Release Rasengan technique.",
+            "ru_RU": "Невероятно мощная техника, является сюрикеноподобным вариантом техники Стихия Ветра Расенган"
+        }
+    }
+]

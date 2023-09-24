@@ -1,0 +1,308 @@
+
+
+#IBURI CLAN 
+
+
+
+smokegun:
+  name: Дымовой Пистолет
+  description: Выстреливает дымовым снарядом
+  icon: diamond_pickaxe:125
+  icon_disabled: diamond_axe:125
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/7134aed98232d9946f9dbd738a37e68f36a9a773a863dde206bb9115b993d78
+  category: hiden
+  worth: 400
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Delay
+    - class: Repeat
+      actions:
+      - class: Retarget
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            actions:
+            - class: Damage
+            - class: Velocity
+            - class: Sphere
+              actions:
+              - class: BreakBlock
+      - class: PlayEffects
+        effect: shoot
+        ignore_result: true
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: magic.electrify
+      sound_pitch: 0.1
+      source_location: body
+      origin_offset: -1,0.5,0.5
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        duration: $warmup
+        particles: 10
+        radius: 0.5
+        solid: true
+    shoot:
+    - class: EffectSingle
+      sound: entity_arrow_shoot
+      source_location: body
+      sound_pitch: 0.3
+      particle: redstone
+      particle_count: 2
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      relative_offset: 1,0,0
+    tick:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        particle_count: 4
+        radius: 0.5
+        particles: 4
+        iterations: 4
+        particle_offset_x: 0.01
+        particle_offset_y: 0.01
+        particle_offset_z: 0.01
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: flame
+      particle_count: 30
+      paricles: 30
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+      sound: magic.zap
+      sound_volume: 0.3
+      particle_data: 0.1
+  parameters:
+    target: other
+    target_type: LivingEntity
+    source_location: body
+    range: 32
+    velocity: 50
+    spread: 0.3
+    cooldown: 2000
+    speed: 0.2
+    damage: 10
+    repeat: 1
+    push: 1
+    warmup: 3000
+    destructible: solid
+    destructible_override: true
+    destructible_durability: 500
+    break_durability: 100
+    radius: 2
+    undo: 10000
+  costs:
+    mana: 100
+
+
+
+smokeform:
+  name: Форма Дыма
+  description: Режим в котором вы превращаетесь в дым
+  icon: diamond_pickaxe:122
+  icon_disabled: diamond_axe:122
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      effectlib:
+        class: CylinderEffect
+        particle: smoke_large
+        color: FFFFFF
+        iterations: 1
+        radius: 2
+        height: 3
+        enable_rotation: false
+        particles: 10
+        particle_count: 20
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0,-0.1,0
+        duration: 1200000
+  parameters:
+    target: self
+    effect_invisibility: 1
+    effect_damage_resistance: 0
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+instantsmokeform:
+  name: Моментальная Форма Дыма
+  description: Режим в котором вы становитесь моментальным дымом с огромной скоростью, постепенно испаряясь
+  icon: diamond_pickaxe:123
+  icon_disabled: diamond_axe:123
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      effectlib:
+        class: CylinderEffect
+        particle: smoke_normal
+        color: FFFFFF
+        iterations: 4
+        radius: 0.5
+        height: 2
+        enable_rotation: false
+        particles: 20
+        particle_count: 20
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0,-0.1,0
+        duration: 1200000
+  parameters:
+    target: self
+    effect_invisibility: 30
+    effect_speed: 10
+    effect_jump: 10
+    effect_slow_digging: 100
+    effect_weakness: 100
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+    health: 1
+
+
+
+smokefist:
+  name: Удар Дыма
+  description: Удар, усиленный дымом
+  icon: diamond_pickaxe:124
+  icon_disabled: diamond_axe:124
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: hiden
+  worth: 100
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Damage
+    - class: VelocityAction
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 5
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: target
+      requires_entity_target: true
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: smoke_normal
+        particles: 20
+        particle_count: 20
+        iterations: 8
+    - location: source
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: smoke_normal
+        particles: 10
+        particle_count: 10
+        iterations: 1
+        radius: 0.2
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    range: 5
+    living_entity_speed: 0.5
+    hitbox: false
+    fov: 0.4
+    damage: 5
+    target_breakables: 1
+    cooldown: 1000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 10
+

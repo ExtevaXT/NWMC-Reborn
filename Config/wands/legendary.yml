@@ -1,0 +1,121 @@
+
+hiramekarei:
+  name: '&3&lХирамекарей'
+  description: '&fМеч способный хранить и выпускать чакру'
+  inherit: base_legsw
+  icon: diamond_sword:6
+  hide_flags: 62
+  alternate_spell: chakrasmash
+  right_click: alt_cast
+  potion_effects: slow_digging:2
+  mana_max: 500
+  mana: 500
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 10
+    GENERIC_ATTACK_SPEED: -0.5
+  tags:
+  - buffable
+  - sharpenable
+
+kubikiribocho:
+  name: '§8§lКубикирибочо'
+  description: '&fМеч способный восстанавливаться от крови жертвы'
+  inherit: base_legsw
+  icon: diamond_sword:7
+  hide_flags: 62
+  alternate_spell: bigsmashattack
+  right_click: alt_cast
+  potion_effects: slow_digging:2
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 12
+  tags:
+  - buffable
+  - sharpenable
+
+samehada:
+  name: '§b§lСамехада'
+  description: '&fЖивой меч, поглащающий чакру жертвы'
+  inherit: base_legsw
+  icon: diamond_sword:11
+  hide_flags: 62
+  potion_effects: slow_digging:1
+  alternate_spell: chakrastealattack
+  alternate_spell2: tearingattack
+  right_click: alt_cast
+  left_click: alt_cast2
+  protection:
+    physical: 0.2
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 8
+    GENERIC_ATTACK_SPEED: -0.5
+  tags:
+  - buffable
+  - sharpenable
+
+kabutowari:
+  name: '§6§lКабутовари'
+  description: '&fМеч состоящий из одностороннего топора и молота'
+  inherit: base_legsw
+  icon: diamond_sword:9
+  hide_flags: 62
+  alternate_spell: smashpunch
+  potion_effects: slow_digging:1
+  right_click: alt_cast
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 10
+  tags:
+  - buffable
+  - sharpenable
+
+kiba:
+  name: '§9§lКиба'
+  description: '&fМечи пропитанные Чакрой Молнии'
+  inherit: base_legsw
+  icon: diamond_sword:8
+  hide_flags: 62
+  alternate_spell: lightningsmite
+  alternate_spell2: kibaattack
+  right_click: alt_cast
+  left_click: alt_cast2
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6
+    GENERIC_ATTACK_SPEED: 1
+  tags:
+  - buffable
+  - sharpenable
+
+nuibari:
+  name: '§f§lНуибари'
+  description: '&fМеч в форме большой иглы, с длинным и тонким мотком проволоки'
+  inherit: base_legsw
+  icon: diamond_sword:10
+  hide_flags: 62
+  alternate_spell: needlethrow
+  alternate_spell2: nuibariattack
+  right_click: alt_cast
+  left_click: alt_cast2
+  protection:
+    physical: 0.1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 5
+    GENERIC_ATTACK_SPEED: 2
+  tags:
+  - buffable
+  - sharpenable
+
+shibuki:
+  name: '§7§lШибуки'
+  description: '&fМеч покрытый взрывными печатями'
+  inherit: base_legsw
+  icon: diamond_sword:12
+  potion_effects: slow_digging:1
+  hide_flags: 62
+  alternate_spell: explosionsword
+  right_click: alt_cast
+  protection:
+    physical: 0.1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 8
+  tags:
+  - buffable
+  - sharpenable

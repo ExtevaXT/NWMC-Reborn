@@ -1,0 +1,262 @@
+
+
+#SHARINGAN
+
+sharingancrows:
+  name: Демоническая Иллюзия Ворона Миража
+  description: В ходе использования, гендзюцу проецирует поток воронов, которые оставляют противника во власти пользователя.
+  icon: diamond_pickaxe:105
+  icon_disabled: diamond_axe:105
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: dodjutsu
+  pvp_restricted: true
+  worth: 20
+  actions:
+    cast:
+    - class: AreaOfEffect
+      actions:
+      - class: PotionEffect
+      - class: Damage
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+      - class: Delay
+        delay: 10000
+      - class: RemoveEntity
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 1000
+        particle_count: 40
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: ConeEffect
+        iterations: 30
+        particle: redstone
+        color: 000000
+        paticle_count: 30
+        particles: 30
+        radiusGrow: 0.05
+  parameters:
+    target: other
+    effect_blindness: 2
+    effect_slow: 1
+    effect_confusion: 2
+    damage: 4
+    duration: 10000
+    type: sharingan_crow
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    undo: 30000
+    size: 3
+    lifetime: 10000
+    multiply: 15
+    spread: 0.3
+  costs:
+    mana: 75
+
+
+sharinganselfcrows:
+  name: Воронье Исчезновение
+  description: В ходе использования, гендзюцу проецирует поток воронов, которые скрывают вас.
+  icon: diamond_pickaxe:106
+  icon_disabled: diamond_axe:106
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: dodjutsu
+  pvp_restricted: true
+  worth: 40
+  actions:
+    cast:
+    - class: PotionEffect
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+      - class: Delay
+        delay: 5000
+    - class: Command
+      command: mmob clear sharingan_crow 0 10
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 1000
+        particle_count: 40
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - class: EffectSingle
+      location: origin
+      particle: smoke_normal
+      speed: 3
+      particle_count: 80
+      iterations: 20
+      particles: 20
+  parameters:
+    target: self
+    effect_invisibility: 2
+    effect_night_vision: 2
+    effect_speed: 3
+    damage: 4
+    duration: 5000
+    type: sharingan_crow
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    undo: 30000
+    size: 3
+    lifetime: 10000
+    multiply: 15
+    spread: 0.3
+  costs:
+    mana: 75
+
+
+#https://naruto.fandom.com/ru/wiki/Демоническая_Иллюзия:_Техника_Пленения_Кольями
+sharinganspikes:
+  name: Демоническая Иллюзия Техника Пленения
+  description: Заставляет жертву мучаться чувством, будто множество колов пронзило ее конечности, что забирает у нее возможность двигаться
+  icon: diamond_pickaxe:107
+  icon_disabled: diamond_axe:107
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: dodjutsu
+  worth: 30
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: PotionEffect
+      - class: Repeat
+        actions:
+        - class: Damage
+        - class: Delay
+          delay: 250
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 1000
+        particle_count: 40
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: ConeEffect
+        iterations: 15
+        particle: redstone
+        color: 000000
+        paticle_count: 30
+        particles: 30
+        radiusGrow: 0.01
+  parameters:
+    target: other
+    effect_blindness: 200
+    effect_slow: 200
+    effect_confusion: 200
+    effect_weak: 200
+    effect_slow_digging: 200
+    damage: 1
+    duration: 8000
+    type: sharingan_crow
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    undo: 30000
+    repeat: 29
+    spread: 0.3
+  costs:
+    mana: 75
+
+#https://naruto.fandom.com/ru/wiki/Принуждение_Шарингана
+sharingancoercion:
+  name: Принуждение Шарингана
+  description: Гендзюцу шарингана, которое погружает жертву в кошмарную иллюзию
+  icon: diamond_pickaxe:108
+  icon_disabled: diamond_axe:108
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  category: dodjutsu
+  worth: 10
+  earns_sp: 0
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+          ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+    tick:
+    - effectlib:
+        class: Sphere
+        speed: 1
+        particle: spell_mob
+        color: 280000
+        iterations: 2
+        particle_count: 5
+        particles: 1
+        particle_offset_y: 0.2
+        particle_offset_x: 0.2
+        particle_offset_z: 0.2
+        particle_size: 1
+      location: target
+    hit:
+    - location: target
+      sound: entity_wither_break_block
+      sound_pitch: 0.8
+      source_location: body
+      effectlib:
+        class: Sphere
+        speed: 1
+        particle: spell_mob
+        iterations: 5
+        color: 280000
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    allow_max_range: true
+    velocity: 200
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 0
+    entity_damage: 0
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    damage: 0
+    radius: 2
+    potion_effects:
+      slow: 250
+      jump: 250
+      weakness: 100
+      duration: 10000
+    duration: 10000
+  costs:
+    mana: 50
+

@@ -1,0 +1,61 @@
+# Nine Tails
+# Polar Rose Curves
+ - location: origin
+       source_location: body
+       color_override: color
+       effectlib:
+         class: EquationEffect
+         x_equation: 0.5 * sin(9 * t) * sin(t)
+         y_equation: 2 * cos(9 * t) * cos(t)
+         z_equation: 2 * cos(9 * t) * sin(t)
+         particles: 50
+         duration: 3600000
+         relative_offset: -0.5,0,0
+         disappear_with_origin_entity: true
+         color: ff4f00 
+         particle: redstone
+
+# Eyes
+source_location: head
+effectlib:
+  class: Circle
+  relative_offset: 0.15,0,0.125
+  radius: 0.01
+source_location: head
+effectlib:
+  class: Circle
+  relative_offset: 0.15,0,-0.125
+  radius: 0.01
+
+# Lissajous Curves (x-?)
+x_equation: 1 * sin(3 * t)
+y_equation: 1 * sin(3 * t + 3.14 / 2)
+z_equation: 1 * sin(2 * t)
+
+# <=)(=>
+y_equation: 1 * sin(t) * (cos(t)^3)
+z_equation: 1 * sin(t) + (sin(t)^3)
+
+# <||>		x - height	y - width	z - tightening (1 - ∞)
+y_equation: 1x * sin(t) * (cos(t)^3z)
+z_equation: 3y * (sin(t)^3z)
+
+# Wings
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: EquationEffect
+        x_equation: 0
+        y_equation: 1 * sin(t) * (cos(t)^3)
+        z_equation: 3 * (sin(t)^3)
+        particles: 50
+        duration: 3600000
+        relative_offset: -0.25,0.25,0
+        disappear_with_origin_entity: true
+        color: FFFF00
+		
+# Slash?
+x: sin(t/20)
+y: -t/20
+z: cos(t/20)

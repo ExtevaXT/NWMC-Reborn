@@ -1,0 +1,909 @@
+
+#SLIME SUMMONS
+
+
+summoningslimeheal:
+  name: Призыв Маленьких Слизней
+  description: Призывает 3 маленьких слизня, которые будут лечить всех
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+        type: slimeheal
+      - class: Delay
+        delay: 60000
+      - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    multiply: 3
+    spread: 1
+  costs:
+    mana: 100
+
+
+
+summoningslimehp:
+  name: Призыв Укреплённого Слизня
+  description: Призывает Слизня укреплённого лавовой бронёй
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: SpawnEntity
+      type: slimehp
+    - class: Delay
+      delay: 60000
+    - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    spread: 1
+  costs:
+    mana: 100
+
+
+summoningslimedamage:
+  name: Призыв Кислотного Слизня
+  description: Призывает Слизня, который умеет выделять кислотную слизь
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: SpawnEntity
+      type: slimedamage
+    - class: Delay
+      delay: 60000
+    - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    spread: 1
+  costs:
+    mana: 100
+
+
+
+
+
+summoningslimehuge:
+  name: Призыв Гигантского Слизня
+  description: Призывает Гигантского Слизня который через несколько секунд разделяется на огромное количество маленьких слизней
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon1
+    - class: PotionEffect
+    - class: SpawnEntity
+      type: slimehuge
+    - class: Delay
+      delay: 2000
+    - class: RemoveEntity
+    - class: PlayEffects
+      effects: summon
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+        type: slimeheal
+      - class: Delay
+        delay: 30000
+      - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.9,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon1:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.3
+        iterations: 8
+        radius: 6
+        particles: 50
+        particle_count: 50
+    summon:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: slime
+        speed: 0.2
+        iterations: 10
+        radius: 5
+        particles: 20
+        particle_count: 10
+  parameters:
+    target: self
+    damage: 4
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    multiply: 50
+    spread: 0.3
+    effect_damage_resistance: 200
+  costs:
+    mana: 100
+
+
+
+
+#FROG SUMMONS
+
+
+summoningfrogstandart:
+  name: Призыв Жабы
+  description: Призывает обычную Жабу
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: SpawnEntity
+      type: frogstandart
+    - class: Delay
+      delay: 60000
+    - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    spread: 1
+  costs:
+    mana: 100
+
+summoningfrogcaststandart:
+  name: Призыв Липкой Жабы
+  description: Призывает Жабу, которая умеет выделять вязкую жидкость
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: SpawnEntity
+      type: frogcaststandart
+    - class: Delay
+      delay: 60000
+    - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    spread: 1
+  costs:
+    mana: 100
+
+
+
+
+summoningfrogcastbig:
+  name: Призыв Большой Липкой Жабы
+  description: Призывает большую Жабу, которая умеет выделять вязкую жидкость
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: SpawnEntity
+      type: frogcastbig
+    - class: Delay
+      delay: 60000
+    - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    spread: 1
+  costs:
+    mana: 100
+
+
+
+summoningfrogstandartmulti:
+  name: Призыв Трёх Жаб
+  description: Призывает трёх обычных Жаб
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+        type: frogstandart
+      - class: Delay
+        delay: 60000
+      - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    multiply: 3
+    spread: 1
+  costs:
+    mana: 100
+
+
+
+#SNAKE SUMMONS 
+
+
+summoningminisnakes:
+  name: Призыв Маленьких Змей
+  description: Призывает много маленьких змей
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+        type: minisnakegray
+      - class: Delay
+        delay: 60000
+      - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    multiply: 15
+    spread: 1
+  costs:
+    mana: 100
+
+summoningminisnakesup:
+  name: Призыв Маленьких Укреплённых Змей
+  description: Призывает много маленьких укреплённых змей
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: Multiply
+      actions:
+      - class: SpawnEntity
+        type: minisnakepurple
+      - class: Delay
+        delay: 60000
+      - class: RemoveEntity
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    multiply: 15
+    spread: 1
+  costs:
+    mana: 100
+
+
+
+summoningautomatasnake:
+  name: Призыв Гигантской Змеи
+  description: Призывает неконтролируемую Гигантскую Змею (Используйте на свой страх и риск!)
+  icon: diamond_pickaxe:45
+  icon_disabled: diamond_pickaxe:66
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: senjutsu
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Delay
+      delay: 1500
+    - class: PlayEffects
+      effects: summon
+    - class: Command
+      command: cast birth_automatasnake
+  worth: 200
+  effects:
+    undo_entity:
+    - location: target
+      effectlib:
+        class: Smoke
+        duration: 500
+        particle_count: 20
+        radius: 1
+        particles: 10
+        particle_offset_x: 1.5
+        particle_offset_y: 1.5
+        particle_offset_z: 1.5
+    cast:
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: 3000
+        period: 3
+        parameters:
+          radius: (t/i)*10
+        effect:
+          class: Helix
+          offset: 0,-0.7,0
+          particle: redstone
+          color: 000000
+          particle_count: 2
+          particle_offset_x: 0.2
+          particle_offset_y: 0.01
+          particle_offset_z: 0.2
+          updateLocations: false
+          particles: 20
+    - location: origin
+      class: EffectSingle
+      particle: item_crack
+      material: redstone
+      particle_count: 4
+    summon:
+    - class: EffectSingle
+      sound: naruto.
+      location: target
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    duration: 5000
+    allow_max_range: true
+    cooldown: 1000
+    set_target: true
+    range: 5
+    loot: false
+    spread: 1
+  costs:
+    mana: 100
+    level: 40

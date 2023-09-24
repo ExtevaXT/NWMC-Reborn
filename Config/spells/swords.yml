@@ -1,0 +1,878 @@
+
+#LEGENDARY SWORDS
+
+#kiba
+lightningsmite:
+  name: Клыки Молнии
+  icon: diamond_axe:40
+  icon_disabled: diamond_hoe:40
+  icon_url: http://textures.minecraft.net/texture/a31cc0ffb1e814e1c82301067ea318356befa65dc1a027afbfd498709cad58
+  category: kenjutsu
+  worth: 500
+  actions:
+    cast:
+    - class: Lightning
+      ignore_result: true
+    - class: AreaOfEffect
+      actions:
+      - class: Damage
+      - class: Ignite
+    - class: Sphere
+      ignore_result: true
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_firework_large_blast
+    - class: EffectTrail
+      particle: crit_magic
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: HelixEffect
+        particle: smoke_large
+        particle_count: 10
+        particle_offset_x: 0.2
+        particle_offset_y: 4
+        particle_offset_z: 0.2
+        iterations: 1
+        particles: 30
+        radius: 4
+        offset: 0,2,0
+  parameters:
+    target_type: Damageable
+    allow_max_range: true
+    range: 32
+    radius: 3
+    damage_max_distance: 4
+    cooldown: 10000
+    effect_only: true
+    damage: 10
+    duration: 5000
+    speed: 0.9
+    falling: true
+    brush: air
+    undo: 10000
+    oty: -2
+    undo_speed: 0.5
+  costs:
+    mana: 0
+kibaattack:
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: kenjutsu
+  worth: 0
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Damage
+      - class: Delay
+      - class: AreaOfEffect
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            velocity: 150
+            actions:
+            - class: Repeat
+              actions:
+              - class: Electrify
+              - class: Damage
+                player_damage: 0.5
+                entity_damage: 1
+              - class: Delay
+      - class: Electrify
+      - class: Repeat
+        actions:
+        - class: Damage
+        - class: Delay
+    - class: Volume
+      radius: 1
+      actions:
+      - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    projectile:
+    - class: EffectSingle
+      effectlib:
+        class: LineEffect
+        isZigZag: true
+        zigZags: 2
+        zigZagOffset: 0,0.05,0
+        length: 10
+        particles: 50
+        particle: redstone
+        color: 7e89ef
+        duration: 2000
+    - location: source
+      effectlib:
+        class: LineEffect
+        isZigZag: true
+        zigZags: 2
+        zigZagOffset: 0,0.05,0
+        length: 10
+        particles: 20
+        particle: fireworks_spark
+        particle_count: 4
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+        duration: 2000
+    tick:
+    - particle: fireworks_spark
+      particle_count: 2
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+      location: target
+    hit:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      sound_volume: 0.5
+      particle: fireworks_spark
+      particle_count: 10
+      particle_offset_x: 1
+      particle_offset_y: 1
+      particle_offset_z: 1
+      location: target
+  parameters:
+    allow_max_range: false
+    undo: 10000
+    destructible: solid
+    destructible_override: true
+    break_durability: 0.5
+    target_breakables: 1
+    destructible_durability: 30
+    instant_block_effects: true
+    tick_size: 5
+    target: other
+    target_self: false
+    target_source: false
+    range: 4
+    velocity: 100
+    radius: 8
+    target_count: 4
+    target_type: Damageable
+    player_damage: 0.5
+    entity_damage: 1
+    delay: 250
+    repeat: 4
+    target_breakables: 1
+    cooldown: 500
+  costs:
+    mana: 0
+
+#samehada
+tearingattack:
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: kenjutsu
+  worth: 0
+  earns_sp: 0
+  actions:
+    cast:
+    - class: AreaOfEffect
+      radius: 1
+      actions:
+      - class: Repeat
+        actions:
+        - class: Damage
+        - class: Delay
+    - class: Volume
+      actions:
+      - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 8
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - requires_entity_target: true
+      effectlib:
+        class: Equation
+        iterations: 50
+        particles: 20
+        particle: drip_lava
+        particle_count: 40
+        particle_offset_x: 0
+        particle_offset_y: 0.1
+        particle_offset_z: 0
+        xEquation: '1.5'
+        yEquation: -t/20 + 0.5
+        zEquation: -t/20 + 0.5
+        updateLocations: false
+        updateDirections: false
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 5000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: target
+      effectlib:
+        class: Cylinder
+        iterations: 2
+        particles: 20
+        particle: sweep_attack
+        height: 4
+        radius: 1
+        updateLocations: false
+        updateDirections: false
+  parameters:
+    target_type: Damageable
+    repeat: 4
+    allow_max_range: false
+    radius: 1
+    undo: 8000
+    y_size: 2
+    range: 4
+    hitbox: false
+    fov: 0.4
+    destructible: solid
+    destructible_override: true
+    break_durability: 0.5
+    damage: 1
+    target_breakables: 1
+    cooldown: 100
+    magic_damage: false
+    instant_block_effects: true
+    delay: 500
+  costs:
+    mana: 0
+
+
+
+
+#zabuza
+bigsmashattack:
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: kenjutsu
+  worth: 0
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Damage
+    - class: Volume
+      actions:
+      - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - requires_entity_target: true
+      effectlib:
+        class: Equation
+        iterations: 50
+        particles: 20
+        particle: drip_lava
+        particle_count: 20
+        particle_offset_x: 0
+        particle_offset_y: 0.1
+        particle_offset_z: 0
+        xEquation: '1.5'
+        yEquation: -t/20 + 0.5
+        zEquation: -t/20 + 0.5
+        updateLocations: false
+        updateDirections: false
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: target
+      effectlib:
+        class: Cylinder
+        iterations: 2
+        particles: 20
+        particle: sweep_attack
+        height: 4
+        radius: 1
+        updateLocations: false
+        updateDirections: false
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    radius: 2
+    undo: 8000
+    y_size: 3
+    range: 4
+    hitbox: false
+    fov: 0.4
+    destructible: solid
+    destructible_override: true
+    break_durability: 10
+    damage: 15
+    target_breakables: 1
+    cooldown: 8000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0
+
+
+#hiramekarei
+chakrasmash:
+  name: 
+  description: Огненная чакра, которая выдыхается изо рта в виде крупной сферы
+  icon: diamond_pickaxe:2
+  icon_disabled: diamond_axe:2
+  upgrade_required_path: beginner
+  upgrade_required_casts: 15
+  icon_url: http://textures.minecraft.net/texture/e511624fac75f03cf2f3a56d5fe4582d6e74fc9f5e1e1160af1941ee144928
+  category: kenjutsu
+  pvp_restricted: true
+  worth: 50
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - sound: magic.burn
+      sound_volume: 1
+      sound_pitch: -0.25
+    projectile:
+    - location: origin
+      effectlib:
+        class: Sphere
+        iterations: 10
+        period: 2
+        particles: 5
+        particle: crit_magic
+        disappear_with_origin_entity: true
+    tick:
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: 0099FF
+        particle_count: 30
+        particles: 30
+        particle_size: 5
+        radius: 3
+        radius_increase: 0.1
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: 0099FF
+        particle_count: 30
+        particles: 30
+        particle_size: 5
+        radius: 2
+        radius_increase: 0.1
+    - location: target
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: redstone
+        color: 0099FF
+        particle_count: 30
+        particles: 30
+        particle_size: 5
+        radius: 2.5
+        radius_increase: 0.1
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: crit_magic
+        color: 0099FF
+        particle_count: 4
+        particles: 1
+        iterations: 1
+        radius: 0.9
+        radius_increase: 0.2
+    - location: target
+      effectlib:
+        class: SphereEffect
+        particle: redstone
+        color: 0099FF
+        particle_count: 4
+        particles: 1
+        iterations: 1
+        radius: 3
+        speed: 0.5
+        radius_increase: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: explosion_huge
+    - location: target
+      effectlib:
+        particle: crit_magic
+        class: Sphere
+        speed: 1
+        radius: 4
+        iterations: 20
+  parameters:
+    range: 10
+    radius: 4
+    undo: 8000
+    cooldown: 20000
+    start: 1
+    break_blocks: true
+    undo_speed: 1
+    bypass_backfire: true
+    player_damage: 20
+    entity_damage: 20
+    hitbox_size: 1
+    velocity: 20
+    interval: 250
+    warmup: 3000
+    break_durability: 15
+    destructible: solid
+  costs:
+    mana: 250
+
+#nuibari
+needlethrow:
+  icon: diamond_pickaxe:7
+  icon_disabled: diamond_axe:7
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: kenjutsu
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: Damage
+          - class: BreakBlock
+            ignore_result: true
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: suspended_depth
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    allow_max_range: true
+    velocity: 500
+    range: 8
+    hitbox: true
+    target_type: Damageable
+    player_damage: 15
+    entity_damage: 15
+    target_breakables: 1
+    cooldown: 12000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 30
+    spread: 1
+    radius: 0
+  costs:
+    mana: 0
+nuibariattack:
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: kenjutsu
+  worth: 0
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+    - class: Damage
+    - class: PotionEffect
+    - class: Volume
+      actions:
+      - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    tick:
+    - location: target
+      particle: suspended_depth
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    radius: 0
+    undo: 10000
+    effect_slow: 1
+    effect_slow_digging: 1
+    range: 4
+    duration: 4000
+    hitbox: false
+    fov: 0.4
+    destructible: solid
+    destructible_override: true
+    break_durability: 10
+    damage: 2
+    target_breakables: 1
+    cooldown: 100
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0
+
+#shibuki
+explosionsword:
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: kenjutsu
+  worth: 0
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Damage
+    - class: Explosion
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - requires_entity_target: true
+      effectlib:
+        class: Equation
+        iterations: 50
+        particles: 20
+        particle: drip_lava
+        particle_count: 20
+        particle_offset_x: 0
+        particle_offset_y: 0.1
+        particle_offset_z: 0
+        xEquation: '1.5'
+        yEquation: -t/20 + 0.5
+        zEquation: -t/20 + 0.5
+        updateLocations: false
+        updateDirections: false
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - effectlib:
+        class: Equation
+        iterations: 50
+        particles: 20
+        particle: sweep_attack
+        particle_count: 20
+        particle_offset_x: 0
+        particle_offset_y: 0.1
+        particle_offset_z: 0
+        xEquation: '1.5'
+        yEquation: -t/20 + 0.5
+        zEquation: -t/20 + 0.5
+        updateLocations: false
+        updateDirections: false
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    size: 2
+    undo: 10000
+    y_size: 3
+    range: 4
+    hitbox: false
+    fov: 0.4
+    destructible: solid
+    destructible_override: true
+    break_durability: 10
+    damage: 15
+    target_breakables: 1
+    cooldown: 10000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0
+
+#kabutowari
+smashpunch:
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: kenjutsu
+  worth: 0
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Sphere
+      actions:
+      - class: BreakBlock
+      - class: Damage
+      - class: PotionEffect
+  effects:
+    cast:
+    - location: both
+      sound: entity_generic_explode
+      sound_pitch: 1.5
+      sound_volume: 4
+    - location: both
+      sound: entity_generic_hurt
+      sound_volume: 4
+      sound_pitch: -0.1
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      particle: sweep_attack
+      particle_count: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - requires_entity_target: true
+      location: target
+      effectlib:
+        class: Cylinder
+        offset: 0,-1,0
+        height: 0.1
+        particle: drip_lava
+        radius: 2
+        iterations: 10
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - location: target
+      effectlib:
+        class: Cylinder
+        iterations: 2
+        particles: 20
+        particle: sweep_attack
+        height: 4
+        radius: 1
+        updateLocations: false
+        updateDirections: false
+    - location: target
+      effectlib:
+        class: Cylinder
+        iterations: 2
+        particles: 20
+        particle: explosion_huge
+        height: 4
+        radius: 1
+        updateLocations: false
+        updateDirections: false
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    radius: 3
+    effect_confusion: 5
+    effect_slow: 4
+    effect_jump: -10
+    effect_weak: 2
+    effect_slow_digging: 3
+    duration: 15000
+    undo: 8000
+    y_size: 4
+    range: 4
+    destructible: solid
+    destructible_override: true
+    break_durability: 3
+    damage: 20
+    target_breakables: 1
+    cooldown: 16000
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0

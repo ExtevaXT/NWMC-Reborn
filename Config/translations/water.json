@@ -1,0 +1,98 @@
+[
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file1.name",
+      "languages": {
+        "en_GB": "name1e",
+        "ru_RU": "name1r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file1.description",
+      "languages": {
+        "en_GB": "description1e",
+        "ru_RU": "description1r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file2.name",
+      "languages": {
+        "en_GB": "name2e",
+        "ru_RU": "name2r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file2.description",
+      "languages": {
+        "en_GB": "description2e",
+        "ru_RU": "description2r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file3.name",
+      "languages": {
+        "en_GB": "name3e",
+        "ru_RU": "name3r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file3.description",
+      "languages": {
+        "en_GB": "description3e",
+        "ru_RU": "description3r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file4.name",
+      "languages": {
+        "en_GB": "name4e",
+        "ru_RU": "name4r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file4.description",
+      "languages": {
+        "en_GB": "description4e",
+        "ru_RU": "description4r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file5.name",
+      "languages": {
+        "en_GB": "name5e",
+        "ru_RU": "name5r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file5.description",
+      "languages": {
+        "en_GB": "description5e",
+        "ru_RU": "description5r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file6.name",
+      "languages": {
+        "en_GB": "name6e",
+        "ru_RU": "name6r"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.file6.description",
+      "languages": {
+        "en_GB": "description6e",
+        "ru_RU": "description6r"
+      }
+    }
+  ]

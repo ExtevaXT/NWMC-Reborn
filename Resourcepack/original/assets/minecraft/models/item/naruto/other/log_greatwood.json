@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/other/log_greatwood",
+        "texture": "item/naruto/icons/other/log_greatwood"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/dojutsu/rinne-Sharingan",
+        "texture": "item/naruto/icons/dojutsu/rinne-Sharingan"
+    }
+}

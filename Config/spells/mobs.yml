@@ -1,0 +1,583 @@
+
+#FOR MMOBS
+
+
+#Для исчезновения мобов
+mobdeath:
+  icon: diamond_pickaxe:48
+  icon_disabled: diamond_axe:48
+  icon_url: http://textures.minecraft.net/texture/8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  category: special
+  worth: 50
+  actions:
+    cast:
+      - class: RemoveEntity
+  effects:
+    cast:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Sphere
+        particle: Cloud
+        speed: 0.8
+        iterations: 4
+  parameters:
+    target: self
+    cooldown: 1000
+    loot: false
+  costs:
+    mana: 0
+
+
+
+
+slimeacid:
+  icon: diamond_axe:52
+  icon_disabled: diamond_hoe:52
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/1eed1e4d70522ccd538b75ded4baa680e3dfe55426c560ff7b521be5cdf614f
+  category: senjutsu
+  worth: 750
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffectCloud
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity.slime.death
+    tick:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: slime
+        iterations: 1
+        particles: 1
+        particle_count: 4
+        radius: 0.5
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: HelixEffect
+        particle: slime
+        iterations: 1
+        radius: 1
+  parameters:
+    target: none
+    gravity: 0.01
+    projectile: Snowball
+    radius: 1
+    cooldown: 1000
+    color: 00AAFF
+    particle: slime
+    duration: 5000
+    potion_effects:
+    - type: slow
+      duration: 5000
+    - type: confusion
+      duration: 5000
+    - type: poison
+      duration: 5000
+    - type: harm
+  costs:
+    mana: 0
+
+slimeheal:
+  icon: diamond_pickaxe:115
+  icon_disabled: diamond_axe:115
+  icon_url: http://textures.minecraft.net/texture/71a235c48123b487e864fa21016e223ad4070c6d977b0a519f7dd743d39e47c
+  category: senjutsu
+  worth: 30
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Heal
+  effects:
+    cast:
+    - sound: entity.slime.death
+      sound_volume: 1
+      location: origin
+      source_location: cast
+      effectlib:
+        class: ConeEffect
+        iterations: 8
+        particle: villager_happy
+        radius: 0.1
+        color: FF0000
+        radiusGrow: 0.01
+    hit_entity:
+    - location: target
+      target_location: hit
+      effectlib:
+        class: SphereEffect
+        iterations: 16
+        particle: villager_happy
+        color: FF0000
+        particles: 4
+        particle_count: 4
+        radius: 0.4
+  parameters:
+    velocity: 5000
+    target: other
+    target_type: Damageable
+    cooldown: 500
+    target_breakables: 5
+    bypass_backfire: true
+    bypass_pvp: true
+    range: 5
+    damage_type: OUT_OF_WORLD
+    amount: 3
+  costs:
+    mana: 0
+
+frogliquid:
+  icon: diamond_axe:52
+  icon_disabled: diamond_hoe:52
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/1eed1e4d70522ccd538b75ded4baa680e3dfe55426c560ff7b521be5cdf614f
+  category: senjutsu
+  worth: 750
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffectCloud
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity.slime.death
+    tick:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: block_crack
+        material: stained_clay
+        iterations: 1
+        particles: 1
+        particle_count: 4
+        radius: 0.5
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: HelixEffect
+        particle: spell_mob
+        color: DCDCDC
+        iterations: 1
+        radius: 5
+  parameters:
+    target: none
+    gravity: 0.01
+    particle: spell_mob
+    color: faebd7
+    radius: 5
+    cooldown: 1000
+    duration: 5000
+    potion_effects:
+    - type: slow
+      duration: 5000
+      amplifier: 5
+    - type: jump
+      duration: 5000
+      amplifier: -10
+    - type: confusion
+      duration: 5000
+      amplifier: 4
+  costs:
+    mana: 0
+
+
+snakepoisonmini:
+  icon: diamond_axe:52
+  icon_disabled: diamond_hoe:52
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/1eed1e4d70522ccd538b75ded4baa680e3dfe55426c560ff7b521be5cdf614f
+  category: senjutsu
+  worth: 750
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffectCloud
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity.slime.death
+    tick:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: slime
+        iterations: 1
+        particles: 1
+        particle_count: 4
+        radius: 0.5
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: HelixEffect
+        particle: slime
+        iterations: 1
+        radius: 1
+  parameters:
+    target: none
+    gravity: 0.01
+    projectile: Snowball
+    radius: 1
+    cooldown: 1000
+    color: 00AAFF
+    particle: slime
+    duration: 5000
+    potion_effects:
+    - type: slow
+      duration: 5000
+    - type: confusion
+      duration: 5000
+    - type: poison
+      duration: 5000
+    - type: harm
+  costs:
+    mana: 0
+
+snakepoisonhuge:
+  icon: diamond_axe:52
+  icon_disabled: diamond_hoe:52
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/1eed1e4d70522ccd538b75ded4baa680e3dfe55426c560ff7b521be5cdf614f
+  category: senjutsu
+  worth: 750
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffectCloud
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity.slime.death
+    tick:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: 00a550
+        iterations: 1
+        particles: 5
+        particle_count: 20
+        particle_count: 4
+        radius: 1.5
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: HelixEffect
+        particle: slime
+        iterations: 1
+        radius: 10
+  parameters:
+    target: none
+    color: 00a550
+    particle: spell_mob
+    gravity: 0.01
+    projectile: Snowball
+    radius: 10
+    cooldown: 1000
+    duration: 10000
+    potion_effects:
+    - type: poison
+      duration: 5000
+      amplifier: 4
+    - type: harm
+  costs:
+    mana: 0
+
+
+
+snakeblast:
+  icon: diamond_axe:108
+  icon_disabled: diamond_hoe:108
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: senjutsu
+  worth: 200
+  earns_sp: 2
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    tick:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: 00a550
+        iterations: 1
+        particles: 5
+        particle_count: 20
+        particle_count: 4
+        radius: 0.6
+    hit:
+    - class: EffectSingle
+      target_offset: 0,0.5,0
+      location: target
+      effectlib:
+        class: Sphere
+        particle: smoke_large
+        speed: 1
+        iterations: 8
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    velocity: 2000
+    allow_max_range: false
+    range: 32
+    speed: 0.9
+    living_entity_speed: 0.7
+    direction: 0,0.8,0
+    falling: true
+    cooldown: 5000
+    destructible: solid
+    destructible_override: true
+    select_self: false
+    undo_speed: 0.5
+    break_durability: 1000
+    destructible_durability: 5000
+    radius: 3
+    durability_max_distance: 5
+    damage_max_distance: 4
+    undo: 30000
+    damage: 5
+  costs:
+    mana: 45
+
+
+snakewound:
+  icon: diamond_axe:108
+  icon_disabled: diamond_hoe:108
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: senjutsu
+  worth: 200
+  earns_sp: 2
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.crack
+      location: origin
+      effectlib:
+        class: ConeEffect
+        iterations: 10
+        particle: sweep_attack
+        color: FACC2E
+        radiusGrow: 0.01
+    tick:
+    - particle: sweep_attack
+      location: target
+    hit:
+    - class: EffectSingle
+      target_offset: 0,0.5,0
+      location: target
+      effectlib:
+        class: Sphere
+        particle: sweep_attack
+        radius: 4
+        iterations: 4
+        particle_count: 20
+  parameters:
+    velocity: 2000
+    allow_max_range: false
+    range: 10
+    speed: 0.9
+    living_entity_speed: 0.7
+    direction: 0,0.8,0
+    falling: false
+    undo: 15000
+    cooldown: 5000
+    destructible: solid
+    destructible_override: true
+    break_durability: 10
+    select_self: false
+    undo_speed: 0.5
+    destructible_durability: 50
+    break_durability: 10
+    radius: 3
+    durability_max_distance: 5
+    damage_max_distance: 4
+    damage: 8
+  costs:
+    mana: 45
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+automatasnake:
+  hidden: true
+  icon: diamond_axe:16
+  icon_disabled: diamond_hoe:16
+  icon_url: http://textures.minecraft.net/texture/744e11fddeff88dd749ae5ff8fe80f46b9f659817d43d673e4af3759d59ae0
+  category: special
+  class: AnimateSpell
+  worth: 8000
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_slime_attack
+    - class: EffectTrail
+      particle: cloud
+    tick:
+    - sound: entity_slime_attack
+    hurt:
+    - sound: entity_slime_hurt,0.3,2
+  levels:
+    '1': 100
+    '3': 40
+    '5': 10
+  move: 4,5,6
+  radius: 8,10,12
+  yradius: 6,8,10
+  max_blocks: 2000,3500,5000
+  min_blocks: 1000,2000,3000
+  birth_range: 6,8,10
+  live_range: 16,20,28
+  delay: 180,750,120
+  drop_xp: 75,100,125
+  spell_parameters: loud true transparent air,$birth range 48
+  death_cast:
+    automatasnake_death speed 0^1 destructible $birth: 500,300,50
+    automatasnake_death speed 0^5 destructible $birth: 300,200,100
+    automatasnake_death speed 1^0 destructible $birth: 250,200,150
+    automatasnake_death speed 1^5 destructible $birth: 100,100,200
+  cast:
+    snakepoisonhuge: 80,90,100
+    snakewound: 60,100,150
+    snakeblast: 30,50,70
+    none: 20,10,5
+  parameters:
+    target_invisible: false
+    allow_max_range: false
+    transparent: transparent_to_construction
+    check_destructible: false
+    range: 32
+    cooldown: 1000
+    name: Snake
+    target_min_range: 3
+    target_max_range: 128
+    target_mode: hunt
+    targets: any
+    live_rules: 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26
+    birth_rules: 5,6,7,8,9
+    concurrent: false
+    drops:
+    - snakeheart
+    move: 4
+    restricted: restricted_animate
+    message_type: evil
+    undo: 8000
+    undo_speed: 10
+    command_block_allowed: false
+    materials:
+    - stained_clay:11
+  costs:
+    xp: 100
+    sp: 100
+automatasnake_death:
+  name: Snake Death
+  hidden: true
+  actions:
+    cast:
+    - class: Sphere
+      actions:
+      - class: Recurse
+        actions:
+        - class: ModifyBlock
+  effects:
+    hit:
+    - class: EffectSingle
+      location: target
+      target_offset: 0,0.5,0
+      sound: entity_slime_death
+      color: FACC2E
+      firework: burst
+      effectlib:
+        class: HelixEffect
+        iterations: 1
+        radius: $radius
+        particle: falling_dust
+  parameters:
+    target: self
+    check_destructible: true
+    speed: -0.2
+    brush: air
+    falling: true
+    radius: 3
+    undo: 10000
+    undo_speed: 1
+    depth: 64
+birth_automatasnake:
+  inherit: automatasnake
+  parameters:
+    allow_max_range: true
+    seed_radius: 2
+    ignore_region_overrides: true

@@ -1,0 +1,356 @@
+
+#OTHER
+
+
+
+kunai:
+  name: Кунай
+  icon: diamond_axe:160
+  icon_disabled: diamond_pickaxe:160
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: other
+  worth: 150
+  earns_sp: 7
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: ArmorStandProjectile
+      actions:
+      - class: Damage
+      - class: BreakBlock
+        ignore_result: true
+  effects:
+    pp:
+    - particle: redstone
+      color: ffffff
+      location: target
+      particle_count: 1
+      particles: 1
+      iterations: 1
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+      particle_size: 0.1
+    break:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 100
+      particle_offset_x: 0.6
+      particle_offset_y: 0.6
+      particle_offset_z: 0.6
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    headshot:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 40
+      particles: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    allow_max_range: true
+    gravity: 0.02
+    velocity: 40
+    range: 24
+    location_offset: -0.5,-0.5,-0.5
+    hitbox: true
+    target_type: Damageable
+    player_damage: 5
+    entity_damage: 5
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    right_arm_item: diamond_hoe:18
+  costs:
+    mana: 0
+
+
+kunaitriple:
+  name: Тройной Кунай
+  icon: diamond_axe:160
+  icon_disabled: diamond_pickaxe:160
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: other
+  worth: 150
+  earns_sp: 7
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: Multiply
+      actions: 
+      - class: ArmorStandProjectile
+        actions:
+        - class: Damage
+        - class: BreakBlock
+          ignore_result: true
+  effects:
+    tick:
+    - particle: redstone
+      color: ffffff
+      location: target
+      particle_count: 6
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+      particle_size: 2
+    break:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 100
+      particle_offset_x: 0.6
+      particle_offset_y: 0.6
+      particle_offset_z: 0.6
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    headshot:
+    - class: EffectSingle
+      location: target
+      particle: redstone
+      particle_count: 40
+      particles: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    allow_max_range: true
+    gravity: 0.02
+    first:
+      spread: 0
+    spread: 0.3
+    right_arm_item: tripwire_hook
+    velocity: 100
+    location_offset: -0.5,-0.5,-0.5
+    range: 128
+    hitbox: true
+    target_type: Damageable
+    player_damage: 5
+    entity_damage: 5
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 3
+  costs:
+    mana: 0
+
+#https://naruto.fandom.com/ru/wiki/Техника_Телесного_Мерцания
+fastmovement:
+  name: Техника Телесного Мерцания
+  description: Огненная чакра, закрученная в форме спирали
+  icon: diamond_pickaxe:11
+  icon_disabled: diamond_pickaxe:11
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: other
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      effectlib:
+        class: Modified
+        duration: $duration
+        parameters:
+          size: (1 - (t / i)) * 1.5 + 0.5
+        effect:
+          class: AnimatedBall
+          particle: explosion_normal
+          particle_count: 8
+          iterations: 5
+          particles: 5
+          duration: 3600000
+          particle_offset_x: 0.05
+          particle_offset_y: 0.05
+          particle_offset_z: 0.05
+          particle_size: 2
+          y_factor: 1
+  parameters:
+    target: self
+    effect_speed: 5
+    effect_invisibility: 2
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: 5
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+#https://naruto.fandom.com/ru/wiki/Техника_Замещения_Тела
+swapjutsu:
+  name: Техника Замещения Тела
+  description: Огненная чакра, закрученная в форме спирали
+  icon: diamond_pickaxe:134
+  icon_disabled: diamond_pickaxe:134
+  icon_url: http://textures.minecraft.net/texture/a35cfb663dbde27598eebe76b0fdac2593f1d696b3e6b9e044edeb8d48c2e2
+  alias: tesseract
+  category: other
+  tags: nojail
+  worth: 500
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: ChangeContext
+      target_caster: true
+      ignore_result: true
+      actions:
+      - class: FallProtectionAction
+    - class: Teleport
+  effects:
+    teleport:
+    - class: EffectSingle
+      sound: magic.teleport
+      location: target
+      particle_override: particle_nucleus
+      color_override: colorOrbital
+      source_location: eyes
+      effectlib:
+        class: AtomEffect
+        particle_nucleus: fireworks_spark
+        particle_orbital: redstone
+        iterations: 16
+        offset: 0,-1,0
+        particlesNucleus: 8
+        particlesRadius: 5
+    - class: EffectSingle
+      location: target
+      source_location: body
+      color_override: colorNucleus
+      effectlib:
+        class: AtomEffect
+        particle_nucleus: redstone
+        particle_orbital: fireworks_spark
+        iterations: 8
+        particlesNucleus: 8
+        particlesRadius: 5
+    precast:
+    - class: EffectSingle
+      sound: magic.teleport
+      location: origin
+      particle_override: particle_nucleus
+      color_override: colorOrbital
+      source_location: body
+      effectlib:
+        class: AtomEffect
+        updateLocations: false
+        particle_nucleus: fireworks_spark
+        particle_orbital: redstone
+        iterations: 16
+        particlesNucleus: 8
+        particlesRadius: 5
+    - class: EffectSingle
+      location: origin
+      source_location: body
+      color_override: colorNucleus
+      effectlib:
+        class: AtomEffect
+        updateLocations: false
+        particle_nucleus: redstone
+        particle_orbital: fireworks_spark
+        iterations: 8
+        particlesNucleus: 8
+        particlesRadius: 5
+    - class: EffectSingle
+      color_override: color
+      effectlib:
+        class: LineEffect
+        particle: redstone
+        updateLocations: false
+        particles: 200
+    - class: EffectSingle
+      effectlib:
+        class: LineEffect
+        particle: fireworks_spark
+        particles: 30
+        particle_count: 5
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        updateLocations: false
+  parameters:
+    target: block
+    allow_max_range: true
+    allow_passthrough: false
+    range: 12
+    cooldown: 10000
+    prevent_passthrough: nopassthrough
+    bypass_confusion: true
+    vertical_range: 8
+    ledge_range: 4
+  costs:
+    mana: 50
+
+spshop:
+  inherit: buyshop
+  parameters:
+    items:
+    - item: sp:1
+      cost: 100
+    - item: sp:10
+      cost: 1000
+    - item: sp:100
+      cost: 10000
+#TEST

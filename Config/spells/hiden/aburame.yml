@@ -1,0 +1,308 @@
+
+
+#ABURAME CLAN BUG INSECT
+
+
+
+insectspray:
+  name: Распыление Насекомых
+  description: Распыляет насекомых, которые съедают вашего противника
+  icon: diamond_pickaxe:83
+  icon_disabled: diamond_axe:83
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: hiden
+  worth: 50
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: town_aura
+          particle_base1: town_aura
+          particle_base2: town_aura
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: town_aura
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: town_aura
+          particle_base1: town_aura
+          particle_base2: town_aura
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: town_aura
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    range: 8
+    fov: 1
+    item_speed: 0.1
+    living_entity_speed: 0.5
+    repeat: 10
+    damage: 5
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 20
+
+
+#https://jut.su/technique/parazitiruyuschie-zhuki.html
+insectmod:
+  name: Аура Кикайчу
+  description: Призывает Насекомых которые увеличивают вашу силу и сопротивление урону
+  icon: diamond_pickaxe:80
+  icon_disabled: diamond_axe:80
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      effectlib:
+        class: Flame
+        particle: town_aura
+        color: FFFFFF
+        iterations: 4
+        radius: 0.5
+        height: 2
+        enable_rotation: false
+        particles: 20
+        particle_count: 15
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0,-0,5,0
+        duration: 1200000
+  parameters:
+    target: self
+    effect_increase_damage: 0
+    effect_damage_resistance: 0
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 1
+
+
+
+
+
+#https://jut.su/technique/zarazhenie.html
+insectinfection:
+  name: Заражение Кидайчу
+  description: Вселяет в вашего противника насекомых, которые разъедают его изнутри
+  icon: diamond_pickaxe:82
+  icon_disabled: diamond_axe:82
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: hiden
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+          duration: 10000
+      - class: Repeat
+        actions:
+        - class: Damage
+        - class: Delay
+        ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 5
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 10000
+        particle: town_aura
+        material: redstone
+        size: 0.3
+    - location: target
+      requires_entity_target: true
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: town_aura
+        particles: 20
+        particle_count: 20
+        iterations: 8
+    - location: source
+      material: redstone_block
+      effectlib:
+        class: Sphere
+        particle: town_aura
+        particles: 10
+        particle_count: 10
+        iterations: 1
+        radius: 0.2
+  parameters:
+    target_type: Damageable
+    effect_wither: 1
+    allow_max_range: false
+    range: 5
+    living_entity_speed: 0.5
+    hitbox: false
+    fov: 0.4
+    delay: 1000
+    damage: 2
+    target_breakables: 1
+    cooldown: 1000
+    magic_damage: false
+    instant_block_effects: true
+    repeat: 10
+  costs:
+    mana: 10
+
+
+#https://jut.su/technique/zaschitnaya-sfera-iz-zhukov.html
+insectshot:
+  name: Сфера насекомых
+  description: Запускает в жертву сферу из насекомых
+  icon: diamond_pickaxe:81
+  icon_disabled: diamond_axe:81
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      effectlib:
+        class: Shield
+        particle: town_aura
+        color: FFFFFF
+        iterations: 4
+        radius: 2
+        sphere: true
+        enable_rotation: false
+        particles: 20
+        particle_count: 10
+        offset: 0,0.1,-1
+        duration: 1200000
+  parameters:
+    target: self
+    effect_slow: 4
+    effect_damage_resistance: 2
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 1
+

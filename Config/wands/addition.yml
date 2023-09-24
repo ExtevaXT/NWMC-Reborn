@@ -1,0 +1,687 @@
+
+#ADDITIONAL RELEASES
+
+#ICE RELEASE
+fullice:
+  path: ice
+  description: Техники Стихии Льда
+  name: Стихия Льда
+  spells:
+  - icespikes
+  - icemirrors
+  - iceshell
+  - iceshards
+  inherit: startice
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startice:
+  path: ice
+  icon: diamond_pickaxe:366
+  description: Техники Стихии Льда
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 3
+  name: Стихия Льда
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#LAVA RELEASE
+fulllava:
+  path: lava
+  description: Техники Стихии Лавы
+  name: Стихия Лавы
+  spells:
+  - lavamod
+  - lavaball
+  - lavablast
+  - lavaharden
+  inherit: startlava
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startlava:
+  path: lava
+  icon: diamond_pickaxe:367
+  description: Техники Стихии Лавы
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 3
+  name: Стихия Лавы
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+#WOOD RELEASE
+fullwood:
+  path: wood
+  description: Техники Стихии Дерева
+  name: Стихия Дерева
+  spells:
+  - woodspikes
+  - woodwave
+  - woodsphere
+  - woodcut
+  - woodcapture
+  inherit: startwood
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startwood:
+  path: wood
+  icon: diamond_pickaxe:368
+  description: Техники Стихии Дерева
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 4
+  name: Стихия Дерева
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#EXPLOSION RELEASE
+fullexplosion:
+  path: explosion
+  description: Техники Стихии Взрыва
+  name: Стихия Взрыва
+  spells:
+  - explosionclaybomb
+  - explosionspider
+  - explosionblast
+  - explosionbird
+  - explosionsuicide
+  inherit: startexplosion
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startexplosion:
+  path: explosion
+  icon: diamond_pickaxe:369
+  description: Техники Стихии Взрыва
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Взрыва
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+explosionmount:
+  class: broomrider
+  name: Большая Птица из глины
+  describe: ПКМ - чтобы летать на ней
+  mode: cast
+  keep: true
+  locked: true
+  indestructible: true
+  active_spell: explosionmountbase
+  icon: diamond_pickaxe:501
+  uses: 10
+  spells:
+  - explosionmountbase
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#BOIL RELEASE
+fullboil:
+  path: boil
+  description: Техники Стихии Кипения
+  name: Стихия Кипения
+  spells:
+  - boilfog
+  - boiledsteam
+  - boilpunch
+  - boilmod
+  inherit: startboil
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startboil:
+  path: boil
+  icon: diamond_pickaxe:370
+  description: Техники Стихии Кипения
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Кипения
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#STORM RELEASE
+fullstorm:
+  path: storm
+  description: Техники Стихии Шторма
+  name: Стихия Шторма
+  spells:
+  - stormlaser
+  - stormminilaser
+  - demonstorm
+  - blackpanther
+  inherit: startstorm
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startstorm:
+  path: storm
+  icon: diamond_pickaxe:375
+  description: Техники Стихии Шторма
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Шторма
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+#CRYSTAL RELEASE
+fullcrystal:
+  path: crystal
+  description: Техники Стихии Кристалла
+  name: Стихия Кристалла
+  spells:
+  - crystalshell
+  - crystalshots
+  - crystalspikes
+  - crystalprison
+  - crystalarmor
+  inherit: startcrystal
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startcrystal:
+  path: crystal
+  icon: diamond_pickaxe:382
+  description: Техники Стихии Кристалла
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Кристалла
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#DARK RELEASE
+fulldark:
+  path: dark
+  description: Техники Стихии Тьмы
+  name: Стихия Тьмы
+  spells:
+  - chakrasteal
+  - otherrelease
+  inherit: startdark
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startdark:
+  path: dark
+  icon: diamond_pickaxe:372
+  description: Техники Стихии Тьмы
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Тьмы
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#SWIFT RELEASE
+fullswift:
+  path: swift
+  description: Техники Стихии Скорости
+  name: Стихия Скорости
+  spells:
+  - swiftrun
+  inherit: startswift
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startswift:
+  path: swift
+  icon: diamond_pickaxe:373
+  description: Техники Стихии Скорости
+  mana: 200
+  mana_max: 200
+  mana_regeneration: 1
+  name: Стихия Скорости
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#MAGNET RELEASE
+#DARK IRON VERSION
+fullmagnetiron:
+  path: magnetiron
+  description: Техники Стихии Магнетизма |Тёмное Железо|
+  name: Стихия Магнетизма
+  spells:
+  - ironfist
+  - irontrack
+  - ironwave
+  - ironwings
+  - ironwall
+  - ironshots
+  inherit: startmagnetiron
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startmagnetiron:
+  path: magnetiron
+  icon: diamond_pickaxe:374
+  description: Техники Стихии Магнетизма |Тёмное Железо|
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Магнетизма
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+#GOLD VERSION
+fullmagnetgold:
+  path: magnetgold
+  description: Техники Стихии Магнетизма |Золото|
+  name: Стихия Магнетизма
+  spells:
+  - goldfist
+  - goldtrack
+  - goldwave
+  - goldwings
+  - goldwall
+  - goldshots
+  inherit: startmagnetgold
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startmagnetgold:
+  path: magnetgold
+  icon: diamond_pickaxe:374
+  description: Техники Стихии Магнетизма |Золото|
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Магнетизма
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#SCORCH RELEASE
+fullscorch:
+  path: scorch
+  description: Техники Стихии Жара
+  name: Стихия Жара
+  spells:
+  - scorchblasts
+  - scorchmegablast
+  inherit: startscorch
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startscorch:
+  path: scorch
+  icon: diamond_pickaxe:371
+  description: Техники Стихии Жара
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 2
+  name: Стихия Жара
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+#DUST RELEASE
+fulldust:
+  path: dust
+  description: Техники Стихии Пыли
+  name: Стихия Пыли
+  spells:
+  - dustsplit
+  inherit: startdust
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startdust:
+  path: dust
+  icon: diamond_pickaxe:376
+  description: Техники Стихии Пыли
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Стихия Пыли
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+
+
+
+
+#YAN RELEASE
+fullyan:
+  path: yan
+  icon: diamond_pickaxe:396
+  description: Техники Стихии Ян
+  name: Стихия Ян
+  spells:
+  - lightsword
+  - lightmultisword
+  - lightflash
+  - lightdome
+  inherit: startyan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startyan:
+  path: yan
+  icon: diamond_pickaxe:396
+  description: Техники Стихии Ян
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Стихия Ян
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+
+
+#IN RELEASE
+fullin:
+  path: in
+  icon: diamond_pickaxe:395
+  description: Техники Стихии Инь
+  name: Стихия Инь
+  spells:
+  - darksword
+  - darkmultisword
+  - darkflash
+  - darkdome
+  inherit: startin
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startin:
+  path: in
+  icon: diamond_pickaxe:395
+  description: Техники Стихии Инь
+  mana: 400
+  mana_max: 400
+  mana_regeneration: 1
+  name: Стихия Инь
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+
+
+#INYAN RELEASE
+fullinyan:
+  path: inyan
+  icon: diamond_pickaxe:397
+  description: Техники Стихии Инь-Ян
+  name: Стихия Инь-Ян
+  spells:
+  - earthwave
+  - underearth
+  - earthharden
+  - earthcollapse
+  - sandshield
+  - sandfall
+  inherit: startinyan
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable
+startinyan:
+  path: inyan
+  icon: diamond_pickaxe:398
+  description: Техники Стихии Инь-Ян
+  mana: 800
+  mana_max: 800
+  mana_regeneration: 1
+  name: Стихия Инь-Ян
+  inherit: base_wand
+  right_click: cast
+  left_click: none
+  drop: toggle
+  swap: toggle
+  tags:
+  - buffable
+  - transformable
+  - effectable
+  - tweakable

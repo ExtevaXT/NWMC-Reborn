@@ -1,0 +1,828 @@
+
+#MAGNET RELEASE        (Две вариации Gold / Iron)
+
+
+
+#https://naruto.fandom.com/wiki/Black_Iron_Fist
+ironfist:
+  icon: diamond_pickaxe:143
+  icon_disabled: diamond_axe:143
+  icon_url: http://textures.minecraft.net/texture/564e7e4b718a7136188385cae256de87a6cb29c85744c9c123509a4c7cec69d0
+  category: additional
+  worth: 99999999
+  earns_sp: 0
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shield
+    - class: EffectTrail
+      particle: drip_lava
+  parameters:
+    target: block
+    allow_max_range: true
+    range: 4
+    use_brush_size: true
+    undo: 6000
+    cooldown: 1000
+    brush: schematic|ironhand
+    breakable: 3
+    destructible: destructible_replace
+    orient: true
+    volume_type: yxz
+    center_z: false
+    reorient: false
+  costs:
+    mana: 100
+goldfist:
+  icon: diamond_pickaxe:143
+  icon_disabled: diamond_axe:143
+  icon_url: http://textures.minecraft.net/texture/564e7e4b718a7136188385cae256de87a6cb29c85744c9c123509a4c7cec69d0
+  category: additional
+  worth: 999999999
+  earns_sp: 0
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shield
+    - class: EffectTrail
+      particle: drip_lava
+  parameters:
+    target: block
+    allow_max_range: true
+    range: 4
+    use_brush_size: true
+    undo: 6000
+    cooldown: 1000
+    brush: schematic|ironhand
+    breakable: 3
+    destructible: destructible_replace
+    orient: true
+    volume_type: yxz
+    center_z: false
+    reorient: false
+  costs:
+    mana: 100
+
+
+
+
+
+
+
+#https://naruto.fandom.com/wiki/Iron_Sand_Marking
+irontrack:
+  name: Метка Железного Песка
+  description: Приклепляет к жертве метку, которая отслеживает жертву
+  icon: diamond_pickaxe:144
+  icon_disabled: diamond_axe:144
+  upgrade_required_path: student
+  upgrade_required_casts: 30
+  icon_url: http://textures.minecraft.net/texture/3bc9de58822a3f7c6c23e212cf954fc728a6b2e45c54a89b4af5e453d39b1
+  category: additional
+  worth: 20
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Orient
+    - class: PotionEffect
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap
+      location: origin
+    - class: EffectSingle
+      effectlib:
+        class: LineEffect
+        particle: redstone
+        color: 333333
+        particle_count: 5
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: 333333
+        radius: 0.3
+        particle_count: 5
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+  parameters:
+    range: 32
+    fov: 3
+    close_fov: 3
+    fov_weight: 400
+    player_weight: 500
+    target: other_entity
+    target_type: LivingEntity
+    cooldown: 5000
+    ignore_blocks: true
+    loud: true
+    bypass_pvp: true
+    effect_glowing: 1
+    duration: 30000
+  costs:
+    mana: 20
+goldtrack:
+  name: Метка Золотого Песка
+  description: Приклепляет к жертве метку, которая отслеживает жертву
+  icon: diamond_pickaxe:144
+  icon_disabled: diamond_axe:144
+  upgrade_required_path: student
+  upgrade_required_casts: 30
+  icon_url: http://textures.minecraft.net/texture/3bc9de58822a3f7c6c23e212cf954fc728a6b2e45c54a89b4af5e453d39b1
+  category: additional
+  worth: 20
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Orient
+    - class: PotionEffect
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap
+      location: origin
+    - class: EffectSingle
+      effectlib:
+        class: LineEffect
+        particle: redstone
+        color: ffd700
+        particle_count: 5
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: ffd700
+        radius: 0.3
+        particle_count: 5
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+  parameters:
+    range: 32
+    fov: 3
+    close_fov: 3
+    fov_weight: 400
+    player_weight: 500
+    target: other_entity
+    target_type: LivingEntity
+    cooldown: 5000
+    ignore_blocks: true
+    loud: true
+    bypass_pvp: true
+    effect_glowing: 1
+    duration: 30000
+  costs:
+    mana: 20
+
+
+
+
+
+#https://naruto.fandom.com/wiki/Iron_Sand_Wave
+ironwave:
+  name: Волна Железного Песка
+  description: Запускает волну из Железного Песка
+  icon: diamond_pickaxe:145
+  icon_disabled: diamond_axe:145
+  icon_url: http://textures.minecraft.net/texture/1d7cb6f2a4b2c2059621b7f6f84b5f0bc84c19ce981d054c26cec012ac
+  category: additional
+  pvp_restricted: true
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Line
+      actions:
+      - class: PlayEffects
+        ignore_result: true
+        effects: iterate
+      - class: Volume
+        ignore_result: true
+        actions:
+        - class: Cover
+          actions:
+          - class: ModifyBlock
+      - class: AreaOfEffect
+        actions:
+        - class: Velocity
+          ignore_result: true
+        - class: Damage
+      - class: Delay
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shimmer_quiet
+      sound_volume: 1
+      sound_pitch: 0.2
+      location: origin
+      material: stone
+      effectlib:
+        class: EquationEffect
+        xEquation: t/16
+        yEquation: sin(t/16)
+        zEquation: '0'
+        x2Equation: '0'
+        y2Equation: '0'
+        z2Equation: t2/16 * 4 - 4
+        iterations: 8
+        particles: 24
+        particles2: 32
+        particle: block_crack
+        material: iron_block
+        orient: true
+        orientPitch: false
+        period: 6
+    iterate:
+    - class: EffectSingle
+      location: target
+      sound: magic.shimmer_quiet
+      orient: true
+      effectlib:
+        class: EquationEffect
+        xEquation: '0'
+        yEquation: floor(t/16)*0.2-1
+        zEquation: t/16*4-4
+        iterations: 2
+        particles: 16
+        particle_count: 4
+        particle_offset_x: 1
+        particle_offset_y: 0.2
+        particle_offset_z: 1
+        particle: redstone
+        color: 333333
+        orient: true
+        orientPitch: false
+  parameters:
+    target: block
+    target_type: Entity
+    start_at_target: true
+    x_size: 3
+    y_size: 1
+    z_size: 3
+    size: 8
+    range: 6
+    allow_max_range: true
+    orient: true
+    target_count: 16
+    item_speed: 0.4
+    living_entity_speed: 0.6
+    direction: 0,1,0
+    speed: 0.8
+    cooldown: 10000
+    delay: 250
+    brush: concrete_powder:15
+    falling: true
+    undo: 15000
+    damage: 5
+    undo_speed: 0.5
+  costs:
+    mana: 150
+goldwave:
+  name: Волна Золотого Песка
+  description: Запускает волну из Золотого Песка
+  icon: diamond_pickaxe:145
+  icon_disabled: diamond_axe:145
+  icon_url: http://textures.minecraft.net/texture/1d7cb6f2a4b2c2059621b7f6f84b5f0bc84c19ce981d054c26cec012ac
+  category: additional
+  pvp_restricted: true
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Line
+      actions:
+      - class: PlayEffects
+        ignore_result: true
+        effects: iterate
+      - class: Volume
+        ignore_result: true
+        actions:
+        - class: Cover
+          actions:
+          - class: ModifyBlock
+      - class: AreaOfEffect
+        actions:
+        - class: Velocity
+          ignore_result: true
+        - class: Damage
+      - class: Delay
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shimmer_quiet
+      sound_volume: 1
+      sound_pitch: 0.2
+      location: origin
+      material: stone
+      effectlib:
+        class: EquationEffect
+        xEquation: t/16
+        yEquation: sin(t/16)
+        zEquation: '0'
+        x2Equation: '0'
+        y2Equation: '0'
+        z2Equation: t2/16 * 4 - 4
+        iterations: 8
+        particles: 24
+        particles2: 32
+        particle: block_crack
+        material: gold_block
+        orient: true
+        orientPitch: false
+        period: 6
+    iterate:
+    - class: EffectSingle
+      location: target
+      sound: magic.shimmer_quiet
+      orient: true
+      effectlib:
+        class: EquationEffect
+        xEquation: '0'
+        yEquation: floor(t/16)*0.2-1
+        zEquation: t/16*4-4
+        iterations: 2
+        particles: 16
+        particle_count: 4
+        particle_offset_x: 1
+        particle_offset_y: 0.2
+        particle_offset_z: 1
+        particle: redstone
+        color: ffd700
+        orient: true
+        orientPitch: false
+  parameters:
+    target: block
+    target_type: Entity
+    start_at_target: true
+    x_size: 3
+    y_size: 1
+    z_size: 3
+    size: 8
+    range: 6
+    allow_max_range: true
+    orient: true
+    target_count: 16
+    item_speed: 0.4
+    living_entity_speed: 0.6
+    direction: 0,1,0
+    speed: 0.8
+    cooldown: 10000
+    delay: 250
+    brush: concrete_powder:4
+    falling: true
+    undo: 15000
+    damage: 5
+    undo_speed: 0.5
+  costs:
+    mana: 150
+
+
+
+#https://naruto.fandom.com/wiki/Successive_Shots_Iron_Sand_Drizzle
+
+ironshots:
+  name: Ливень Последовательных Выстрелов
+  description: Стреляет множеством кольеподобных снарядов в быстрой последовательности.
+  icon: diamond_pickaxe:146
+  icon_disabled: diamond_axe:146
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: additional
+  worth: 40
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: Damage
+          - class: BreakBlock
+            ignore_result: true
+      - class: Delay
+        delay: 50
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: redstone
+        color: 333333
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    allow_max_range: true
+    velocity: 100
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 5
+    entity_damage: 5
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 40
+    spread: 0.5
+    radius: 0
+  costs:
+    mana: 60
+goldshots:
+  name: Ливень Последовательных Выстрелов
+  description: Стреляет множеством кольеподобных снарядов в быстрой последовательности.
+  icon: diamond_pickaxe:146
+  icon_disabled: diamond_axe:146
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: additional
+  worth: 40
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: Damage
+          - class: BreakBlock
+            ignore_result: true
+      - class: Delay
+        delay: 50
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: redstone
+        color: ffd700
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    allow_max_range: true
+    velocity: 100
+    range: 24
+    hitbox: true
+    target_type: Damageable
+    player_damage: 5
+    entity_damage: 5
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 40
+    spread: 0.5
+    radius: 0
+  costs:
+    mana: 60
+
+
+
+
+
+
+#https://naruto.fandom.com/wiki/Iron_Sand:_Black_Iron_Wings
+ironwings:
+  name: Железные Крылья
+  description: С помощью металлического песка образует на спине крылья, которые позволяют летать
+  cancel_effects: true
+  actions:
+    cast:
+    - class: FallProtection
+    - class: Velocity
+    - class: Delay
+    - class: Glide
+  effects:
+    cast:
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: EquationEffect
+        x_equation: 0
+        y_equation: 1 * sin(t) * (cos(t)^3)
+        z_equation: 3 * (sin(t)^3)
+        particles: 50
+        duration: 3600000
+        relative_offset: -0.25,0.25,0
+        disappear_with_origin_entity: true
+        color: FFFF00
+  parameters:
+    target: self
+    duration: 50000
+    cooldown: 1000
+    direction: 0,1,0
+    speed: 2
+    delay: 750
+  costs:
+    mana: 100
+goldwings:
+  actions:
+    cast:
+    - class: Velocity
+      direction: 0,1,0
+      additive: true
+      speed: 2
+    - class: Delay
+      delay: 100
+    - class: Fly
+    - class: FallProtection
+      duration: 10000
+  effects:
+    cast:
+    - location: origin
+      source_location: body
+      color_override: color
+      effectlib:
+        class: EquationEffect
+        x_equation: 0
+        y_equation: 1 * sin(t) * (cos(t)^3)
+        z_equation: 3 * (sin(t)^3)
+        particles: 50
+        duration: 3600000
+        relative_offset: -0.25,0.25,0
+        disappear_with_origin_entity: true
+        color: FFFF00
+  parameters:
+    deactivate:
+    - class: EffectSingle
+      sound: entity_enderdragon_flap
+      sound_pitch: 0.2
+    land:
+    - sound: block_stone_step
+      sound_pitch: 0.7
+    - class: EffectRing
+      particle: block_crack
+      source_location: feet
+      period: 4
+      particle_count: 80
+      particle_offset_x: 0.9
+      particle_offset_z: 0.9
+      particle_offset_y: 0.1
+      radius: 4
+  parameters:
+    target: self
+    speed: 0.8
+    bypass_undo: true
+    max_height_above_ground: 50
+    max_height: 260
+    cooldown: 1000
+  costs:
+    mana: 40
+  active_costs:
+    mana: 10
+
+
+
+#https://naruto.fandom.com/wiki/Iron_Sand_Wall
+
+ironwall:
+  name: Стена Железного Песка
+  description: Техника, при использовании которой пользователь создаёт стену из Железного Песка
+  icon: diamond_pickaxe:148
+  icon_disabled: diamond_axe:148
+  alias: cushion
+  icon_url: http://textures.minecraft.net/texture/b750768d23e447d95b662344f426cc96228a4047f7a8ced0f4861edbbeaced
+  category: additional
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: DisablePhysics
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_generic_splash
+      location: both
+    tick:
+    - location: target
+      particle: water_splash
+      particle_count: 8
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Shield
+        iterations: 10
+        particle: water_splash
+        radius: 1.8
+        particles: 30
+        particle_count: 20
+        particle_offset_x: 0.2
+        particle_offset_y: 0.2
+        particle_offset_z: 0.2
+  parameters:
+    velocity: 250
+    target_type: LivingEntity
+    allow_max_range: true
+    radius: 1
+    range: 6
+    cooldown: 2000
+    undo: 10000
+    duration: 3000
+    destructible: destructible_replace
+    brush: concrete_powder:15
+    hitbox: true
+    x_size: 7
+    y_size: 10
+    z_size: 2
+    volume_type: yxz
+    orient: true
+  costs:
+    mana: 20
+goldwall:
+  name: Стена Золотого Песка
+  description: Техника, при использовании которой пользователь создаёт стену из Золотого Песка
+  icon: diamond_pickaxe:148
+  icon_disabled: diamond_axe:148
+  alias: cushion
+  icon_url: http://textures.minecraft.net/texture/b750768d23e447d95b662344f426cc96228a4047f7a8ced0f4861edbbeaced
+  category: additional
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: DisablePhysics
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_generic_splash
+      location: both
+    tick:
+    - location: target
+      particle: water_splash
+      particle_count: 8
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Shield
+        iterations: 10
+        particle: water_splash
+        radius: 1.8
+        particles: 30
+        particle_count: 20
+        particle_offset_x: 0.2
+        particle_offset_y: 0.2
+        particle_offset_z: 0.2
+  parameters:
+    velocity: 250
+    target_type: LivingEntity
+    allow_max_range: true
+    radius: 1
+    range: 6
+    cooldown: 2000
+    undo: 10000
+    duration: 3000
+    destructible: destructible_replace
+    brush: concrete_powder:4
+    hitbox: true
+    x_size: 7
+    y_size: 10
+    z_size: 2
+    volume_type: yxz
+    orient: true
+  costs:
+    mana: 20

@@ -1,0 +1,528 @@
+
+
+#MOKUTON woood
+
+
+#---------------
+woodhook:
+  icon: diamond_pickaxe:57
+  icon_disabled: diamond_pickaxe:57
+  category: additional
+  worth: 300
+  toggle: cancel
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Projectile
+      speed: bowpull * 3
+      actions:
+      - class: ChangeContext
+        target_caster: true
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: FallProtection
+            duration: 550000
+        - class: Repeat
+          actions:
+          - class: Velocity
+          - class: Sphere
+            radius: 2
+            actions:
+            - class: CheckBlock
+              allowed: -*
+              actions:
+              - class: ChangeContext
+                target_caster: true
+                actions:
+                - class: Velocity
+                  max_speed: 1
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_arrow_shoot
+      sound_pitch: 0.2
+      sound_volume: 0.3
+      location: origin
+    projectile:
+    - effectlib:
+        class: Line
+        duration: 45000
+        period: 2
+        particles: 100
+        particle: redstone
+        color: 663300
+  parameters:
+    target: none
+    projectile: TippedArrow
+    spread: 1 - bowpull
+    damage: 2 * bowpull
+    tick_increase: 0
+    push: -2
+    max_speed: 0.75
+    repeat: infinite
+    duration: 45000
+    total_duration: 45000
+    projectile_effects_use_target: true
+  costs:
+    mana: 25
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Дерева:_Великое_Древесное_Копьё
+woodspikes:
+  name: Великое Древесное Копьё
+  description: Создаёт в указанной области шипы из дерева
+  icon: diamond_pickaxe:39
+  icon_disabled: diamond_axe:39
+  icon_url: http://textures.minecraft.net/texture/443e10a710998d47d238e291a8ba8f6abf42bc7e419d1d8dcc8c55707ebb19
+  category: additional
+  worth: 700
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+      - class: Skip
+        skip: 100
+        actions:
+        - class: PlayEffects
+          effects: column
+    - class: AreaOfEffect
+      actions:
+      - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_anvil_use
+    - class: EffectTrail
+      particle: block_crack
+    column:
+    - location: target
+      particle: block_crack
+      particle_count: 100
+      material: log
+      particle_offset_x: 0.2
+      particle_offset_y: 5
+      particle_offset_z: 0.2
+      offset: 0,-2,0
+  parameters:
+    target_type: LivingEntity
+    target: any
+    allow_max_range: false
+    range: 16
+    radius: 8
+    y_size: 15
+    type: sphere
+    cooldown: 1000
+    undo: 10000
+    brush: schematic|woodspikes
+    transparent: transparent_to_construction
+    destructible: destructible_replace,destructible
+    damage: 5
+    oby: -3
+    target_count: 10
+  costs:
+    mana: 150
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Дерева:_Техника_Подземных_Корней
+woodwave:
+  name: Подземные Корни
+  description: Выпускает из под земли корни, которые наносят урон и отталкивают
+  icon: diamond_pickaxe:40
+  icon_disabled: diamond_axe:40
+  icon_url: http://textures.minecraft.net/texture/1d7cb6f2a4b2c2059621b7f6f84b5f0bc84c19ce981d054c26cec012ac
+  category: additional
+  pvp_restricted: true
+  worth: 400
+  earns_sp: 0
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Line
+      actions:
+      - class: PlayEffects
+        ignore_result: true
+        effects: iterate
+      - class: Volume
+        ignore_result: true
+        actions:
+        - class: Cover
+          actions:
+          - class: ModifyBlock
+      - class: AreaOfEffect
+        actions:
+        - class: Velocity
+          ignore_result: true
+        - class: Damage
+      - class: Delay
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shimmer_quiet
+      sound_volume: 1
+      sound_pitch: 0.2
+      location: origin
+      material: stone
+      effectlib:
+        class: EquationEffect
+        xEquation: t/16
+        yEquation: sin(t/16)
+        zEquation: '0'
+        x2Equation: '0'
+        y2Equation: '0'
+        z2Equation: t2/16 * 4 - 4
+        iterations: 8
+        particles: 24
+        particles2: 32
+        particle: block_crack
+        orient: true
+        orientPitch: false
+        period: 6
+    iterate:
+    - class: EffectSingle
+      location: target
+      sound: magic.shimmer_quiet
+      orient: true
+      effectlib:
+        class: EquationEffect
+        xEquation: '0'
+        yEquation: floor(t/16)*0.2-1
+        zEquation: t/16*4-4
+        iterations: 2
+        particles: 16
+        particle_count: 4
+        particle_offset_x: 1
+        particle_offset_y: 0.2
+        particle_offset_z: 1
+        particle: smoke_large
+        orient: true
+        orientPitch: false
+  parameters:
+    target: block
+    target_type: Entity
+    start_at_target: true
+    x_size: 4
+    y_size: 0
+    z_size: 4
+    size: 8
+    range: 6
+    allow_max_range: true
+    orient: true
+    target_count: 16
+    item_speed: 0.4
+    living_entity_speed: 0.6
+    direction: 0,1,0
+    speed: 0.8
+    cooldown: 10000
+    delay: 250
+    brush: log:12
+    falling: true
+    undo: 15000
+    damage: 5
+    undo_speed: 0.5
+  costs:
+    mana: 150
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Дерева:_Древесная_Смыкающаяся_Стена
+woodsphere:
+  name: Смыкающаяся Стена
+  description: Создаёт вокруг вас сферу из дерева, которая защищает вас
+  icon: diamond_pickaxe:41
+  icon_disabled: diamond_axe:41
+  icon_url: http://textures.minecraft.net/texture/4fed122b86ffaeaee36ab4a8c1c27f46fb5bddc83322c8a165d0f27aeb1830
+  category: additional
+  worth: 250
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Sphere
+      actions:
+      - class: ModifyBlock
+      - class: Skip
+        skip: 4
+        actions:
+        - class: PlayEffects
+          effects: column
+        - class: Delay
+          delay: 10
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.shield
+    - class: EffectTrail
+      particle: VILLAGER_HAPPY
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    column:
+    - location: target
+      particle: VILLAGER_HAPPY
+      particle_count: 100
+      particle_offset_x: 0.2
+      particle_offset_y: 5
+      particle_offset_z: 0.2
+      offset: 0,-2,0
+  parameters:
+    target_type: LivingEntity
+    allow_max_range: true
+    range: 32
+    radius: 5
+    thickness: 1
+    transparent: transparent_to_construction
+    undo: 6000
+    cooldown: 10000
+    brush: log:12
+    brushcolor: true
+    breakable: 3
+    destructible: destructible_replace
+    volume_type: xzy
+  costs:
+    mana: 75
+
+
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Дерева:_Режущая_Техника
+woodcut:
+  name: Режущая Техника
+  description: Запускает несколько снарядов, которые режут дерево
+  icon: diamond_pickaxe:42
+  icon_disabled: diamond_axe:42
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: additional
+  worth: 200
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: CustomProjectile
+        actions:
+        - class: AreaOfEffect
+          actions:
+          - class: Damage
+          - class: Velocity
+        - class: Sphere
+          actions:
+        - class: BreakBlock
+  effects:
+    tick:
+    - effectlib:
+        class: LineEffect
+        particle: block_crack
+        material: log
+        particle_count: 1
+        particles: 1
+        iterations: 1
+        particle_offset_x: 0.1
+        particle_offset_y: 0.1
+        particle_offset_z: 0.1
+      location: target
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    velocity: 2000
+    allow_max_range: false
+    range: 32
+    speed: 0.9
+    living_entity_speed: 0.2
+    direction: 0,0.8,0
+    falling: false
+    radius: 1
+    durability_max_distance: 3
+    damage_max_distance: 3
+    undo: 15000
+    cooldown: 1000
+    destructible: logs
+    destructible_override: true
+    destructible_durability: 5000
+    break_durability: 1000
+    select_self: false
+    undo_speed: 0.5
+    damage: 5
+    repeat: 5
+    spread: 0.2
+  costs:
+    mana: 45
+
+
+
+
+
+
+
+
+
+
+
+
+
+#https://jut.su/technique/opletayuschie-derevya.html
+woodcapture:
+  name: Оплетащие Деревья
+  description: Захватывает противника корнями
+  icon: diamond_pickaxe:43
+  icon_disabled: diamond_axe:43
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: additional
+  worth: 150
+  earns_sp: 0
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+        - class: Damage
+          ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+    tick:
+    - particle: block_crack
+      material: log
+      location: target
+      particle_count: 20
+      particle_offset_y: 0.2
+      particle_offset_x: 0.2
+      particle_offset_z: 0.2
+      particle_size: 1
+    hit_entity:
+    - location: target
+      sound: entity_wither_break_block
+      sound_pitch: 0.8
+      source_location: body
+      effectlib:
+        class: Modified
+        duration: 10000
+        parameters:
+          size: (1 - (t / i)) * 0.1 + 0.5
+        effect:
+          class: AnimatedBall
+          particle: block_crack
+          material: log
+          color: 663300
+          particle_count: 4
+          particle_offset_x: 0.05
+          particle_offset_y: 0.05
+          particle_offset_z: 0.05
+          particle_size: 2
+          y_factor: 1
+          iterations: 5
+  headshot_parameters:
+    damage_multiplier: 1.5
+  parameters:
+    allow_max_range: true
+    velocity: 200
+    range: 24
+    radius: 2
+    hitbox: true
+    target_type: Damageable
+    player_damage: 0
+    entity_damage: 0
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    damage: 0
+    potion_effects:
+      slow: 250
+      jump: 250
+      slow_digging: 100
+      duration: 10000
+    duration: 10000
+  costs:
+    mana: 15

@@ -1,0 +1,256 @@
+
+#NARA CLAN
+
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Теневого_Шитья
+shadowneedles:
+  name: Теневое Шитьё
+  description: Создаёт тени которые пронзают противника и пришивают его к земле
+  icon: diamond_pickaxe:71
+  icon_disabled: diamond_axe:71
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: hiden
+  worth: 150
+  earns_sp: 7
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+          duration: 10000
+      - class: Repeat
+        actions:
+        - class: Damage
+        - class: Delay
+        ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_lava_pop
+    tick:
+    - location: target
+      effectlib:
+        class: Cylinder
+        color: 000000
+        particle: redstone
+        height: 0.1
+        particle_count: 2
+        particles: 2
+        iterations: 2
+        particle_offset_y: 0.2
+        particle_offset_x: 0.2
+        particle_offset_z: 0.2
+        particle_size: 1
+      target_offset: 0,-1,0
+    hit_entity:
+    - location: target
+      target_location: body
+      use_target_location: true
+      effectlib:
+        line_particle: redstone
+        line_color: 000000
+        class: DiscoBall
+        sphere_particle: redstone
+        sphere_radius: 0
+        sphere_color: 000000
+        duration: 10000
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+  parameters:
+    allow_max_range: true
+    velocity: 20
+    range: 24
+    effect_jump: 250
+    effect_slow: 10
+    effect_slow_digging: 10
+    hitbox: true
+    radius: 1
+    target_type: Damageable
+    player_damage: 3
+    entity_damage: 3
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 10
+    delay: 1000
+  costs:
+    mana: 15
+
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Теневого_Подражания
+shadowimitation:
+  name: Теневое Подражание
+  description: Создаёт тень, которая захватывает противника
+  icon: diamond_pickaxe:69
+  icon_disabled: diamond_axe:69
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: hiden
+  worth: 150
+  earns_sp: 7
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+          duration: 10000
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_lava_pop
+    hit_entity:
+    - location: target
+      effectlib:
+        class: Cylinder
+        color: 000000
+        particle: redstone
+        radius: 1.5
+        height: 0.1
+        particle_count: 2
+        particles: 2
+        iterations: 2
+        particle_offset_y: 0.2
+        particle_offset_x: 0.2
+        particle_offset_z: 0.2
+        particle_size: 1
+      target_offset: 0,-1,0
+    tick:
+    - location: target
+      effectlib:
+        class: Cylinder
+        color: 000000
+        particle: redstone
+        height: 0.1
+        particle_count: 2
+        particles: 2
+        iterations: 2
+        particle_offset_y: 0.2
+        particle_offset_x: 0.2
+        particle_offset_z: 0.2
+        particle_size: 1
+      target_offset: 0,-1,0
+  parameters:
+    allow_max_range: true
+    velocity: 20
+    range: 24
+    effect_jump: 250
+    effect_slow: 199
+    effect_slow_digging: 199
+    hitbox: true
+    radius: 1
+    target_type: Damageable
+    player_damage: 2
+    entity_damage: 2
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+  costs:
+    mana: 15
+
+
+
+#https://naruto.fandom.com/ru/wiki/Техника_Теневого_Связывания_Шеи
+shadowneck:
+  name: Теневое Удушение
+  description: Создаёт тень, которая душит противника
+  icon: diamond_axe:70
+  icon_disabled: diamond_axe:70
+  icon_url: http://textures.minecraft.net/texture/2ba95570c7b712713632d4c0d2fc66906613d3850a596a0267c6d763fe741ac
+  upgrade_required_path: beginner
+  upgrade_required_casts: 20
+  category: hiden
+  worth: 150
+  earns_sp: 7
+  earns_cooldown: 10000
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: PotionEffect
+          duration: 10000
+      - class: Repeat
+        actions:
+        - class: Damage
+        - class: Delay
+        ignore_result: true
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_lava_pop
+    hit_entity:
+    - location: target
+      target_offset: 0,-1,0
+      effectlib:
+        class: Modified
+        iterations: 60
+        duration: 10000
+        parameters:
+          size: (1 - (t / i)) * 0.1 + 0.5
+        effect:
+          class: AnimatedBall
+          particle: redstone
+          color: 000000
+          xFactor: 2
+    tick:
+    - location: target
+      effectlib:
+        class: Cylinder
+        color: 000000
+        particle: redstone
+        height: 0.1
+        particle_count: 2
+        particles: 2
+        iterations: 2
+        particle_offset_y: 0.2
+        particle_offset_x: 0.2
+        particle_offset_z: 0.2
+        particle_size: 1
+      target_offset: 0,-1,0
+  parameters:
+    allow_max_range: true
+    velocity: 20
+    range: 24
+    effect_jump: 250
+    effect_slow: 10
+    effect_slow_digging: 10
+    hitbox: true
+    radius: 1
+    target_type: Damageable
+    player_damage: 2
+    entity_damage: 2
+    target_breakables: 1
+    cooldown: 1000
+    reorient: false
+    destructible: solid
+    destructible_durability: 50
+    break_durability: 2
+    undo: 10000
+    repeat: 5
+    delay: 2000
+  costs:
+    mana: 15
+
+

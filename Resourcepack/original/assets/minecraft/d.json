@@ -1,0 +1,49 @@
+{
+    "custom.flex1": {
+	    "category": "music",
+        "sounds": [
+		    {
+			    "name": "flex1",
+				"stream": true
+            }]
+    },
+    "custom.flex2": {
+	    "category": "music",
+        "sounds": [
+		    {
+			    "name": "flex2",
+				"stream": true
+            }]
+    },
+    "custom.flex3": {
+	    "category": "music",
+        "sounds": [
+		    {
+			    "name": "flex3",
+				"stream": true
+            }]
+    },
+    "custom.flex4": {
+	    "category": "music",
+        "sounds": [
+		    {
+			    "name": "flex4",
+				"stream": true
+            }]
+    }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

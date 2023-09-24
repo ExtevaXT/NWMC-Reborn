@@ -1,0 +1,349 @@
+
+#SHIKOTSUMYAKU bone
+
+
+bonearmor:
+  name: Костяная Броня
+  description: Выращивает костянную броню на вас
+  icon: diamond_pickaxe:61
+  icon_disabled: diamond_axe:61
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: hiden
+  worth: 220
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      sound: entity_wither_break_block
+      sound_pitch: 0.8
+      source_location: body
+      duration: 5000
+      class: EffectSingle
+      particle: block_crack
+      material: quartz_block
+      particle_count: 100
+      particles: 30
+      iterations: 10
+      particle_offset_x: 0.05
+      particle_offset_y: -1
+      particle_offset_z: 0.05
+      particle_size: 2
+      y_factor: 0
+  parameters:
+    target: self
+    effect_damage_resistance: 1
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+    duration: 360000
+  costs:
+    mana: 20
+  active_costs:
+    mana: 15
+
+
+
+
+
+bonewound:
+  icon: diamond_pickaxe:178
+  icon_disabled: diamond_pickaxe:178
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/df4396a2bc47bc4dd545fc787a3ad8a0a75b8783cb5d81482c2016fab9cd2a
+  category: hiden
+  worth: 100
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      requires_entity_target: true
+      location: target
+      color: 8A0829
+      source_location: body
+      effectlib:
+        class: BleedEffect
+        iterations: 4
+        hurt: false
+        offset: 0,-1,0
+    - class: EffectSingle
+      sound: magic.crack
+      sound_volume: 1
+      particle: sweep_attack
+      particle_count: 5
+      particle_offset_x: 0.2
+      particle_offset_y: 0.05
+      particle_offset_z: 0.2
+      relative_offset: 2,0,0
+    - requires_entity_target: true
+      effectlib:
+        class: Equation
+        iterations: 50
+        particles: 5
+        particle: drip_lava
+        particle_count: 5
+        particle_offset_x: 0
+        particle_offset_y: 0.1
+        particle_offset_z: 0
+        xEquation: '1.5'
+        yEquation: -t/20 + 0.5
+        zEquation: -t/20 + 0.5
+        updateLocations: false
+        updateDirections: false
+    - location: target
+      requires_entity_target: true
+      use_hit_location: false
+      use_wand_location: false
+      target_offset: 0,-1.3,0
+      effectlib:
+        class: AnimatedBall
+        duration: 2000
+        particle: item_crack
+        material: redstone
+        size: 0.3
+    - effectlib:
+        class: Equation
+        iterations: 50
+        particles: 4
+        particle: sweep_attack
+        particle_count: 4
+        particle_offset_x: 0
+        particle_offset_y: 0.1
+        particle_offset_z: 0
+        xEquation: '1.5'
+        yEquation: -t/20 + 0.5
+        zEquation: -t/20 + 0.5
+        updateLocations: false
+        updateDirections: false
+  parameters:
+    target_type: Damageable
+    allow_max_range: false
+    range: 5
+    hitbox: false
+    fov: 0.4
+    damage: 8
+    target_breakables: 1
+    cooldown: 0
+    magic_damage: false
+    instant_block_effects: true
+  costs:
+    mana: 0
+
+
+
+
+bonesword:
+  icon: diamond_pickaxe:60
+  icon_disabled: diamond_axe:60
+  category: hiden
+  hidden: true
+  actions:
+    cast:
+    - class: GiveItem
+  parameters:
+    item: boneblade
+    loud: true
+    target: self
+    damage: 10
+    cooldown: 5000
+  costs:
+    health: 5
+
+
+
+
+
+
+
+
+
+
+bonebullets:
+  name: Костяные Пули
+  description: Выпускает из ваших пальцев костяные пули
+  icon: diamond_pickaxe:64
+  icon_disabled: diamond_axe:64
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/7134aed98232d9946f9dbd738a37e68f36a9a773a863dde206bb9115b993d78
+  category: hiden
+  worth: 400
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Delay
+    - class: Repeat
+      actions:
+      - class: Retarget
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            actions:
+            - class: Damage
+            - class: Velocity
+      - class: PlayEffects
+        effect: shoot
+        ignore_result: true
+      - class: Delay
+        delay: 10
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.electrify
+      sound_pitch: 0.1
+      source_location: body
+      origin_offset: 0,0.55,0
+      effectlib:
+        class: Sphere
+        particle: block_crack
+        material: bone_block
+        duration: $warmup
+        particles: 5
+        radius: 0.2
+    shoot:
+    - class: EffectSingle
+      sound: entity_arrow_shoot
+      source_location: body
+      sound_pitch: 0.3
+      particle: block_crack
+      material: bone_block
+      particle_count: 2
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      relative_offset: 1,0,0
+    tick:
+    - location: target
+      particle: block_crack
+      material: quartz_block
+      particle_count: 1
+      particle_offset_x: 0.01
+      particle_offset_y: 0.01
+      particle_offset_z: 0.01
+    hit_block:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: bone_block
+      particle_count: 30
+      particle_offset_x: 0.2
+      particle_offset_y: 1
+      particle_offset_z: 0.2
+    hit_entity:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: redstone_block
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: block_crack
+      material: bone_block
+      particle_count: 4
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+      sound: magic.zap
+      sound_volume: 0.3
+      particle_data: 0.1
+  parameters:
+    target: other
+    target_type: LivingEntity
+    source_location: body
+    range: 32
+    velocity: 50
+    spread: 0.1
+    spread_movement_max: 0.2
+    spread_movement: 5
+    cooldown: 1000
+    speed: 0.2
+    damage: 5
+    repeat: 10
+    push: 1
+    warmup: 2000
+  costs:
+    mana: 100
+
+
+
+
+
+
+bonespikes:
+  name: Танец Папоротника
+  description: Испускает ваши кости из земли
+  icon: diamond_pickaxe:62
+  icon_disabled: diamond_axe:62
+  icon_url: http://textures.minecraft.net/texture/443e10a710998d47d238e291a8ba8f6abf42bc7e419d1d8dcc8c55707ebb19
+  category: hiden
+  worth: 700
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Volume
+      actions:
+      - class: ModifyBlock
+      - class: Skip
+        skip: 100
+        actions:
+        - class: PlayEffects
+          effects: column
+    - class: AreaOfEffect
+      actions:
+      - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_anvil_use
+    - class: EffectTrail
+      particle: block_crack
+    column:
+    - location: target
+      particle: block_crack
+      material: bone_block
+      particle_count: 100
+      particle_offset_x: 0.2
+      particle_offset_y: 5
+      particle_offset_z: 0.2
+      offset: 0,-2,0
+  parameters:
+    target_type: LivingEntity
+    target: any
+    allow_max_range: false
+    range: 16
+    radius: 7
+    y_size: 15
+    type: sphere
+    cooldown: 1000
+    undo: 10000
+    brush: schematic|bonespikes
+    transparent: transparent_to_construction
+    destructible: destructible_replace,destructible
+    damage: 10
+    oby: -3
+  costs:
+    mana: 150
+

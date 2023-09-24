@@ -1,0 +1,41 @@
+id: 092e5c40-a351-4f38-800b-7e8746937c99
+name: Exteva
+created: 1695200735957
+updated: 1695201604971
+last_cast: 1695200811081
+cooldown_expiration: 0
+last_death_location: ''
+fall_protection_count: 0
+fall_protection: 0
+brush:
+  map_id: -1
+  material: dirt
+  data: 0
+  schematic: ''
+  scale: 1.0
+  erase: true
+undo:
+  6a6af791-457f-4639-ae0b-43c8de4fd317: []
+spells:
+  missile:
+    cast_count: 3
+    last_cast: 1695200811081
+    last_earn: 1695200804447
+    cooldown_expiration: 1695200812081
+    charges: 0.0
+open_wand: false
+gave_welcome_wand: false
+resource_pack_preference: default
+data:
+  sp: 21.0
+properties:
+  version: 7
+classes:
+  caster: {}
+  mage:
+    effect_color: e2822cb9a8a3,862169c3195a,c1bc9baa9545
+    mana_timestamp: 1695201604896
+    mana: 50.0
+transient_modifiers: {}
+active_class: mage
+health: 20.0

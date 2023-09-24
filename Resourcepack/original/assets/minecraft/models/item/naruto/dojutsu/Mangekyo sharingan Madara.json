@@ -1,0 +1,7 @@
+{
+    "parent": "item/custom/icon",
+    "textures": {
+        "particle": "item/naruto/icons/dojutsu/Mangekyo sharingan Madara",
+        "texture": "item/naruto/icons/dojutsu/Mangekyo sharingan Madara"
+    }
+}

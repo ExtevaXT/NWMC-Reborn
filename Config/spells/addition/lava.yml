@@ -1,0 +1,306 @@
+
+#LAVA lavaaa
+
+
+
+#https://naruto.fandom.com/ru/wiki/Режим_Чакры_Стихии_Лавы
+lavamod:
+  name: Режим Лавы
+  description: Режим в котором вы покрыты чакрой лавы
+  icon: diamond_pickaxe:34
+  icon_disabled: diamond_axe:34
+  icon_url: http://textures.minecraft.net/texture/15987e49e7ed16df536f4dbf685e7720b88b4de6deaf614d84ab9f9884725c
+  alias: perk
+  category: additional
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  quick_cast: true
+  toggle: cancel
+  disable_mana_regeneration: true
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: PotionEffect
+        duration: 5000
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: entity_experience_orb_pickup
+    - location: origin
+      effectlib:
+        class: Flame
+        particle: drip_lava
+        radius: 0.5
+        height: 1.5
+        enable_rotation: false
+        particles: 5
+        particle_count: 5
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0,-0.1,0
+        duration: 1200000
+    - location: origin
+      effectlib:
+        class: Flame
+        particle: lava
+        iterations: 1
+        radius: 0.5
+        height: 2
+        enable_rotation: false
+        particles: 1
+        particle_count: 1
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0,-0.1,0
+        duration: 1200000
+    - class: EffectSingle
+      location: origin
+      source_location: feet
+      effectlib:
+        class: CylinderEffect
+        particle: flame
+        radius: 0.6
+        height: 0
+        enable_rotation: false
+        particles: 20
+        particle_count: 4
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0.5,-0.1,0.5
+        duration: 1200000
+  parameters:
+    target: self
+    effect_damage_resistance: 0
+    effect_increase_damage: 5
+    cooldown: 6000
+    cancel_on_death: true
+    repeat: infinite
+  costs:
+    mana: 20
+  active_costs:
+    mana: 5
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Лавы:_Техника_Потока_Пылающих_Валунов
+lavaball:
+  name: Поток Пылающих Валунов
+  description: Создаёт несколько валунов из лавы
+  icon: diamond_pickaxe:35
+  icon_disabled: diamond_axe:35
+  upgrade_required_path: beginner
+  upgrade_required_casts: 15
+  icon_url: http://textures.minecraft.net/texture/e511624fac75f03cf2f3a56d5fe4582d6e74fc9f5e1e1160af1941ee144928
+  category: additional
+  pvp_restricted: true
+  worth: 40
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: Projectile
+        actions:
+        - class: Sphere
+          actions:
+          - class: BreakBlock
+        - class: AreaOfEffect
+          actions:
+          - class: PotionEffect
+          - class: Damage
+      - class: Delay
+  effects:
+    cast:
+    - sound: magic.burn
+      sound_volume: 1
+      sound_pitch: -0.25
+    projectile:
+    - location: origin
+      effectlib:
+        class: Sphere
+        iterations: 10
+        period: 2
+        particles: 5
+        particle: lava
+        disappear_with_origin_entity: true
+    hit:
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: Sphere
+        particle: explosion_huge
+        iterations: 3
+        particles: 1
+        particle_count: 1
+  parameters:
+    projectile: LargeFireball
+    radius: 2
+    fire: true
+    size: 2
+    undo: 4000
+    cooldown: 1000
+    start: 1
+    break_blocks: true
+    undo_speed: 1
+    repeat: 5
+    spread: 0.5
+    delay: 100
+  costs:
+    mana: 40
+
+
+#Снаряд из лавы
+lavablast:
+  name: Лавовый Снаряд
+  description: Снаряд, который при соприкосновении с поверхностью превращает её лаву
+  icon: diamond_pickaxe:36
+  icon_disabled: diamond_axe:36
+  icon_url: http://textures.minecraft.net/texture/4a458a62561a9e6ab960b9bdccaddbf039429c836dfacdd39ff7c7085c9e9b9
+  category: additional
+  worth: 10
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: Volume
+          actions:
+          - class: ModifyBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_generic_explode
+      location: origin
+      effectlib:
+        class: ConeEffect
+        iterations: 10
+        particle: spell_mob
+        color: FACC2E
+        lengthGrow: 0.4
+    tick:
+    - particle: fireworks_spark
+      location: target
+    hit:
+    - class: EffectSingle
+      target_offset: 0,0.5,0
+      location: target
+      color: FACC2E
+      firework: burst
+      particle: explosion_large
+    undo:
+    - class: EffectSingle
+      sound: magic.shimmer
+      location: target
+    undo_block:
+    - location: target
+      use_block_location: true
+      effectlib:
+        class: Modified
+        period: 2
+        iterations: 4
+        parameters:
+          radius: (1 - (t / i)) * 5 + 0.2
+          particles: (t / i) * 40
+        effect:
+          class: Sphere
+          particle: block_crack
+          y_offset: 0
+          offset: 0,0.7,0
+          particle_count: 4
+          particle_offset_x: 0.1
+          particle_offset_y: 0.1
+          particle_offset_z: 0.1
+          particles: 10
+  parameters:
+    velocity: 5000
+    allow_max_range: false
+    range: 32
+    speed: 0.9
+    living_entity_speed: 0.7
+    direction: 0,0.8,0
+    falling: true
+    radius: 1
+    durability_max_distance: 3
+    damage_max_distance: 2
+    undo: 15000
+    cooldown: 5000
+    destructible: solid
+    destructible_override: true
+    destructible_durability: 50
+    break_durability: 10
+    select_self: false
+    undo_speed: 0.5
+    damage: 6
+    brush: lava
+  costs:
+    mana: 45
+
+
+
+#Создаёт лаву и мгновенно её затвердевает
+lavaharden:
+  name: Лавовое Упрочнение
+  description: Упрочняет поверхность, с помощью моментального затвердевания лавы
+  icon: diamond_pickaxe:37
+  icon_disabled: diamond_axe:37
+  icon_url: http://textures.minecraft.net/texture/25147d8c6addc07635b183ae1c4459f173bdfde239d949f56ce56d2728911e2
+  category: additional
+  worth: 20
+  earns_sp: 0
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: Recurse
+      actions:
+      - class: ModifyBlock
+  effects:
+    cast:
+    - sound: magic.shimmer
+    - class: EffectTrail
+      particle: lava
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    - location: target
+      effectlib:
+        class: Helix
+        particle: smoke_large
+        particle_count: 8
+        particle_offset_x: 0.2
+        particle_offset_y: 0.5
+        particle_offset_z: 0.2
+        iterations: 1
+        radius: $size
+  parameters:
+    allow_max_range: false
+    range: 16
+    size: 3
+    destructible_override: true
+    destructible: destructible,hardenable
+    brush: obsidian
+    transparent: transparent_to_construction
+    undo: 4000
+    cooldown: 1000
+    bypass_backfire: true
+    select_self: false
+    replace: true
+  costs:
+    mana: 30

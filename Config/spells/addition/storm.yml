@@ -1,0 +1,485 @@
+
+
+
+#STORM RELEASE
+
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Шторма:_Лазерный_Цирк
+stormlaser:
+  name: Лазерный Цирк
+  description: Создаёт большой лазер впрожигающий всё на своём пути.
+  icon: diamond_pickaxe:137
+  icon_disabled: diamond_axe:137
+  icon_url: http://textures.minecraft.net/texture/7cc8e096a2ac99bf264b3e827f1e3aa07ba688d7b4f470128f741132625e
+  example_thumbnail: https://thumbs.gfycat.com/SnivelingDependentHuman-size_restricted.gif
+  example_link: https://thumbs.gfycat.com/SnivelingDependentHuman
+  category: additional
+  worth: 450
+  earns_sp: 0
+  upgrade_required_path: storm
+  upgrade_required_casts: 50
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: Multiply
+      actions:
+      - class: PlayEffects
+        effect: beam
+        ignore_result: true
+      - class: Line
+        ignore_result: true
+        actions:
+        - class: Disc
+          actions:
+          - class: CheckBlock
+            actions:
+            - class: BreakBlock
+            - class: PlayEffects
+              effects: burn
+              ignore_result: true
+      - class: Repeat
+        actions:
+        - class: Delay
+        - class: Retarget
+          actions:
+          - class: PlayEffects
+            effect: beam
+            ignore_result: true
+          - class: Line
+            ignore_result: true
+            actions:
+            - class: Disc
+              actions:
+              - class: CheckBlock
+                actions:
+                - class: BreakBlock
+                - class: PlayEffects
+                  effects: burn
+                  ignore_result: true
+          - class: ConeOfEffect
+            actions:
+            - class: Damage
+  effects:
+    beam:
+    - class: EffectSingle
+      sound: magic.zap
+      location: origin
+      sound_volume: 0.1
+      color_override: colorHelix
+      effectlib:
+        class: DnaEffect
+        particles_base: 5
+        particles_helix: 7
+        particle_helix: redstone
+        color_helix: 00008B
+        particle_base1: redstone
+        color_base1: 7b68ee
+        particle_base2: redstone
+        color_base2: 1e90ff
+        iterations: 10
+        radius: 1.5
+        grow: 0.2
+        base_interval: 5
+        length: 16
+    burn:
+    - location: target
+      particle: smoke_large
+      particle_count: 4
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      target_offset: 0.5,0.5,0.5
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+  parameters:
+    target: block
+    target_type: Damageable
+    fov: 0.1
+    close_range: 4
+    close_fov: 0.4
+    allow_max_range: true
+    player_damage: 2
+    entity_damage: 2
+    target_count: 5
+    range: 32
+    size: 2
+    start_at_target: true
+    increment_data: false
+    check_destructible: true
+    destructible: solid
+    destructible_durability: 100
+    break_durability: 10
+    transparent: air
+    radius: 2
+    undo: 15000
+    cooldown: 1000
+    delay: 100
+    repeat: 20
+    undo_speed: 1
+    orient: true
+    axis: z
+    multiply: 1
+  costs:
+    mana: 120
+
+#https://naruto.fandom.com/wiki/Storm_Release_Secret_Technique:_Demon_Dragon_Storm
+demonstorm:
+  icon: diamond_pickaxe:140
+  name: Демонический Шторм
+  description: Создаёт грозовую тучу в указанной области в которую бьют молнии.
+  icon_disabled: diamond_axe:140
+  icon_url: http://textures.minecraft.net/texture/a31cc0ffb1e814e1c82301067ea318356befa65dc1a027afbfd498709cad58
+  category: additional
+  worth: 500
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: Lightning
+        ignore_result: true
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Ignite
+      - class: Sphere
+        ignore_result: true
+        actions:
+        - class: ModifyBlock
+      - class: Delay
+        delay: 500
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_firework_large_blast
+    - class: EffectTrail
+      particle: smoke_normal
+      particle_count: 20
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    - class: EffectSingle
+      location: target
+      effectlib:
+        class: HelixEffect
+        particle: smoke_large
+        particle_count: 10
+        particle_offset_x: 0.2
+        particle_offset_y: 4
+        particle_offset_z: 0.2
+        iterations: 5
+        particles: 30
+        radius: 6
+        offset: 0,2,0
+  parameters:
+    target_type: Damageable
+    allow_max_range: true
+    range: 32
+    radius: 5
+    damage_max_distance: 4
+    cooldown: 15000
+    effect_only: true
+    damage: 4
+    duration: 5000
+    speed: 0.9
+    falling: true
+    brush: air
+    undo: 10000
+    oty: -2
+    undo_speed: 0.5
+    repeat: 5
+  costs:
+    mana: 100
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Молнии:_Чёрная_Пантера
+blackpanther:
+  icon: diamond_pickaxe:139
+  name: Чёрная Пантера
+  description: Создаёт чёрную пантеру с помощью чёрной молнии.
+  icon_disabled: diamond_axe:139
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: additional
+  worth: 50
+  earns_sp: 3
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: ArmorStandProjectile
+      actions:
+      - class: AreaOfEffect
+        actions:
+        - class: Damage
+        - class: Velocity
+      - class: Sphere
+        actions:
+        - class: BreakBlock
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: redstone
+          color_base1: 000000
+          color_base2: 000000
+          color_helix: 000000
+          particle_base1: redstone
+          particle_base2: redstone
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 4
+          particle_helix: redstone
+          particle_base1: redstone
+          particle_base2: redstone
+          color_base1: FFFFFF
+          color_base2: FFFFFF
+          color_helix: FFFFFF
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 5
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell_mob
+          particle_base1: spell_mob
+          particle_base2: spell_mob
+          color_base1: 000000
+          color_base2: 000000
+          color_helix: 000000
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell_mob
+        color: 000000
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: spell_mob
+          particle_base1: spell_mob
+          particle_base2: spell_mob
+          color_base1: FFFFFF
+          color_base2: FFFFFF
+          color_helix: FFFFFF
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: spell
+        color: FFFFFF
+        particles: 1
+        period: 2
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    hit:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: cloud
+        iterations: 5
+        speed: 1
+        particle_count: 8
+  parameters:
+    target_type: Entity
+    range: 16
+    velocity: 10
+    right_arm_transform:
+      x: 0
+      y: 0
+      z: 0
+    fov: 1
+    location_offset: -0.5,-0.5,-0.5
+    right_arm_item: diamond_hoe:4
+    damage: 30
+    radius: 6
+    item_speed: 0.1
+    break_durability: 1000
+    destructible_durability: 5000
+    living_entity_speed: 0.3
+    repeat: 6
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+    undo: 30000
+    undo_speed: 0.5
+  costs:
+    mana: 20
+
+#https://naruto.fandom.com/ru/wiki/Искусство_Мудреца:_Клык_Света_Стихии_Шторма
+stormminilaser:
+  name: Клык Света
+  describe: Излучает прожигающий фиолетовый лазер.
+  icon: diamond_pickaxe:138
+  icon_disabled: diamond_axe:138
+  icon_url: http://textures.minecraft.net/texture/7cc8e096a2ac99bf264b3e827f1e3aa07ba688d7b4f470128f741132625e
+  example_thumbnail: https://thumbs.gfycat.com/SnivelingDependentHuman-size_restricted.gif
+  example_link: https://thumbs.gfycat.com/SnivelingDependentHuman
+  category: additional
+  worth: 450
+  earns_sp: 8
+  upgrade_required_path: apprentice
+  upgrade_required_casts: 50
+  pvp_restricted: true
+  actions:
+    cast:
+    - class: PlayEffects
+      effect: beam
+      ignore_result: true
+    - class: Line
+      ignore_result: true
+      actions:
+      - class: Disc
+        actions:
+        - class: CheckBlock
+          actions:
+          - class: BreakBlock
+          - class: PlayEffects
+            effects: burn
+            ignore_result: true
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: Retarget
+        actions:
+        - class: PlayEffects
+          effect: beam
+          ignore_result: true
+        - class: Line
+          ignore_result: true
+          actions:
+          - class: Disc
+            actions:
+            - class: CheckBlock
+              actions:
+              - class: BreakBlock
+              - class: PlayEffects
+                effects: burn
+                ignore_result: true
+        - class: ConeOfEffect
+          actions:
+          - class: Damage
+  effects:
+    beam:
+    - class: EffectSingle
+      sound: magic.zap
+      location: origin
+      sound_volume: 0.1
+      color_override: color
+      effectlib:
+        class: LineEffect
+        particle: redstone
+        iterations: 2
+        color: CC00CC
+    burn:
+    - location: target
+      particle: smoke_large
+      particle_count: 4
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      target_offset: 0.5,0.5,0.5
+    cast:
+    - class: EffectSingle
+      sound: magic.zap_crack
+      location: origin
+  parameters:
+    target: block
+    target_type: Damageable
+    fov: 0.1
+    close_range: 4
+    close_fov: 0.4
+    allow_max_range: true
+    player_damage: 1
+    entity_damage: 1
+    target_count: 5
+    range: 32
+    size: 1
+    start_at_target: true
+    increment_data: false
+    check_destructible: true
+    destructible: solid
+    destructible_durability: 100
+    break_durability: 4
+    transparent: air
+    radius: 0
+    undo: 15000
+    cooldown: 10000
+    delay: 100
+    repeat: 12
+    undo_speed: 1
+    orient: true
+    axis: z
+  costs:
+    mana: 120

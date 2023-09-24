@@ -1,0 +1,98 @@
+[
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning1.name",
+      "languages": {
+        "en_GB": "Stranglehold",
+        "ru_RU": "Аркан"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning1.description",
+      "languages": {
+        "en_GB": "Powerful taijutsu, during which the user attacks the opponent with a Clouseline",
+        "ru_RU": "Мощное тайдзюцу, во время которого пользователь атакует противника Клоузлайном"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning2.name",
+      "languages": {
+        "en_GB": "Lightning Mode",
+        "ru_RU": "Режим Молнии"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning2.description",
+      "languages": {
+        "en_GB": "The technique increases the reaction speed and brings the physical parameters of the user to the maximum level",
+        "ru_RU": "Техника увеличивает скорость реакции и доводит до предельного уровня физические параметры пользователя"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning3.name",
+      "languages": {
+        "en_GB": "Chain Lightning",
+        "ru_RU": "Цепная Молния"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning3.description",
+      "languages": {
+        "en_GB": "An electric current that can hit multiple targets at the same time",
+        "ru_RU": "Электрический ток, который может поразить несколько целей одновременно"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning4.name",
+      "languages": {
+        "en_GB": "Chasing Lightning",
+        "ru_RU": "Преследующая Молния"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning4.description",
+      "languages": {
+        "en_GB": "The lightning chakra, created in the form of a hound that rushes at the enemy",
+        "ru_RU": "Чакра молнии, созданная в форме гончей, которая мчится на противника"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning5.name",
+      "languages": {
+        "en_GB": "Chidori Senbon",
+        "ru_RU": "Чидори Сенбон"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning5.description",
+      "languages": {
+        "en_GB": "An electric discharge in the form of many sharp senbons",
+        "ru_RU": "Электрический разряд в форме множества острых сенбонов"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning6.name",
+      "languages": {
+        "en_GB": "Kirin",
+        "ru_RU": "Кирин"
+      }
+    },
+    {
+      "type": "text",
+      "key": "magic.spells.basic.lightning6.description",
+      "languages": {
+        "en_GB": "Natural lightning created from thunderclouds, controlled by the chakra",
+        "ru_RU": "Природная молния, созданная из грозовых облаков, контролируемая чакрой"
+      }
+    }
+  ]

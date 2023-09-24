@@ -1,0 +1,351 @@
+
+
+#SCORCH RELEASE
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Жара:_Испаряющее_Убийство
+scorchblasts:
+  name: Испаряющее Убайиство
+  description: Техника, которая создает вокруг себя несколько пылающих сфер и запускает их во врага
+  icon: diamond_pickaxe:53
+  icon_disabled: diamond_axe:53
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/7134aed98232d9946f9dbd738a37e68f36a9a773a863dde206bb9115b993d78
+  category: additional
+  worth: 400
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Delay
+    - class: Repeat
+      actions:
+      - class: Retarget
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            actions:
+            - class: Damage
+            - class: Velocity
+            - class: Sphere
+              actions:
+              - class: BreakBlock
+      - class: PlayEffects
+        effect: shoot
+        ignore_result: true
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - sound: magic.electrify
+      sound_pitch: 0.1
+      source_location: body
+      origin_offset: -1,0.5,0.5
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        duration: $warmup
+        particles: 10
+        radius: 0.5
+        solid: true
+    - source_location: body
+      origin_offset: 1,0.5,0.5
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        duration: $warmup
+        particles: 10
+        radius: 0.5
+        solid: true
+    - source_location: body
+      origin_offset: 0,0.5,-1
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        duration: $warmup
+        particles: 10
+        radius: 0.5
+        solid: true
+    shoot:
+    - class: EffectSingle
+      sound: entity_arrow_shoot
+      source_location: body
+      sound_pitch: 0.3
+      particle: redstone
+      particle_count: 2
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      relative_offset: 1,0,0
+    tick:
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        particle_count: 4
+        radius: 0.5
+        particles: 4
+        iterations: 4
+        particle_offset_x: 0.01
+        particle_offset_y: 0.01
+        particle_offset_z: 0.01
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: flame
+      particle_count: 30
+      paricles: 30
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+      sound: magic.zap
+      sound_volume: 0.3
+      particle_data: 0.1
+  parameters:
+    target: other
+    target_type: LivingEntity
+    source_location: body
+    range: 32
+    velocity: 50
+    spread: 0.3
+    cooldown: 2000
+    speed: 0.2
+    damage: 10
+    repeat: 3
+    push: 1
+    warmup: 3000
+    destructible: solid
+    destructible_override: true
+    destructible_durability: 500
+    break_durability: 100
+    radius: 2
+    undo: 10000
+  costs:
+    mana: 100
+
+
+#https://naruto.fandom.com/ru/wiki/Стихия_Жара:_Техника_Испепеляющей_Вспышки
+scorchmegablast:
+  name: Испепеляющая Вспышка
+  description: Техника, которая создаёт несколько последовательных волн воздуха
+  icon: diamond_pickaxe:54
+  icon_disabled: diamond_axe:54
+  upgrade_required_path: master
+  upgrade_required_casts: 50
+  icon_url: http://textures.minecraft.net/texture/7134aed98232d9946f9dbd738a37e68f36a9a773a863dde206bb9115b993d78
+  category: additional
+  worth: 400
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Delay
+    - class: Repeat
+      actions:
+      - class: Retarget
+        actions:
+        - class: Asynchronous
+          actions:
+          - class: CustomProjectile
+            actions:
+            - class: Damage
+            - class: Velocity
+            - class: Sphere
+              actions:
+              - class: BreakBlock
+      - class: PlayEffects
+        effect: shoot
+        ignore_result: true
+      - class: Delay
+        delay: 1000
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.electrify
+      sound_pitch: 0.1
+      source_location: cast
+      auto_orient: true
+      origin_offset: 0,0.55,0
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        duration: $warmup
+        particles: 30
+        particle_count: 30
+        iterations: 20
+        radius: 0.2
+        radius_increase: 0.005
+    shoot:
+    - class: EffectSingle
+      source_location: cast
+      sound: entity_arrow_shoot
+      source_location: body
+      sound_pitch: 0.3
+      particle: redstone
+      particle_count: 2
+      particle_offset_x: 0.1
+      particle_offset_y: 0.1
+      particle_offset_z: 0.1
+      relative_offset: 0,0,1
+    tick:
+    - location: target
+      source_location: cast
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        particle_count: 4
+        radius: 0.5
+        particles: 4
+        iterations: 4
+        particle_offset_x: 0.01
+        particle_offset_y: 0.01
+        particle_offset_z: 0.01
+    hit:
+    - class: EffectSingle
+      location: target
+      particle: flame
+      particle_count: 50
+      paricles: 50
+      radius: 5
+      speed: 5
+      size: 5
+      particle_offset_x: 0.3
+      particle_offset_y: 0.3
+      particle_offset_z: 0.3
+      sound: magic.zap
+      sound_volume: 0.3
+      particle_data: 0.1
+    - class: EffectSingle
+      location: target
+      particle: explosion_huge
+      particle_count: 1
+      iterations: 1
+  parameters:
+    target: other
+    target_type: LivingEntity
+    source_location: body
+    range: 32
+    velocity: 50
+    spread: 0.1
+    cooldown: 2000
+    speed: 0.2
+    damage: 40
+    repeat: 1
+    push: 1
+    warmup: 3000
+    radius: 5
+    undo: 10000
+    destructible_durability: 5000
+    break_durability: 1000
+  costs:
+    mana: 100
+
+
+#Scorch steam like
+scorchsteam:
+  name: Направленный Жар
+  description: Излучает жар из своих рук
+  icon: diamond_pickaxe:50
+  icon_disabled: diamond_axe:50
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: additional
+  worth: 50
+  earns_sp: 3
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: flame
+          particle_base1: flame
+          particle_base2: flame
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: flame
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: redstone
+          color_helix: d2691e
+          particle_base1: redstone
+          color_base1: d2691e
+          particle_base2: redstone
+          color_base2: d2691e
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: redstone
+        color: d2691e
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    range: 8
+    fov: 1
+    item_speed: 0.1
+    living_entity_speed: 0.5
+    repeat: 8
+    damage: 4
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 20
+
+
+
+

@@ -1,0 +1,77 @@
+
+#ITEMS
+
+headprotector:
+  mode: cast
+  name: '&1Налобный Протектор'
+  description: Защищает вашу голову
+  active_spell: wear
+  icon: diamond_pickaxe:251
+  migrate_icon: ender_portal_frame
+  indestructible: true
+  locked: true
+  keep: true
+  item_attributes:
+    GENERIC_ARMOR: 2
+  spells:
+  - wear
+
+kunai:
+  name: '&fКунай'
+  enchantments:
+    vanishing_curse: 1
+  description: '&5Нажмите ПКМ для броска'
+  alternate_spell: kunai
+  right_click: alt_cast
+  icon: magma_cream
+  indestructible: false
+  locked: true
+  keep: false
+  uses: 1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 4
+
+suriken:
+  name: '&fСюрикен'
+  enchantments:
+    vanishing_curse: 2
+  description: '&5Нажмите ПКМ для броска'
+  alternate_spell: suriken
+  right_click: alt_cast
+  icon: magma_cream
+  indestructible: false
+  locked: true
+  keep: false
+  uses: 1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 2
+
+senbon:
+  name: '&fСенбон'
+  enchantments:
+    vanishing_curse: 3
+  description: '&5Нажмите ПКМ для броска'
+  alternate_spell: senbon
+  right_click: alt_cast
+  icon: magma_cream
+  indestructible: false
+  locked: true
+  keep: false
+  uses: 1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 2
+
+fuumasuriken:
+  name: '&7Фуума Сюрикен'
+  enchantments:
+    vanishing_curse: 3
+  description: '&5Нажмите ПКМ для броска'
+  alternate_spell: fuumasuriken
+  right_click: alt_cast
+  icon: diamond_sword:13
+  indestructible: true
+  locked: true
+  keep: false
+  uses: 1
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: 6

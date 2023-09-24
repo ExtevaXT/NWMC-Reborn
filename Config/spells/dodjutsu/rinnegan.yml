@@ -1,0 +1,418 @@
+
+#RINNEGAN
+
+
+#Вырывание Души    https://naruto.fandom.com/ru/wiki/Путь_Человека
+
+
+
+
+
+
+
+#https://naruto.fandom.com/ru/wiki/Аменоминака      Перемещение по мирам
+mvrandomtravel:
+  name: Аменоминака
+  description: Вы перемещаетесь в один из 6 миров
+  icon: diamond_pickaxe:98
+  icon_disabled: diamond_axe:98
+  icon_url: http://textures.minecraft.net/texture/1adaf6e6e387bc18567671bb82e948488bbacff97763ee5985442814989f5d
+  worth: 80
+  category: dodjutsu
+  actions:
+    cast:
+    - class: Command
+      command: mvrandomtravel
+  parameters:
+    target: self
+  costs:
+    mana: 400
+
+
+#С помощью риннегана можно своей гравитацией управлять
+superfly:
+  name: Гравитационный Полёт
+  description: С помощью управления гравитацией вы заставлеете себя летать
+  icon: diamond_pickaxe:96
+  icon_disabled: diamond_axe:96
+  icon_url: http://textures.minecraft.net/texture/d02585f4a2b47524541d67ae253cf21fde8eea1c21494f61df5f4929a76e0
+  alias: fly
+  category: dodjutsu
+  tags: noduel
+  worth: 50
+  show_undoable: false
+  quick_cast: true
+  disable_mana_regeneration: true
+  toggle: cancel
+  actions:
+    cast:
+    - class: Velocity
+      direction: 0,1,0
+      additive: true
+      speed: 2
+    - class: Delay
+      delay: 100
+    - class: Fly
+    - class: FallProtection
+      duration: 10000
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: entity_enderdragon_flap
+      location: origin
+      color_override: color
+      source_location: feet
+      effectlib:
+        class: CylinderEffect
+        particle: enchantment_table
+        radius: 1.2
+        height: 0
+        enable_rotation: false
+        particles: 20
+        offset: 0,-0.1,0
+        duration: 1200000
+        disappear_with_origin_entity: true
+    - class: EffectSingle
+      location: origin
+      source_location: feet
+      effectlib:
+        class: CylinderEffect
+        particle: enchantment_table
+        radius: 0.6
+        height: 0
+        enable_rotation: false
+        particles: 20
+        particle_count: 4
+        particle_offset_x: 0.2
+        particle_offset_y: 0
+        particle_offset_z: 0.2
+        offset: 0,-0.1,0
+        duration: 1200000
+        disappear_with_origin_entity: true
+    deactivate:
+    - class: EffectSingle
+      sound: entity_enderdragon_flap
+      sound_pitch: 0.2
+    land:
+    - sound: block_stone_step
+      sound_pitch: 0.7
+    - class: EffectRing
+      particle: block_crack
+      source_location: feet
+      period: 4
+      particle_count: 80
+      particle_offset_x: 0.9
+      particle_offset_z: 0.9
+      particle_offset_y: 0.1
+      radius: 4
+  parameters:
+    target: self
+    max_height_above_ground: 50
+    max_height: 260
+    speed: 0.8
+    cooldown: 1000
+  costs:
+    mana: 40
+  active_costs:
+    mana: 10
+
+
+
+#https://naruto.fandom.com/ru/wiki/Чибаку_Тенсей
+blackhole:
+  name: Чибаку Тенсей
+  description: Создаёт сингулярность в указанном месте
+  icon: diamond_pickaxe:97
+  icon_disabled: diamond_axe:97
+  icon_url: http://textures.minecraft.net/texture/ac60643368ba49652b36989878bf296e25d5b3d7526f283ef8cd7470a7a51e8
+  category: dodjutsu
+  pvp_restricted: true
+  worth: 40
+  earns_sp: 0
+  upgrade_required_path: student
+  upgrade_required_casts: 50
+  actions:
+    cast:
+    - class: CustomProjectile
+      actions:
+      - class: Brush
+        ignore_result: true
+        brush: erase
+        actions:
+        - class: Sphere
+          actions:
+          - class: ModifyBlock
+            direction: 0,1,0
+      - class: Repeat
+        actions:
+        - class: Delay
+        - class: AreaOfEffect
+          actions:
+          - class: Velocity
+            ignore_result: true
+            push: -1
+            entity_speed: 0.7
+          - class: Damage
+        - class: Delay
+        - class: AreaOfEffect
+          actions:
+          - class: Velocity
+            ignore_result: true
+            push: 1
+            entity_speed: 0.1
+          - class: Damage
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: magic.bonk
+      sound_pitch: 0.2
+      sound_volume: 0.3
+      location: origin
+    tick:
+    - location: target
+      particle: smoke_normal
+      particle_count: 15
+      particle_offset_x: 0.4
+      particle_offset_y: 0.4
+      particle_offset_z: 0.4
+    - location: target
+      particle: block_crack
+      material: obsidian
+      particle_count: 30
+      particle_offset_x: 0.6
+      particle_offset_y: 0.6
+      particle_offset_z: 0.6
+    hit:
+    - class: EffectSingle
+      location: target
+      sound: magic.hit
+      effectlib:
+        class: SphereEffect
+        duration: 10000
+        particle: redstone
+        color: 4161
+        radius: 1
+        particles: 20
+    - location: target
+      material: obsidian
+      effectlib:
+        class: Modified
+        duration: 10000
+        parameters:
+          radius: sin(t/50)*5
+        effect:
+          class: Sphere
+          particle: block_crack
+          color: 4161
+          particles: 100
+          particle_count: 20
+          particle_offset_x: 1
+          particle_offset_y: 1
+          particle_offset_z: 1
+  parameters:
+    target_type: Entity
+    velocity: 20
+    gravity: 0.02
+    hitbox_size: 2
+    undo: 15000
+    repeat: 20
+    delay: 250
+    damage: 6
+    target_self_timeout: 2000
+    speed: 0.5
+    item_speed: 0.5
+    entity_speed: 0.5
+    falling: true
+    radius: 5
+    destructible: destructible,destructible2,destructible3
+    destructible_override: true
+    cooldown: 1000
+  costs:
+    mana: 50
+
+
+#https://naruto.fandom.com/ru/wiki/Баншоо_Теннин
+gravipull:
+  name: Баншоо Теннин
+  description: Управляение гравитацией, притягивая всё к себе
+  icon: diamond_pickaxe:94
+  icon_disabled: diamond_axe:94
+  icon_url: http://textures.minecraft.net/texture/e13e9af0957a9dd4995811ef3e869b4ad8fbb59ca7474e4c84ce7f6019b079
+  category: dodjutsu
+  worth: 30
+  earns_sp: 0
+  actions:
+    cast:
+    - class: Velocity
+    - class: FallProtection
+    alternate_down:
+    - class: ChangeContext
+      target_caster: true
+      actions:
+      - class: Repeat
+        repeat: 2
+        actions:
+        - class: AreaOfEffect
+          radius: 12
+          actions:
+          - class: Velocity
+            push: -1
+            living_entity_speed: 1
+          - class: FallProtection
+          - class: Delay
+            delay: 200
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+    - class: EffectTrail
+      particle: enchantment_table
+      color: 000000
+      reverse: true
+      length: 16
+      particle_count: 40
+      particles: 20
+      iterations: 10
+      particle_offset_x: 0.2
+      particle_offset_y: 0.2
+      particle_offset_z: 0.2
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: enchantment_table
+        color: 000000
+        particles: 4
+        period: 2
+        duration: 500
+        particle_count: 20
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    alternate_down:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      effectlib:
+        class: HelixEffect
+        particle: enchantment_table
+        color: 000000
+        iterations: 2
+        offset: 0, -1.6, 0
+  parameters:
+    target_type: Entity
+    range: 48
+    item_speed: 2
+    living_entity_speed: 10
+    push: -1
+    duration: 10000
+    cooldown: 2000
+  costs:
+    mana: 10
+
+
+
+#https://naruto.fandom.com/ru/wiki/Шинра_Тенсей
+gravipush:
+  name: Шинра Тенсей
+  description: Управляение гравитацией, отталкивая всё от себя
+  icon: diamond_pickaxe:95
+  icon_disabled: diamond_axe:95
+  icon_url: http://textures.minecraft.net/texture/44a760e06345bd9edd2475d6469dfb952278ca3ec7634aa334e1d7bfcc8644f
+  category: dodjutsu
+  worth: 30
+  earns_sp: 0
+  upgrade_required_path: beginner
+  upgrade_required_casts: 40
+  actions:
+    cast:
+    - class: VelocityAction
+      y_offset: 1
+    - class: Repeat
+      actions:
+      - class: Delay
+      - class: PlayEffects
+        effects: iterate
+        ignore_result: true
+      - class: ConeOfEffectAction
+        actions:
+        - class: VelocityAction
+  effects:
+    cast:
+    - class: EffectSingle
+      sound: block_fire_extinguish
+      sound_volume: 1
+      sound_pitch: -0.1
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 20
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: enchantment_table
+          particle_base1: enchantment_table
+          particle_base2: enchantment_table
+          color_helix: 000000
+          color_base1: 000000
+          color_base2: 000000
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: enchantment_table
+        color: 000000
+        color:
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        radius: 1.5
+    iterate:
+    - class: EffectSingle
+      location: origin
+      effectlib:
+        class: Modified
+        iterations: 10
+        parameters:
+          radius: (t/i) * 4 + 0.2
+        effect:
+          class: DnaEffect
+          particles_base: 0
+          particles_helix: 7
+          particle_helix: enchantment_table
+          particle_base1: enchantment_table
+          particle_base2: enchantment_table
+          color_helix: 000000
+          color_base1: 000000
+          color_base2: 000000
+    - location: target
+      effectlib:
+        class: Sphere
+        particle: enchantment_table
+        particles: 2
+        period: 4
+        duration: 500
+        particle_count: 10
+        particle_offset_x: 0.5
+        particle_offset_y: 0.5
+        particle_offset_z: 0.5
+        color: 000000
+        radius: 1.5
+  parameters:
+    target_type: Entity
+    range: 8
+    fov: 1
+    target_count: 10
+    item_speed: 1
+    living_entity_speed: 10
+    repeat: 3
+    delay: 250
+    y_offset: 0.75
+    cooldown: 5000
+  costs:
+    mana: 20
