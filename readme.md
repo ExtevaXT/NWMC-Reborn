@@ -18,7 +18,7 @@ Some new plugins
 
 [LuckPerms transfer guide from PermissionEx](https://luckperms.net/wiki/Migrating-from-GroupManager-or-PermissionsEx)
 
-### [Epic icons](/resourcepack/aicons/) can be made with [Stable Diffusion](https://github.com/AUTOMATIC1111/stable-diffusion-webui) promts. There should be guides for it on habr or pikabu.
+### [Epic icons](/resourcepack/aicons/) can be made with [Stable Diffusion](https://github.com/AUTOMATIC1111/stable-diffusion-webui) promts. There should be guides for it on Google.
 
 <img src="Docs\process.png" alt="fireblast" width="512"/>
 
